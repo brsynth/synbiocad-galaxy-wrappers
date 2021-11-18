@@ -1,7 +1,7 @@
-<tool id="retropath2" name="RetroPath2.0" version="2.0.3">
+<tool id="retropath2" name="RetroPath2.0" version="2.0.4">
     <description>Build a reaction network from a set of source compounds to a set of sink compounds</description>
     <requirements>
-        <requirement type="package" version="2.0.3">retropath2_wrapper</requirement>
+        <requirement type="package" version="2.0.4">retropath2_wrapper</requirement>
     </requirements>
     <stdio>
         <exit_code range="1" level="fatal"   description="Source has been found in the sink"                          />
@@ -99,7 +99,7 @@ Output
 Version
 -------
 
-v8.0
+v2.0.4
 
 Authors
 -------
