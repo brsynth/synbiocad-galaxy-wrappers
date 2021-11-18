@@ -1,7 +1,7 @@
-<tool id="rpCompletion" name="Complete Reactions" version="5.8.2">
+<tool id="rpCompletion" name="Complete Reactions" version="5.9.2">
     <description>From the output of RP2Paths and RetroPath2.0, generate SBML unique and complete (with cofactors) pathways with mono-component reactions</description>
     <requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <stdio>
         <exit_code range="1" level="fatal" description="Could not Xref compartment_id" />
@@ -57,13 +57,14 @@ Advanced options:
 * **-lower_flux_bound**: (integer, default=0) Lower flux bound value
 * **-max_subpaths_filter**: (integer, default=10, 0=nofilter) Number of subpaths per path
 
+Project Links
+---------------------
+* `GitHub <https://github.com/brsynth/rptools>`_
 
+Version
+----------
 
-Prerequisites
--------------
-
-* Docker - `Install <https://docs.docker.com/install/>`_
-* rpCache: `brsynth/rpCache <https://hub.docker.com/r/brsynth/rpcache>`_
+5.9.2
 
 Authors
 -------
@@ -76,12 +77,10 @@ Acknowledgments
 
 * Thomas Duigou
 
-How to cite rpCompletion?
--------------------------
-
 Licence
 -------
-rpCompletion is released under the MIT licence.
+
+`MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
 
     ]]></help>
 </tool>
