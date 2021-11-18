@@ -1,7 +1,7 @@
-<tool id="rpExtractSink" name="Sink from SBML" version="5.8.2">
+<tool id="rpExtractSink" name="Sink from SBML" version="5.9.2">
     <description>Generate the RetroPath2.0 sink file from an SBML input</description>
     <requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rpextractsink
@@ -67,7 +67,7 @@ Project Links
 Version
 ----------
 
-5.8.2
+5.9.2
 
 
 Authors
