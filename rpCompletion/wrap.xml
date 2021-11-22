@@ -1,7 +1,7 @@
-<tool id="rpCompletion" name="Complete Reactions" version="5.8.2">
+<tool id="rpCompletion" name="Complete Reactions" version="5.9.2">
     <description>From the output of RP2Paths and RetroPath2.0, generate SBML unique and complete (with cofactors) pathways with mono-component reactions</description>
     <requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <stdio>
         <exit_code range="1" level="fatal" description="Could not Xref compartment_id" />
@@ -34,6 +34,26 @@
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml" format="xml" directory="completed_pathways" visible="false" />
         </collection>
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="rp2paths_pathways" value="4-rp2paths_pathways.csv" />
+            <param name="rp2paths_compounds" value="3-rp2paths_compounds.tsv" />
+            <param name="rp2_pathways" value="1-rp2_metnet.csv" />
+            <param name="sink" value="2-sink.csv" />
+            <output_collection name="pathways" type="list">
+                <discovered_dataset designation="rp_001_0001" ftype="xml" file="rp_001_0001.xml"/>
+                <discovered_dataset designation="rp_001_0006" ftype="xml" file="rp_001_0006.xml"/>
+                <discovered_dataset designation="rp_001_0011" ftype="xml" file="rp_001_0011.xml"/>
+                <discovered_dataset designation="rp_002_0001" ftype="xml" file="rp_002_0001.xml"/>
+                <discovered_dataset designation="rp_002_0011" ftype="xml" file="rp_002_0011.xml"/>
+                <discovered_dataset designation="rp_002_0021" ftype="xml" file="rp_002_0021.xml"/>
+                <discovered_dataset designation="rp_003_0001" ftype="xml" file="rp_003_0001.xml"/>
+                <discovered_dataset designation="rp_003_0131" ftype="xml" file="rp_003_0131.xml"/>
+                <discovered_dataset designation="rp_003_0261" ftype="xml" file="rp_003_0261.xml"/>
+            </output_collection>
+        </test>
+    </tests>
     <help><![CDATA[
 rpCompletion
 ============
@@ -57,13 +77,14 @@ Advanced options:
 * **-lower_flux_bound**: (integer, default=0) Lower flux bound value
 * **-max_subpaths_filter**: (integer, default=10, 0=nofilter) Number of subpaths per path
 
+Project Links
+---------------------
+* `GitHub <https://github.com/brsynth/rptools>`_
 
+Version
+----------
 
-Prerequisites
--------------
-
-* Docker - `Install <https://docs.docker.com/install/>`_
-* rpCache: `brsynth/rpCache <https://hub.docker.com/r/brsynth/rpcache>`_
+5.9.2
 
 Authors
 -------
@@ -76,12 +97,10 @@ Acknowledgments
 
 * Thomas Duigou
 
-How to cite rpCompletion?
--------------------------
-
 Licence
 -------
-rpCompletion is released under the MIT licence.
+
+`MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
 
     ]]></help>
 </tool>
