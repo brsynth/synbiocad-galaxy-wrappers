@@ -37,12 +37,20 @@
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
-            <param name="rp2paths_pathways" value="rp2paths_pathways.csv" />
-            <param name="rp2paths_compounds" value="rp2paths_compounds.tsv" />
-            <param name="rp2_pathways" value="results_retropath2.csv" />
-            <param name="sink" value="sink.csv" />
+            <param name="rp2paths_pathways" value="4-rp2paths_pathways.csv" />
+            <param name="rp2paths_compounds" value="3-rp2paths_compounds.tsv" />
+            <param name="rp2_pathways" value="1-rp2_metnet.csv" />
+            <param name="sink" value="2-sink.csv" />
             <output_collection name="pathways" type="list">
                 <discovered_dataset designation="rp_001_0001" ftype="xml" file="rp_001_0001.xml"/>
+                <discovered_dataset designation="rp_001_0006" ftype="xml" file="rp_001_0006.xml"/>
+                <discovered_dataset designation="rp_001_0011" ftype="xml" file="rp_001_0011.xml"/>
+                <discovered_dataset designation="rp_002_0001" ftype="xml" file="rp_002_0001.xml"/>
+                <discovered_dataset designation="rp_002_0011" ftype="xml" file="rp_002_0011.xml"/>
+                <discovered_dataset designation="rp_002_0021" ftype="xml" file="rp_002_0021.xml"/>
+                <discovered_dataset designation="rp_003_0001" ftype="xml" file="rp_003_0001.xml"/>
+                <discovered_dataset designation="rp_003_0131" ftype="xml" file="rp_003_0131.xml"/>
+                <discovered_dataset designation="rp_003_0261" ftype="xml" file="rp_003_0261.xml"/>
             </output_collection>
         </test>
     </tests>
