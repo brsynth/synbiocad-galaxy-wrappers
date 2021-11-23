@@ -1,7 +1,7 @@
-<tool id="rpThermo" name="Thermodynamics" version="5.8.2">
+<tool id="rpThermo" name="Thermodynamics" version="5.9.2">
     <description>Calculate the formation energy of chemical species and the Gibbs free energy of their reactions and pathways in an SBML</description>
     <requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <stdio>
         <regex match="WARNING:" level="warning" />
@@ -29,6 +29,14 @@
     <outputs>
         <data name="pathway_with_thermo" format="xml" label="${tool.name} - ${input.name}" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="input" value="rp_013_0001.xml" />
+            <param name="model" value="e_coli_iML1515.sbml" />
+            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 Thermodynamics
 ===============
@@ -59,12 +67,12 @@ Advanced Options:
 Project Links
 ---------------------
 
-* `GitHub <https://github.com/galaxy-synbiocad/galaxy-nodes/blob/master/rpThermo/wrap.xml>`_
+* `GitHub <https://github.com/brsynth/rptools/tree/master/rptools/rpthermo>`_
 
 Version
 ----------
 
-v5.1.4
+v5.9.2
 
 Authors
 -------
