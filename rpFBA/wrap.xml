@@ -69,6 +69,14 @@
     <outputs>
         <data name="pathway_with_fba" format="xml" label="${tool.name}(${input_sim_type.sim_type}) - ${pathway.name}" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="pathway" value="rp_001_0001.xml" />
+            <param name="model" value="e_coli_iML1515.sbml" />
+            <output name="pathway_with_fba" file="rp_001_0001_with_fba.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 FBA
 =====
