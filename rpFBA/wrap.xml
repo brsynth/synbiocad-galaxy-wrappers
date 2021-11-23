@@ -1,7 +1,7 @@
-<tool id="rpFBA" name="FBA" version="5.8.2">
+<tool id="rpFBA" name="FBA" version="5.9.2">
     <description>Perform FBA for the RetroPath2.0 heterologous pathways</description>
 	<requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <stdio>
         <regex match="WARNING" level="warning" />
@@ -37,9 +37,9 @@
         <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" />
         <conditional name="input_sim_type">
             <param name="sim_type"     type="select" label="Constraint based simulation type">
-                <option value="fraction" type="text" selected="true">Fraction of Reaction</option>
-                <option value="fba"      type="text">FBA</option>
-                <option value="pfba"     type="text">Parsimonious FBA</option>
+                <option type="text" value="fraction" selected="true">Fraction of Reaction</option>
+                <option type="text" value="fba" >FBA</option>
+                <option type="text" value="pfba">Parsimonious FBA</option>
             </param>
 			<when value="fraction">
 				<param name="fraction_of"        type="float" value="0.75"       label="Fraction of the optimum" />
@@ -58,11 +58,11 @@
 			<param name="merge"     type="boolean" label="Output the merged model?"       checked="false"   display="checkboxes" />
             <param name="ignore_orphan_species"         type="boolean" label="Ignore metabolites that are only consumed or produced?"              checked="true" />
 			<param name="log_level"      type="select"  label="Log level">
-                <option value="debug"    type="text"                >debug</option>
-                <option value="info"     type="text"                >info</option>
-			    <option value="warning"  type="text"                >warning</option>
-			    <option value="error"    type="text" selected="true">error</option>
-			    <option value="critical" type="text"                >critical</option>
+                <option type="text" value="debug" >debug</option>
+                <option type="text" value="info" >info</option>
+			    <option type="text" value="warning" >warning</option>
+			    <option type="text" value="error"   selected="true">error</option>
+			    <option type="text" value="critical" >critical</option>
             </param>
 		</section>
     </inputs>
@@ -123,12 +123,12 @@ Advanced options:
 Project Links
 ---------------------
 
-* `GitHub <https://github.com/Galaxy-SynBioCAD/rpFBA>`_
+* `GitHub <https://github.com/brsynth/rptools/tree/master/rptools/rpfba>`_
 
 Version
 ----------
 
-0.1
+5.9.2
 
 Authors
 -------
@@ -139,7 +139,7 @@ Authors
 License
 -------
 
-`MIT <https://raw.githubusercontent.com/Galaxy-SynBioCAD/rpFBA/standalone-dev/LICENSE>`_
+`MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
 
 Acknowledgments
 ---------------
