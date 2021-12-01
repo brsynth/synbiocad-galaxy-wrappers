@@ -1,0 +1,122 @@
+<tool id="DNAWeaver" name="DNA Weaver" version="1.0.0">
+  <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
+  <requirements>
+        <requirement type="package" version="1.0.0">dnaweaver_synbiocad</requirement>
+  </requirements>
+  <stdio>
+		<regex match="WARNING:" level="warning" />
+		<regex match="ERROR:" level="error" />
+	</stdio>
+  <command detect_errors="exit_code"><![CDATA[
+    python -m dnaweaver_cli
+        '$format_type.input'
+        '$output'
+        '$method'
+        --max_constructs '$adv.max_constructs'
+  ]]></command>
+  <inputs>
+    <param name="input" type="data" format="xml" label="Input file" />
+    <param name="method" type="select" label="Assembly method">
+      <option value="golden_gate" type="text" selected="true">Golden Gate</option>
+      <option value="gibson" type="text">Gibson</option>
+      <option value="any_method" type="text">Any Method</option>
+    </param>
+		<section name="adv" title="Advanced Options" expanded="false">
+			<param name="max_constructs" value="-1" type="integer" label="Maximal number of constructs" />
+		</section>
+  </inputs>
+  <outputs>
+    <data name="output" format="xlsx" label="DNAWeaver" >
+    </data>
+    </outputs>
+  <help><![CDATA[
+DNAWeaver
+==========================
+
+This tool uses a multi-objective algorithm to predict the best synthesis and assembling strategy for the previously designed plasmid using either Golden gate assembly, or Gibson assembly, or a mix of both. Given a set of designs (one design is a construct name and list of its parts), it finds a valid and efficient assembly plan to build all the designs. The designs and sequences of parts are provided as an SBOL file (see test_input.xml for an example)
+
+Input
+-----
+
+Required:
+
+* **input**\ : (string) Path to the sbol file(s)
+* **method**\ : (string) Assembly method (valid options: golden_gate, gibson, any_method)
+
+Advanced options:
+
+
+* **--max_constructs**\ : (integer, default=-1) Maximal number of constructs to use. The default -1 corresponds to all.
+
+Output
+------
+
+
+* **output**\ : (string) Path to the output Excel file
+
+
+Project Links
+---------------------
+
+* `GitHub <https://edinburgh-genome-foundry.github.io/DnaWeaver>`_
+* `Website <https://dnaweaver.genomefoundry.org/#/>`_
+
+Method
+--------
+
+	  - We assume that the different standard parts are available or will be ordered, with the exact sequence provided in the input file (in the future it would be easy to automatically break long parts into smaller fragments).
+	  - The desired construct sequence for a genetic part design is simply the concatenation of that design's part sequences in the right order (no assembly overhang is included).
+	  - Buy primers with overhangs to extend the parts fragments via PCR and create homologies between them so they can be assembled together.
+	  - Assemble each construct in a single step with Golden Gate assembly if possible (that is if at least one site out of BsaI, BbsI, and BsmBI is totally absent from the construct sequence), else with Gibson assembly. It can also be only one of the two methods if the option Gibson or golden_gate is selected instead of any_method.
+	  - Start with the first design, and for each subsequence design assembly plan reuse the primers ordered and fragments PCRed in previous designs, if relevant.
+
+Here is a schema of the supply network used:
+
+.. image:: https://raw.githubusercontent.com/brsynth/synbiocad-galaxy-wrappers/master/DNAWeaver/img/image4.png
+	:width: 30 %
+	:align: center
+
+|
+
+The output Excel spreadsheet contains the following sub-sheets:
+
+	  - construct_parts: the ID and list of part names (in the right order) for each design.
+	  - construct_sequences: the final sequence of the constructs to build.
+	  - part_sequences: the list of each standard part and its sequence (same information as in the input SBOL file).
+	  - fragment_extensions: for each PCR fragment, the standard part and the primers to use
+	  - assembly_plan: for each design, the list of PCR fragments to use.
+	  - errors: list of errors to help troubleshooting assemblies for which no valid assembly plan was found.
+
+Limitations
+--------------
+
+
+For constructs with repeated parts and other homologies (such as, in the example, the designs with several "Ter" in a row, ), Gibson assembly (and probably LCR assembly too) may create mis-annealed constructs and more clones will need to be picked. This is not taken into account by the script at the moment. This could be fixed by buying custom fragments from a commercial vendor for extreme cases (i.e. by amending the current implementation to forbid Gibson cuts in regions with homologies elsewhere and add a DNA vendor in the supply network).
+
+Version
+-------
+
+0.1
+
+Authors
+-------
+
+* **Valentin Zulkower**
+* Melchior du Lac
+
+License
+-------
+
+`MIT <https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/DnaWeaver-online/master/LICENCE.txt>`_
+
+
+Acknowledgments
+---------------
+
+
+* Thomas Duigou
+* Joan Hérisson
+
+
+]]></help>
+</tool>
