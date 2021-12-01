@@ -20,7 +20,7 @@
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="genes_sbol_file" type="data" format="xml" label="Optimised Genes File" />
             <param name="ref_parts_file" type="data" format="xml" label="Parts File" />
-            <param name="libsize" type="integer" value="32q" label="Maximal library size" />
+            <param name="libsize" type="integer" value="32" label="Maximal library size" />
             <param name="get_sequences" type="boolean" label="" checked="true" />
             <param name="backtranslate" type="boolean" label="" checked="true" />
             <param name="codon_table" type="text" value="Eecoli.cut" label="" />
