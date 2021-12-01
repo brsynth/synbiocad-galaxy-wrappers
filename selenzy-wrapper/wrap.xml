@@ -1,7 +1,7 @@
-<tool id="selenzy-wrapper" name="Selenzyme" version="0.0.3">
+<tool id="selenzy-wrapper" name="Selenzyme" version="0.1.0">
     <description>Performs enzyme selection from a reaction query</description>
 	<requirements>
-        <requirement type="package" version="0.0.3">selenzy_wrapper</requirement>
+        <requirement type="package" version="0.1.0">selenzy_wrapper</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
 	    python -m selenzy_wrapper '$pathway' '$uniprot_ids'
@@ -12,6 +12,7 @@
         #end if
         --taxonIDs '$adv.taxonIDs'
         --nb_ids '$adv.nb_ids'
+        --to_csv '$uniprot_ids_csv'
     ]]></command>
     <inputs>
 		<param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
@@ -25,6 +26,7 @@
     </inputs>
     <outputs>
         <data name="uniprot_ids" format="xml" label="${tool.name} - ${pathway.name}" />
+        <data name="uniprot_ids_csv" format="csv" label="${tool.name} - ${pathway.name}" />
     </outputs>
     <help><![CDATA[
 
