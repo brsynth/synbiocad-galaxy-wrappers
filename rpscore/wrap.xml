@@ -1,7 +1,7 @@
-<tool id="rpscore" name="Score Pathway" version="5.8.2">
+<tool id="rpscore" name="Score Pathway" version="5.9.2">
     <description>Computes a global score for a heterologous pathway.</description>
 	<requirements>
-        <requirement type="package" version="5.8.2">rptools</requirement>
+        <requirement type="package" version="5.9.2">rptools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
 	    python -m rptools.rpscore '$pathway' '$scored_pathway'

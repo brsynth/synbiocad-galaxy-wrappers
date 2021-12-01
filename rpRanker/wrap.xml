@@ -1,7 +1,7 @@
-<tool id="rpRanker" name="Rank Pathways" version="5.8.2">
+<tool id="rpRanker" name="Rank Pathways" version="5.9.2">
   <description>Rank heterologous pathways accordig to their global score</description>
   <requirements>
-    <requirement type="package" version="5.8.2">rptools</requirement>
+    <requirement type="package" version="5.9.2">rptools</requirement>
   </requirements>
   <stdio>
 		<regex match="WARNING" level="warning" />

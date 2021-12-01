@@ -1,7 +1,7 @@
-<tool id="rpviz" name="Visualize pathways" version="5.8.2">
+<tool id="rpviz" name="Visualize pathways" version="5.9.2">
   <description>Visualize pathways from the RetroPath Suite</description>
   <requirements>
-    <requirement type="package" version="5.8.2">rptools</requirement>
+    <requirement type="package" version="5.9.2">rptools</requirement>
   </requirements>
   <command detect_errors="exit_code"><![CDATA[
     #set input_folder="input_folder"
