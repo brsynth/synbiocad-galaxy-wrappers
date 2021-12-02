@@ -1,7 +1,7 @@
-<tool id="dnabot" name="DNA-Bot" version="2.0.0">
+<tool id="dnabot" name="DNA-Bot" version="3.0.0">
   <description>DNA assembly using BASIC on OpenTrons</description>
   <requirements>
-    <requirement type="package" version="v2.0.0">dnabot</requirement>
+    <requirement type="package" version="3.0.0">dnabot</requirement>
   </requirements>
   <command detect_errors="exit_code"><![CDATA[
       python -m dnabot.dnabot_app nogui
@@ -56,23 +56,48 @@
   </outputs>
 
   <help><![CDATA[
-          usage: python -m dnabot.dnabot_app nogui [-h] --construct_path CONSTRUCT_PATH
-                            [--source_paths [SOURCE_PATHS ...]]
-                            [--etoh_well ETOH_WELL]
-                            [--soc_column SOC_COLUMN]
-                            [--output_dir OUTPUT_DIR]
-                            [--template_dir TEMPLATE_DIR]
+DNA-Bot
+============
 
-optional arguments:
-  -h, --help                show this help message and exit
-  --construct_path CONSTRUCT_PATH       Construct CSV file.
-  
-  --source_paths SOURCE_PATHS [SOURCE_PATHS ...]       Source CSV files.
+DNA assembly using BASIC on OpenTrons
 
-  --etoh_well ETOH_WELL       Well coordinate for Ethanol. Default: A11
-  --soc_column SOC_COLUMN       Column coordinate for SOC. Default: 1
-  --output_dir OUTPUT_DIR       Output directory. Default: same directory than the one containing the "construct_path" file
-  --template_dir TEMPLATE_DIR       Template directory. Default: "template_ot2_scripts" located next to the present script.
+Input
+-----
+
+* **default_settings_file**: (string) file providing labware IDs and parameter to be used. Default: dnabot/default_settings.yaml.
+* **construct_path**: (string) Construct CSV file.
+* **source_paths**: (string) Source CSV files.
+* **etoh_well**: (string) Well coordinate for Ethanol. Default: A11.
+* **soc_column**: (integer) Column coordinate for SOC. Default: 1.
+* **template_dir**: (string) Template directory. Default: "template_ot2_scripts" located next to the present script.
+
+Ouput
+-----
+
+* **output_dir**: (string) Output directory. Default: same directory than the one containing the "construct_path" file.
+
+Version
+-------
+
+3.0.0
+
+Authors
+-------
+
+* **Matthew C Haines**
+* Thomas Duigou
+
+License
+-------
+
+`MIT <https://github.com/brsynth/DNA-BOT/blob/DNA-BOT-APIv2/LICENSE>`_
+
+
+Acknowledgments
+---------------
+
+* Marko Storch
+* Geoff Baldwin
   ]]></help>
   <citations>
     <citation type="bibtex">
