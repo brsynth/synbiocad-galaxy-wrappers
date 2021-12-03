@@ -32,7 +32,8 @@
         rm -fr '$input_folder'
     ]]></command>
     <inputs>
-        <conditional name="input_type_conditional">
+        <param name="sbml_single_input" type="data" format="xml" label="Source SBML" />
+        <!-- <conditional name="input_type_conditional">
             <param name="input_type" type="select" label="Source SBML format">
                 <option value="Collection" selected="True">Collection</option>
                 <option value="Single File">Single File</option>
@@ -43,7 +44,7 @@
             <when value="Single File">
                 <param name="sbml_single_input" type="data" format="xml" label="Source SBML" />
             </when>
-        </conditional>
+        </conditional> -->
         <param name="rbs" type="boolean" label="Calculate the RBS strength?" checked="true" />
         <param name="max_prot_per_react" type="integer" value="3" label="The maximum number of proteins per reaction" />
         <param name="tirs" type="text" optional="true" label="Space separated RBS strength values" />
