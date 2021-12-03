@@ -1,3 +1,3 @@
   <section id="sbc-util" name="SynBioCAD Utilities">
-    <tool file="BRSynthTools/rpMergeSBML/wrap.xml" />
+    <tool file="synbiocad-galaxy-wrappers/rpMergeSBML/wrap.xml" />
   </section>
