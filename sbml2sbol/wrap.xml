@@ -4,52 +4,30 @@
         <requirement type="package" version="0.0.5">sbml2sbol</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        #set input_folder="input_folder"
-        mkdir -p '$input_folder';
-        #if str($input_type_conditional.input_type) == "Collection":
-            #for $input in $input_type_conditional.sbml_collection_input.keys():
-                ln -sf $input_type_conditional.sbml_collection_input[$input] '$input_folder/${input}.xml';
-            #end for
-            python -m sbml2sbol
+        python -m sbml2sbol
             --input '$input_folder'
-        #elif str($input_type_conditional.input_type) == "Single File":
-            ln -sf '${input_type_conditional.sbml_single_input}' '$input_folder/pathway.xml';
-            python -m sbml2sbol
-            --input '$input_folder/pathway.xml'
-        #end if
-        #if str($rbs) == "true"
+            --outfile '$sbol_outfile'
+        #if str($adv.rbs) == "true"
             --rbs True
         #else
             --rbs False
         #end if
-        --max_prot_per_react '$max_prot_per_react'
-        #if $tirs 
-            --tirs $tirs
+        --max_prot_per_react '$adv.max_prot_per_react'
+        #if $adv.tirs 
+            --tirs $adv.tirs
         #end if
-        --pathway_id '$pathway_id'
-        --uniprotID_key '$uniprotID_key'
-        --outfile '$sbol_outfile';
-        rm -fr '$input_folder'
+        --pathway_id '$adv.pathway_id'
+        --uniprotID_key '$adv.uniprotID_key'
     ]]></command>
     <inputs>
         <param name="sbml_single_input" type="data" format="xml" label="Source SBML" />
-        <!-- <conditional name="input_type_conditional">
-            <param name="input_type" type="select" label="Source SBML format">
-                <option value="Collection" selected="True">Collection</option>
-                <option value="Single File">Single File</option>
-            </param>
-            <when value="Collection">
-                <param name="sbml_collection_input" type="data_collection" collection_type="list" format="xml" label="Source SBML" />
-            </when>
-            <when value="Single File">
-                <param name="sbml_single_input" type="data" format="xml" label="Source SBML" />
-            </when>
-        </conditional> -->
-        <param name="rbs" type="boolean" label="Calculate the RBS strength?" checked="true" />
-        <param name="max_prot_per_react" type="integer" value="3" label="The maximum number of proteins per reaction" />
-        <param name="tirs" type="text" optional="true" label="Space separated RBS strength values" />
-        <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" />
-        <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" />
+        <section name="adv" title="Advanced Options" expanded="false">
+            <param name="rbs" type="boolean" label="Calculate the RBS strength?" checked="true" />
+            <param name="max_prot_per_react" type="integer" value="3" label="The maximum number of proteins per reaction" />
+            <param name="tirs" type="text" optional="true" label="Space separated RBS strength values" />
+            <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" />
+            <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" />
+        </section>
     </inputs>
     <outputs>
         <data name="sbol_outfile" format="xml" label="${tool.name}: sbol outfile" />
