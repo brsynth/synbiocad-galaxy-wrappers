@@ -5,7 +5,7 @@
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m sbml2sbol
-            --input '$input_folder'
+            --input '$sbml_single_input'
             --outfile '$sbol_outfile'
         #if str($adv.rbs) == "true"
             --rbs True
