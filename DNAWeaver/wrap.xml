@@ -9,7 +9,7 @@
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     python -m dnaweaver_cli
-        '$format_type.input'
+        '$input'
         '$output'
         '$method'
         --max_constructs '$adv.max_constructs'
