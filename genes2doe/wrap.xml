@@ -1,0 +1,79 @@
+<tool id="GenesToDoE" name="Convert Genes for DoE" version="1.0.0">
+  <description></description>
+  <requirements>
+        <requirement type="package" version="1.0.0">genes2doe</requirement>
+  </requirements>
+  <stdio>
+		<regex match="WARNING:" level="warning" />
+		<regex match="ERROR:" level="error" />
+	</stdio>
+  <command detect_errors="exit_code"><![CDATA[
+    python -m genes2doe
+        '$input'
+        '$output'
+        --maxgenes '$adv.max_genes'
+  ]]></command>
+  <inputs>
+    <param name="input" type="data" format="xml" label="Input file" />
+		<section name="adv" title="Advanced Options" expanded="false">
+			<param name="max_genes" value="5" type="integer" label="Maximum number of genes selected per step" />
+		</section>
+  </inputs>
+  <outputs>
+    <data name="output" format="csv" label="GenesToDoE" >
+    </data>
+    </outputs>
+  <help><![CDATA[
+GenesToDoE
+==========
+
+Extract genes for OptDoE
+
+Install
+-------
+```sh
+[sudo] conda install -c conda-forge parts2doe
+
+```
+
+Use
+---
+CLI
+```
+python -m parts2doe tests/data/input/lycopene.xml GeneParts.csv
+```
+
+Python module
+```python
+from parts2doe import extract_genes
+
+genes = extract_genes(
+    sbml_file='tests/data/input/lycopene.xml'
+)
+genes.to_csv('GeneParts.csv', index=False)
+```
+
+Tests
+-----
+`pytest` is required and installable by:
+```
+conda install -c conda-forge pytest
+```
+
+Please follow instructions below to run tests:
+```
+python -m pytest
+```
+For further tests and development tools, a CI toolkit is provided in https://github.com/breakthewall/cicd-toolkit.
+
+
+Authors
+-------
+* **Joan Hérisson**
+
+
+## Licence
+genes2doe is released under the MIT licence. See the LICENCE file for details.
+
+]]></help>
+</tool>
