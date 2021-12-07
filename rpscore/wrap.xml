@@ -13,17 +13,24 @@
 		<section name="adv" title="Advanced Options" expanded="false">
             <param name="no_of_rxns_thres" type="integer" value="10" label="number of reactions above which a pathway is not scored" />
 			<param name="log_level"      type="select"  label="Log level">
-                <option value="debug"    type="text"                >debug</option>
-                <option value="info"     type="text"                >info</option>
-			    <option value="warning"  type="text"                >warning</option>
-			    <option value="error"    type="text" selected="true">error</option>
-			    <option value="critical" type="text"                >critical</option>
+                <option type="text" value="debug"                    >debug</option>
+                <option type="text" value="info"                     >info</option>
+			    <option type="text" value="warning"                  >warning</option>
+			    <option type="text" value="error"     selected="true">error</option>
+			    <option type="text" value="critical"                 >critical</option>
             </param>
 		</section>
     </inputs>
     <outputs>
         <data name="scored_pathway" format="xml" label="${tool.name} - ${pathway.name}" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="pathway" value="pathway.xml" />
+            <output name="scored_pathway" file="scored_pathway.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 rpscore
 =========
@@ -48,7 +55,7 @@ Advanced options:
 Version
 ----------
 
-5.4.1
+5.9.2
 
 Authors
 -------
