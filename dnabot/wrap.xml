@@ -1,95 +1,144 @@
-<tool id="dnabot" name="DNA-Bot" version="2.0.0">
-  <description>DNA assembly using BASIC on OpenTrons</description>
-  <requirements>
-    <requirement type="package" version="v2.0.0">dnabot</requirement>
-  </requirements>
-  <command detect_errors="exit_code"><![CDATA[
-      python -m dnabot.dnabot_app nogui
-      --construct_path '$construct_file'
-      #set files = '" "'.join([str($file) for $file in $plate_files])
-      --source_paths "${files}"
-      --etoh_well '$adv.etoh_well'
-      --soc_column '$adv.soc_column'
-      --output_dir 'output'
-  ]]></command>
-  <inputs>
-    <param type="data" name="construct_file" label="Source Construct" format="csv" />
-    <param type="data" name="plate_files" label="plate files" multiple="true" format="csv" />
-    <section name="adv" title="Advanced Options" expanded="false">
-      <param name="etoh_well" type="select" label="Well coordinate for Ethanol">
-        <option value="A2" >A2</option>
-        <option value="A3" >A3</option>
-        <option value="A4" >A4</option>
-        <option value="A5" >A5</option>
-        <option value="A6" >A6</option>
-        <option value="A7" >A7</option>
-        <option value="A8" >A8</option>
-        <option value="A9" >A9</option>
-        <option value="A10" >A10</option>
-        <option value="A11" selected="true">A11</option>
-      </param>
-      <param name="soc_column" type="select" label="Column coordinate for SOC">
-        <option value="1" selected="true">1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
-        <option value="6" >6</option>
-        <option value="7" >7</option>
-        <option value="8" >8</option>
-        <option value="9" >9</option>
-        <option value="10" >10</option>
-        <option value="11" >11</option>
-        <option value="12" >12</option>
-      </param>
-    </section>
+<tool id="dnabot" name="DNA-Bot" version="3.0.0">
+    <description>DNA assembly using BASIC on OpenTrons</description>
+    <requirements>
+        <requirement type="package" version="3.0.0">dnabot</requirement>
+     </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python -m dnabot.dnabot_app
+        #if $adv.default_settings_file
+            --default_settings_file '$adv.default_settings_file'
+        #end if
+        nogui
+        --construct_path '$construct_file'
+        #set files = '" "'.join([str($file) for $file in $plate_files])
+        --source_paths "${files}"
+        --etoh_well '$adv.etoh_well'
+        --soc_column '$adv.soc_column'
+        --output_dir 'output'
+    ]]></command>
+    <inputs>
+        <param name="construct_file" type="data" format="csv" label="Source Construct" />
+        <param name="plate_files" type="data" format="csv" multiple="true" label="Plate files" />
+        <section name="adv" title="Advanced Options" expanded="false">
+            <param name="default_settings_file" type="data" format="yaml" optional="true" label="Yaml file providing labware IDs and parameter to be used" />
+            <param name="etoh_well" type="select" label="Well coordinate for Ethanol">
+                <option value="A2" >A2</option>
+                <option value="A3" >A3</option>
+                <option value="A4" >A4</option>
+                <option value="A5" >A5</option>
+                <option value="A6" >A6</option>
+                <option value="A7" >A7</option>
+                <option value="A8" >A8</option>
+                <option value="A9" >A9</option>
+                <option value="A10" >A10</option>
+                <option value="A11" selected="true">A11</option>
+            </param>
+            <param name="soc_column" type="select" label="Column coordinate for SOC">
+                <option value="1" selected="true">1</option>
+                <option value="2" >2</option>
+                <option value="3" >3</option>
+                <option value="4" >4</option>
+                <option value="5" >5</option>
+                <option value="6" >6</option>
+                <option value="7" >7</option>
+                <option value="8" >8</option>
+                <option value="9" >9</option>
+                <option value="10" >10</option>
+                <option value="11" >11</option>
+                <option value="12" >12</option>
+            </param>
+        </section>
+    </inputs>
+    <outputs>
+        <collection name="dnabot_scripts" type="list" label="DNA-BOT scripts" >
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.py" format="txt" directory="output"/>
+        </collection>
+        <collection name="dnabot_metainfo" type="list" label="Metainformation" >
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.csv" format="csv" directory="output/metainformation"/>
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" directory="output/metainformation"/>
+        </collection>
+    </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="construct_file" value="constructs.csv" />
+            <param name="plate_files" value="user_parts_coords.csv,linker_parts_coords.csv" />
+            <param name="default_settings_file" value="default_settings.yaml" />
+            <output_collection name="dnabot_scripts" type="list">
+                <element name="1_clip_ot2_APIv1" file="1_clip_ot2_APIv1.py" />
+                <element name="1_clip_ot2_APIv2.8" file="1_clip_ot2_APIv2.8.py" />
+                <element name="1_clip_ot2_Thermocycler_APIv2.8" file="1_clip_ot2_Thermocycler_APIv2.8.py" />
+                <element name="2_purification_ot2_APIv1" file="2_purification_ot2_APIv1.py" />
+                <element name="2_purification_ot2_APIv2.8.py" file="2_purification_ot2_APIv2.8.py" />
+                <element name="3_assembly_ot2_APIv1.py" file="3_assembly_ot2_APIv1.py" />
+                <element name="3_assembly_ot2_APIv2.8.py" file="3_assembly_ot2_APIv2.8.py" />
+                <element name="3_assembly_ot2_Thermocycler_APIv2.8.py" file="3_assembly_ot2_Thermocycler_APIv2.8.py" />
+                <element name="4_transformation_ot2_APIv1.py" file="4_transformation_ot2_APIv1.py" />
+                <element name="4_transformation_ot2_APIv2.8.py" file="4_transformation_ot2_APIv2.8.py" />
+                <element name="4_transformation_ot2_Thermocycler_APIv2.8.py" file="4_transformation_ot2_Thermocycler_APIv2.8.py" />
+            </output_collection>
+        </test>
+    </tests>
+    <help><![CDATA[
+DNA-Bot
+============
 
-  </inputs>
-  <outputs>
-    <collection type="list" label="DNA-BOT scripts" name="output1">
-      <discover_datasets pattern="(?P&lt;designation&gt;.+)\.py" format="txt" directory="output"/>
-    </collection>
-    <collection type="list" label="Metainformation" name="output2">
-      <discover_datasets pattern="(?P&lt;designation&gt;.+)\.csv" format="csv" directory="output/metainformation"/>
-      <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" directory="output/metainformation"/>
-    </collection>
-  </outputs>
+DNA assembly using BASIC on OpenTrons
 
-  <help><![CDATA[
-          usage: python -m dnabot.dnabot_app nogui [-h] --construct_path CONSTRUCT_PATH
-                            [--source_paths [SOURCE_PATHS ...]]
-                            [--etoh_well ETOH_WELL]
-                            [--soc_column SOC_COLUMN]
-                            [--output_dir OUTPUT_DIR]
-                            [--template_dir TEMPLATE_DIR]
+Input
+-----
 
-optional arguments:
-  -h, --help                show this help message and exit
-  --construct_path CONSTRUCT_PATH       Construct CSV file.
-  
-  --source_paths SOURCE_PATHS [SOURCE_PATHS ...]       Source CSV files.
+* **default_settings_file**: (string) file providing labware IDs and parameter to be used. Default: dnabot/default_settings.yaml.
+* **construct_path**: (string) Construct CSV file.
+* **source_paths**: (string) Source CSV files.
+* **etoh_well**: (string) Well coordinate for Ethanol. Default: A11.
+* **soc_column**: (integer) Column coordinate for SOC. Default: 1.
+* **template_dir**: (string) Template directory. Default: "template_ot2_scripts" located next to the present script.
 
-  --etoh_well ETOH_WELL       Well coordinate for Ethanol. Default: A11
-  --soc_column SOC_COLUMN       Column coordinate for SOC. Default: 1
-  --output_dir OUTPUT_DIR       Output directory. Default: same directory than the one containing the "construct_path" file
-  --template_dir TEMPLATE_DIR       Template directory. Default: "template_ot2_scripts" located next to the present script.
-  ]]></help>
-  <citations>
-    <citation type="bibtex">
-      @article{10.1093/synbio/ysaa010,
-          author = {Storch, Marko and Haines, Matthew C and Baldwin, Geoff S},
-          title = {DNA-BOT: a low-cost, automated DNA assembly platform for synthetic biology},
-          journal = {Synthetic Biology},
-          volume = {5},
-          number = {1},
-          year = {2020},
-          month = {07},
-          issn = {2397-7000},
-          doi = {10.1093/synbio/ysaa010},
-          url = {https://doi.org/10.1093/synbio/ysaa010},
-          note = {ysaa010},
-          eprint = {https://academic.oup.com/synbio/article-pdf/5/1/ysaa010/33722340/ysaa010.pdf},
-      }
-    </citation>
-  </citations>
+Ouput
+-----
+
+* **output_dir**: (string) Output directory. Default: same directory than the one containing the "construct_path" file.
+
+Version
+-------
+
+3.0.0
+
+Authors
+-------
+
+* **Matthew C Haines**
+* Thomas Duigou
+
+License
+-------
+
+`MIT <https://github.com/brsynth/DNA-BOT/blob/DNA-BOT-APIv2/LICENSE>`_
+
+
+Acknowledgments
+---------------
+
+* Marko Storch
+* Geoff Baldwin
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+            @article{10.1093/synbio/ysaa010,
+                author = {Storch, Marko and Haines, Matthew C and Baldwin, Geoff S},
+                title = {DNA-BOT: a low-cost, automated DNA assembly platform for synthetic biology},
+                journal = {Synthetic Biology},
+                volume = {5},
+                number = {1},
+                year = {2020},
+                month = {07},
+                issn = {2397-7000},
+                doi = {10.1093/synbio/ysaa010},
+                url = {https://doi.org/10.1093/synbio/ysaa010},
+                note = {ysaa010},
+                eprint = {https://academic.oup.com/synbio/article-pdf/5/1/ysaa010/33722340/ysaa010.pdf},
+            }
+        </citation>
+    </citations>
 </tool>
