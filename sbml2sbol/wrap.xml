@@ -1,7 +1,7 @@
-<tool id="sbml2sbol" name="SbmlToSbol" version="0.0.5">
+<tool id="sbml2sbol" name="SbmlToSbol" version="0.1.12">
     <description>Convert sbml to sbol format</description>
     <requirements>
-        <requirement type="package" version="0.0.5">sbml2sbol</requirement>
+        <requirement type="package" version="0.1.12">sbml2sbol</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         #set input_folder="input_folder"
@@ -83,6 +83,10 @@ Project Links
 ------------------
 
 * `GitHub <https://github.com/neilswainston/SbmlToSbol>`_
+
+Version
+----------
+0.1.12
 
 License
 -------
