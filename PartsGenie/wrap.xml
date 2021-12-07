@@ -18,7 +18,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="parts" format="xml" label="${tool.name} - ${enzymes_file.name}" />
+        <data name="parts" format="xml" label="Parts" />
     </outputs>
     <help><![CDATA[
 Introduction
