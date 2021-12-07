@@ -53,6 +53,16 @@
     <outputs>
         <data name="sbol_outfile" format="xml" label="${tool.name}: sbol outfile" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <conditional name="input_type_conditional">
+                <param name="input_type" value="Single File" />
+                <param name="sbml_single_input" value="lycopene.xml" />
+            </conditional>
+            <output name="sbol_outfile" file="sbol_lycopene_output.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 SBML to SBOL
 ================
