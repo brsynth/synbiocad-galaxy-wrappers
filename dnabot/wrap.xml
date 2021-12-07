@@ -17,10 +17,10 @@
         --output_dir 'output'
     ]]></command>
     <inputs>
-        <param type="data" name="construct_file" label="Source Construct" format="csv" />
-        <param type="data" name="plate_files" label="Plate files" multiple="true" format="csv" />
+        <param name="construct_file" type="data" format="csv" label="Source Construct" />
+        <param name="plate_files" type="data" format="csv" multiple="true" label="Plate files" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param type="data" name="default_settings_file" label="Yaml file providing labware IDs and parameter to be used" optional="true" format="yaml"/>
+            <param name="default_settings_file" type="data" format="yaml" optional="true" label="Yaml file providing labware IDs and parameter to be used" />
             <param name="etoh_well" type="select" label="Well coordinate for Ethanol">
                 <option value="A2" >A2</option>
                 <option value="A3" >A3</option>
@@ -50,14 +50,35 @@
         </section>
     </inputs>
     <outputs>
-        <collection type="list" label="DNA-BOT scripts" name="dnabot_scripts">
+        <collection name="dnabot_scripts" type="list" label="DNA-BOT scripts" >
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.py" format="txt" directory="output"/>
         </collection>
-        <collection type="list" label="Metainformation" name="dnabot_metainfo">
+        <collection name="dnabot_metainfo" type="list" label="Metainformation" >
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.csv" format="csv" directory="output/metainformation"/>
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" directory="output/metainformation"/>
         </collection>
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="construct_file" value="constructs.csv" />
+            <param name="plate_files" value="user_parts_coords.csv,linker_parts_coords.csv" />
+            <param name="default_settings_file" value="default_settings.yaml" />
+            <output_collection name="dnabot_scripts" type="list">
+                <element name="1_clip_ot2_APIv1" file="1_clip_ot2_APIv1.py" />
+                <element name="1_clip_ot2_APIv2.8" file="1_clip_ot2_APIv2.8.py" />
+                <element name="1_clip_ot2_Thermocycler_APIv2.8" file="1_clip_ot2_Thermocycler_APIv2.8.py" />
+                <element name="2_purification_ot2_APIv1" file="2_purification_ot2_APIv1.py" />
+                <element name="2_purification_ot2_APIv2.8.py" file="2_purification_ot2_APIv2.8.py" />
+                <element name="3_assembly_ot2_APIv1.py" file="3_assembly_ot2_APIv1.py" />
+                <element name="3_assembly_ot2_APIv2.8.py" file="3_assembly_ot2_APIv2.8.py" />
+                <element name="3_assembly_ot2_Thermocycler_APIv2.8.py" file="3_assembly_ot2_Thermocycler_APIv2.8.py" />
+                <element name="4_transformation_ot2_APIv1.py" file="4_transformation_ot2_APIv1.py" />
+                <element name="4_transformation_ot2_APIv2.8.py" file="4_transformation_ot2_APIv2.8.py" />
+                <element name="4_transformation_ot2_Thermocycler_APIv2.8.py" file="4_transformation_ot2_Thermocycler_APIv2.8.py" />
+            </output_collection>
+        </test>
+    </tests>
     <help><![CDATA[
 DNA-Bot
 ============
