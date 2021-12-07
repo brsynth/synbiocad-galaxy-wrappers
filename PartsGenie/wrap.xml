@@ -11,7 +11,7 @@
         '$parts'
     ]]></command>
     <inputs>
-        <param name="enzymes_file" type="data" format="xml" label="Enzymes File" />
+        <param name="enzymes_file" type="data" format="xml" label="Enzymes" />
         <param name="taxonomy_id" type="integer" value="83333" label="Chassis taxonomy ID" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="url" type="text" value="partsgenie.micalis.inrae.fr" label="PartsGenie server URL" />

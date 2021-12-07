@@ -25,8 +25,8 @@
         </section>
     </inputs>
     <outputs>
-        <data name="uniprot_ids" format="xml" label="${tool.name} - ${pathway.name}" />
-        <data name="uniprot_ids_csv" format="csv" label="${tool.name} - ${pathway.name}" />
+        <data name="uniprot_ids" format="xml" label="Uniprot IDs" />
+        <data name="uniprot_ids_csv" format="csv" label="Uniprot IDs" />
     </outputs>
     <help><![CDATA[
 

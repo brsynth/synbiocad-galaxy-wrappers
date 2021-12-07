@@ -39,7 +39,7 @@
                 <param name="input_type" value="Single File" />
                 <param name="sbml_single_input" value="lycopene.xml" />
             </conditional>
-            <output name="sbol_outfile" file="sbol_lycopene_output.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="sbol_outfile" label="SBOL" file="sbol_lycopene_output.xml" ftype="xml" compare="diff" sort="true"/>
         </test>
     </tests>
     <help><![CDATA[

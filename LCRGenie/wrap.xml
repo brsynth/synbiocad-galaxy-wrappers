@@ -14,13 +14,13 @@
         --melting_temp '$adv.melting_temp'
   ]]></command>
   <inputs>
-    <param name="input" type="data" format="xml" label="Input file" />
+    <param name="input" type="data" format="xml" label="Constructs" />
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="melting_temp" value="60.0" type="float" label="Target melting temperature for the bridging oligos" />
 		</section>
   </inputs>
   <outputs>
-    <data name="output" format="xlsx" label="LCRGenie" >
+    <data name="output" format="xlsx" label="Assembly Plan" >
     </data>
     </outputs>
   <help><![CDATA[
