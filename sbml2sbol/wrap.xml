@@ -1,7 +1,7 @@
-<tool id="sbml2sbol" name="SbmlToSbol" version="0.0.5">
+<tool id="sbml2sbol" name="SbmlToSbol" version="0.1.12">
     <description>Convert sbml to sbol format</description>
     <requirements>
-        <requirement type="package" version="0.0.5">sbml2sbol</requirement>
+        <requirement type="package" version="0.1.12">sbml2sbol</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m sbml2sbol
@@ -32,6 +32,16 @@
     <outputs>
         <data name="sbol_outfile" format="xml" label="${tool.name}: sbol outfile" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <conditional name="input_type_conditional">
+                <param name="input_type" value="Single File" />
+                <param name="sbml_single_input" value="lycopene.xml" />
+            </conditional>
+            <output name="sbol_outfile" file="sbol_lycopene_output.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 SBML to SBOL
 ================
@@ -62,6 +72,10 @@ Project Links
 ------------------
 
 * `GitHub <https://github.com/neilswainston/SbmlToSbol>`_
+
+Version
+----------
+0.1.12
 
 License
 -------
