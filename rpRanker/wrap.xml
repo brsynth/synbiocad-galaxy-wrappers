@@ -1,7 +1,7 @@
-<tool id="rpRank" name="Rank Pathways" version="5.9.2">
+<tool id="rpRank" name="Rank Pathways" version="5.10.0">
   <description>Rank heterologous pathways accordig to their global score</description>
   <requirements>
-    <requirement type="package" version="5.9.2">rptools</requirement>
+    <requirement type="package" version="5.10.0">rptools</requirement>
   </requirements>
   <stdio>
 		<regex match="WARNING" level="warning" />
@@ -25,7 +25,7 @@
     <!-- <collection name="Ranked pathways" type="list" label="${tool.name}">
       <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml" ext="xml" directory="ranked_pathways" visible="false" />
     </collection> -->
-    <data name="sorted_pathways" format="csv" label="${tool.name} - ${pathway_collection.name}" />
+    <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
   </outputs>
   <help><![CDATA[
 Rank Pathways
