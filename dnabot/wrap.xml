@@ -15,6 +15,7 @@
         --etoh_well '$adv.etoh_well'
         --soc_column '$adv.soc_column'
         --output_dir 'output'
+        && tar -zcvf '$dnabot_scripts' 'output'
     ]]></command>
     <inputs>
         <param name="construct_file" type="data" format="csv" label="Source Construct" />
@@ -50,33 +51,14 @@
         </section>
     </inputs>
     <outputs>
-        <collection name="dnabot_scripts" type="list" label="DNA-BOT scripts" >
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.py" format="txt" directory="output"/>
-        </collection>
-        <collection name="dnabot_metainfo" type="list" label="Metainformation" >
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.csv" format="csv" directory="output/metainformation"/>
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" directory="output/metainformation"/>
-        </collection>
+        <data name="dnabot_scripts" format="tar" label="${tool.name} scripts" />
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical outputs are produced with default parameters  -->
+        <!-- test 1: check if identical outputs are produced with compress option -->
             <param name="construct_file" value="constructs.csv" />
-            <param name="plate_files" value="user_parts_coords.csv,linker_parts_coords.csv" />
-            <param name="default_settings_file" value="default_settings.yaml" />
-            <output_collection name="dnabot_scripts" type="list">
-                <element name="1_clip_ot2_APIv1" file="1_clip_ot2_APIv1.py" />
-                <element name="1_clip_ot2_APIv2.8" file="1_clip_ot2_APIv2.8.py" />
-                <element name="1_clip_ot2_Thermocycler_APIv2.8" file="1_clip_ot2_Thermocycler_APIv2.8.py" />
-                <element name="2_purification_ot2_APIv1" file="2_purification_ot2_APIv1.py" />
-                <element name="2_purification_ot2_APIv2.8.py" file="2_purification_ot2_APIv2.8.py" />
-                <element name="3_assembly_ot2_APIv1.py" file="3_assembly_ot2_APIv1.py" />
-                <element name="3_assembly_ot2_APIv2.8.py" file="3_assembly_ot2_APIv2.8.py" />
-                <element name="3_assembly_ot2_Thermocycler_APIv2.8.py" file="3_assembly_ot2_Thermocycler_APIv2.8.py" />
-                <element name="4_transformation_ot2_APIv1.py" file="4_transformation_ot2_APIv1.py" />
-                <element name="4_transformation_ot2_APIv2.8.py" file="4_transformation_ot2_APIv2.8.py" />
-                <element name="4_transformation_ot2_Thermocycler_APIv2.8.py" file="4_transformation_ot2_Thermocycler_APIv2.8.py" />
-            </output_collection>
+            <param name="plate_files" value="user_parts_coords.csv,linker_parts_coords.csv"/>
+            <output name="dnabot_scripts" file="dnabot_scripts.tar" compare="diff" decompress="True" lines_diff="3"/>
         </test>
     </tests>
     <help><![CDATA[
