@@ -1,71 +1,71 @@
 <tool id="rpviz" name="Visualize pathways" version="5.9.2">
-  <description>Visualize pathways from the RetroPath Suite</description>
-  <requirements>
-    <requirement type="package" version="5.9.2">rptools</requirement>
-  </requirements>
-  <command detect_errors="exit_code"><![CDATA[
-    #set input_folder="input_folder"
-    mkdir -p '$input_folder';
-    #if str($input_type_conditional.input_type) == "sbml":
-      #for $input in $input_type_conditional.input_sbml.keys():
-        ln -sf $input_type_conditional.input_sbml[$input] '$input_folder/${input}.xml';
-      #end for
-      python -m rptools.rpviz '$input_folder'
-    #elif str($input_type_conditional.input_type) == "tar":
-      python -m rptools.rpviz '${input_type_conditional.input_tar}'
-    #end if
-    'out'
-    #if $adv.cofactor_file
-      --cofactor '$adv.cofactor_file'
-    #end if
-    --autonomous_html '$html_file';
-    rm -fr '$input_folder'
-  ]]></command>
-  <inputs>
-    <conditional name="input_type_conditional">
-      <param name="input_type" type="select" label="Source SBML format">
-        <option value="tar" selected="True">TAR</option>
-        <option value="sbml">Collection</option>
-      </param>
-      <when value="tar">
-        <param name="input_tar" type="data" format="tar" label="Source SBML" />
-      </when>
-      <when value="sbml">
-        <param name="input_sbml" type="data_collection" collection_type="list" format="xml" label="Source SBML" />
-      </when>
-    </conditional>
-    <section name="adv" title="Advanced Options" expanded="false">
-      <param type="data" name="cofactor_file" optional="true" label="cofactor file" format="tsv" />
-    </section>
-  </inputs>
-  <outputs>
-    <data format="html" name="html_file" label="Rpviz: Pathways Visualization"/>
-  </outputs>
-  <tests>
-  <test>
-    <!-- test 1: check if identical html output is produced (input collection) --> 
-    <conditional name="input_type_conditional">
-      <param name="input_type" value="sbml"/>
-      <param name="input_sbml">
-        <collection type="list">
-          <element name="file1" value='rpviz/rp_001_0006.xml' format='xml'/>
-          <element name="file2" value='rpviz/rp_002_0010.xml' format='xml'/>
-          <element name="file3" value='rpviz/rp_003_0276.xml' format='xml'/>
-        </collection>
-      </param>
-    </conditional>
-    <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
-  </test>
-  <test>
-  <!-- test 2: check if identical html output is produced (tar input) --> 
-  <conditional name="input_type_conditional">
-    <param name="input_type" value="tar"/>
-    <param name="input_tar" value="rpviz/as_tar.tgz" />
-  </conditional>
-  <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
-  </test>
-  </tests>
-<help><![CDATA[
+    <description>Visualize pathways from the RetroPath Suite</description>
+    <requirements>
+        <requirement type="package" version="5.9.2">rptools</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        #set input_folder="input_folder"
+        mkdir -p '$input_folder';
+        #if str($input_type_conditional.input_type) == "sbml":
+            #for $input in $input_type_conditional.input_sbml.keys():
+                ln -sf $input_type_conditional.input_sbml[$input] '$input_folder/${input}.xml';
+            #end for
+            python -m rptools.rpviz '$input_folder'
+        #elif str($input_type_conditional.input_type) == "tar":
+            python -m rptools.rpviz '${input_type_conditional.input_tar}'
+        #end if
+        'out'
+        #if $adv.cofactor_file
+            --cofactor '$adv.cofactor_file'
+        #end if
+        --autonomous_html '$html_file';
+        rm -fr '$input_folder'
+    ]]></command>
+    <inputs>
+        <conditional name="input_type_conditional">
+            <param name="input_type" type="select" label="Source SBML format">
+                <option value="tar" selected="True">TAR</option>
+                <option value="sbml">Collection</option>
+            </param>
+            <when value="tar">
+                <param name="input_tar" type="data" format="tar" label="Source SBML" />
+            </when>
+            <when value="sbml">
+                <param name="input_sbml" type="data_collection" format="xml" collection_type="list" label="Source SBML" />
+            </when>
+        </conditional>
+        <section name="adv" title="Advanced Options" expanded="false">
+            <param name="cofactor_file" type="data" format="tsv" optional="true" label="cofactor file" />
+        </section>
+    </inputs>
+    <outputs>
+        <data name="html_file" format="html" label="Rpviz: Pathways Visualization"/>
+    </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical html output is produced (input collection) --> 
+            <conditional name="input_type_conditional">
+                <param name="input_type" value="sbml"/>
+                <param name="input_sbml">
+                    <collection type="list">
+                    <element name="file1" format='xml' value='rpviz/rp_001_0006.xml' />
+                    <element name="file2" format='xml' value='rpviz/rp_002_0010.xml' />
+                    <element name="file3" format='xml' value='rpviz/rp_003_0276.xml' />
+                    </collection>
+                </param>
+            </conditional>
+            <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
+        </test>
+        <test>
+        <!-- test 2: check if identical html output is produced (tar input) --> 
+            <conditional name="input_type_conditional">
+                <param name="input_type" value="tar"/>
+                <param name="input_tar" value="rpviz/as_tar.tgz" />
+            </conditional>
+            <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
+        </test>
+    </tests>
+    <help><![CDATA[
         usage: python -m rptools.rpviz [-h] input_rpSBMLs output_folder
                              [--debug]
                              [--template_folder TEMPLATE_FOLDER]
@@ -93,5 +93,5 @@ optional arguments:
                         output an autonomous HTML containing
                         all dependancies.
 
-  ]]></help>
+    ]]></help>
 </tool>
