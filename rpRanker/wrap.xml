@@ -1,33 +1,30 @@
 <tool id="rpRank" name="Rank Pathways" version="5.10.0">
-  <description>Rank heterologous pathways accordig to their global score</description>
-  <requirements>
-    <requirement type="package" version="5.10.0">rptools</requirement>
-  </requirements>
-  <stdio>
-		<regex match="WARNING" level="warning" />
+    <description>Rank heterologous pathways according to their global score</description>
+    <requirements>
+        <requirement type="package" version="5.10.0">rptools</requirement>
+    </requirements>
+    <stdio>
+	    <regex match="WARNING" level="warning" />
 		<regex match="ERROR" level="error" />
 	</stdio>
-  <command detect_errors="exit_code"><![CDATA[
-      python -m rptools.rprank
+    <command detect_errors="exit_code"><![CDATA[
+        python -m rptools.rprank
         --pathways
         #for $input in $pathway_collection
-          '$input'
+            '$input'
         #end for
         > '$sorted_pathways'
-  ]]></command>
-  <inputs>
-    <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways" />
-    <section name="adv" title="Advanced Options" expanded="false">
-       <param name="delimiter" type="str" value="," label="Delimiter" />
-    </section>
-  </inputs>
-  <outputs>
-    <!-- <collection name="Ranked pathways" type="list" label="${tool.name}">
-      <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml" ext="xml" directory="ranked_pathways" visible="false" />
-    </collection> -->
-    <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
-  </outputs>
-  <help><![CDATA[
+    ]]></command>
+    <inputs>
+        <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways" />
+        <section name="adv" title="Advanced Options" expanded="false">
+            <param name="delimiter" type="str" value="," label="Delimiter" />
+        </section>
+    </inputs>
+    <outputs>
+        <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
+    </outputs>
+    <help><![CDATA[
 Rank Pathways
 ================
 
@@ -45,6 +42,21 @@ Output
 
 * **output**\ : (string) Sorted names and scores of pathways
 
+Project Links
+------------------
+
+* `GitHub <https://github.com/brsynth/rptools/tree/master/rptools/rprank>`_
+
+Version
+----------
+
+5.10.0
+
+License
+-------
+
+* `MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
+
 Authors
 -------
 
@@ -55,5 +67,5 @@ Acknowledgments
 
 * Thomas Duigou
 
-]]></help>
+    ]]></help>
 </tool>
