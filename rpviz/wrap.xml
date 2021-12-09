@@ -67,32 +67,35 @@
         </test>
     </tests>
     <help><![CDATA[
-        usage: python -m rptools.rpviz [-h] input_rpSBMLs output_folder
-                             [--debug]
-                             [--template_folder TEMPLATE_FOLDER]
-                             [--linker_plate_file LINKER_PLATE_FILE]
-                             [--cofactor COFACTOR]
-                             [--autonomous_html AUTONOMOUS_HTML]
-                             
+RPVIZ
+================
 Visualize pathways from the RetroPath Suite
 
-positional arguments:
-  input_rpSBMLs         Input file containing rpSBML files in a 
-                        tar archive or a folder.
-  output_folder         Output folder to be used. If it does not 
-                        exist, an attempt will be made to create 
-                        it.It the creation of the folder fails, 
-                        IOError will be raised.
+Input
+-----
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --debug               Turn on debug instructions
-  --cofactor COFACTOR   File listing structures to consider as 
-                        cofactors.
-  --autonomous_html AUTONOMOUS_HTML
-                        Optional file path, if provided will 
-                        output an autonomous HTML containing
-                        all dependancies.
+* **input_rpSBMLs**\ : (string) Input file containing rpSBML files in a tar archive or a folder.
+                             
+Output
+------
+
+* **output_folder**\ : (string) Output folder to be used. If it does not exist, an attempt will be made to create it.It the creation of the folder fails, IOError will be raised.
+* **autonomous_html**\ : (string) Optional file path, if provided will output an autonomous HTML containing all dependancies.
+
+Project Links
+------------------
+
+* `GitHub <https://github.com/brsynth/rptools/tree/master/rptools/rpviz>`_
+
+Version
+----------
+
+5.9.2
+
+License
+-------
+
+* `MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
 
     ]]></help>
 </tool>
