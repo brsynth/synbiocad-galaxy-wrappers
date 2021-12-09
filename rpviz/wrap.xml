@@ -50,26 +50,20 @@
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical html output is produced (input collection) --> 
+        <!-- test 1: check if identical html output is produced (single sbml input) --> 
             <conditional name="input_type_conditional">
-                <param name="input_type" value="sbml"/>
-                <param name="input_sbml">
-                    <collection type="list">
-                    <element name="file1" format='xml' value='rpviz/rp_001_0006.xml' />
-                    <element name="file2" format='xml' value='rpviz/rp_002_0010.xml' />
-                    <element name="file3" format='xml' value='rpviz/rp_003_0276.xml' />
-                    </collection>
-                </param>
+                <param name="input_type" value="single_sbml"/>
+                <param name="input_single_sbml" value="lycopene_CrtEBI_from_selenzy.xml" />
             </conditional>
-            <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
+            <output name="html_file" file="rpviz_single_output.html" compare="diff"/>
         </test>
         <test>
         <!-- test 2: check if identical html output is produced (tar input) --> 
             <conditional name="input_type_conditional">
                 <param name="input_type" value="tar"/>
-                <param name="input_tar" value="rpviz/as_tar.tgz" />
+                <param name="input_tar" value="as_tar_inputs.tgz" />
             </conditional>
-            <output name="html_file" file="rpviz/autonomous.html" compare="diff"/>
+            <output name="html_file" file="rpviz_tar_output.html" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
