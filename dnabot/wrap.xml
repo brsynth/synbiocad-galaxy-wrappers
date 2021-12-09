@@ -15,7 +15,7 @@
         --etoh_well '$adv.etoh_well'
         --soc_column '$adv.soc_column'
         --output_dir 'output'
-        && tar -zcvf '$dnabot_scripts' 'output'
+        && tar -cvf '$dnabot_scripts' 'output'
     ]]></command>
     <inputs>
         <param name="construct_file" type="data" format="csv" label="Source Construct" />
