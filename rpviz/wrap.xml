@@ -55,7 +55,7 @@
                 <param name="input_type" value="single_sbml"/>
                 <param name="input_single_sbml" value="lycopene_CrtEBI_from_selenzy.xml" />
             </conditional>
-            <output name="html_file" file="rpviz_single_output.html" compare="diff"/>
+            <output name="html_file" file="rpviz_single_output.html" compare="sim_size"/>
         </test>
         <test>
         <!-- test 2: check if identical html output is produced (tar input) --> 
@@ -63,7 +63,7 @@
                 <param name="input_type" value="tar"/>
                 <param name="input_tar" value="as_tar_inputs.tgz" />
             </conditional>
-            <output name="html_file" file="rpviz_tar_output.html" compare="diff"/>
+            <output name="html_file" file="rpviz_tar_output.html" compare="sim_size"/>
         </test>
     </tests>
     <help><![CDATA[
