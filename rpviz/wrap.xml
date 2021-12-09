@@ -13,25 +13,32 @@
             python -m rptools.rpviz '$input_folder'
         #elif str($input_type_conditional.input_type) == "tar":
             python -m rptools.rpviz '${input_type_conditional.input_tar}'
+        #elif str($input_type_conditional.input_type) == "single_sbml":
+            ln -sf '$input_type_conditional.input_single_sbml' '$input_folder/${input_type_conditional.input_single_sbml.name}';
+            python -m rptools.rpviz '$input_folder'
         #end if
         'out'
         #if $adv.cofactor_file
             --cofactor '$adv.cofactor_file'
         #end if
         --autonomous_html '$html_file';
-        rm -fr '$input_folder'
+        rm -fr '$input_folder';
     ]]></command>
     <inputs>
         <conditional name="input_type_conditional">
             <param name="input_type" type="select" label="Source SBML format">
                 <option value="tar" selected="True">TAR</option>
                 <option value="sbml">Collection</option>
+                <option value="single_sbml">single SBML</option>
             </param>
             <when value="tar">
                 <param name="input_tar" type="data" format="tar" label="Source SBML" />
             </when>
             <when value="sbml">
                 <param name="input_sbml" type="data_collection" format="xml" collection_type="list" label="Source SBML" />
+            </when>
+            <when value="single_sbml">
+                <param name="input_single_sbml" type="data" format="xml" label="Source SBML" />
             </when>
         </conditional>
         <section name="adv" title="Advanced Options" expanded="false">
