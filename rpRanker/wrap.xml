@@ -24,6 +24,25 @@
     <outputs>
         <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="pathway_collection" >
+                <collection type="list">
+                    <element name="rp_003_0261" value="rp_003_0261.xml" />
+                    <element name="rp_003_0131" value="rp_003_0131.xml" />
+                    <element name="rp_003_0001" value="rp_003_0001.xml" />
+                    <element name="rp_002_0021" value="rp_002_0021.xml" />
+                    <element name="rp_002_0011" value="rp_002_0011.xml" />
+                    <element name="rp_002_0001" value="rp_002_0001.xml" />
+                    <element name="rp_001_0011" value="rp_001_0011.xml" />
+                    <element name="rp_001_0006" value="rp_001_0006.xml" />
+                    <element name="rp_001_0001" value="rp_001_0001.xml" />
+                </collection>
+            </param>
+            <output name="sorted_pathways" file="lycopene_sorted_pathways.csv" ftype="csv" compare="diff"/>
+        </test>
+    </tests>
     <help><![CDATA[
 Rank Pathways
 ================
