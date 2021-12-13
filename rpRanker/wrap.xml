@@ -1,4 +1,4 @@
-<tool id="rpRank" name="Rank Pathways" version="5.10.0">
+<tool id="rpranker" name="Rank Pathways" version="5.10.0">
     <description>Rank heterologous pathways according to their global score</description>
     <requirements>
         <requirement type="package" version="5.10.0">rptools</requirement>
