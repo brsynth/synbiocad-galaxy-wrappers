@@ -37,7 +37,7 @@
                     <element name="rp_001_0001" value="rp_001_0001.xml" />
                 </collection>
             </param>
-            <output name="sorted_pathways" file="lycopene_sorted_pathways.csv" ftype="csv" compare="diff"/>
+            <output name="sorted_pathways" file="lycopene_ranked_pathways.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
