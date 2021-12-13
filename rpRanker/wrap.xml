@@ -5,7 +5,7 @@
     </requirements>
     <stdio>
 	    <regex match="WARNING" level="warning" />
-		<regex match="ERROR" level="error" />
+		<regex match="ERROR" level="fatal" />
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rprank
@@ -17,9 +17,6 @@
     ]]></command>
     <inputs>
         <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways" />
-        <section name="adv" title="Advanced Options" expanded="false">
-            <param name="delimiter" type="str" value="," label="Delimiter" />
-        </section>
     </inputs>
     <outputs>
         <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
@@ -54,7 +51,7 @@ Input
 
 Required:
 
-* **--pathways**\ : (list of string) Paths to pathway (rpSBML) files
+* **pathways**\ : (list of string) Paths to pathway (rpSBML) files
 
 Output
 ------
