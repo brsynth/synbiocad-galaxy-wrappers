@@ -29,26 +29,49 @@
         <data name="uniprot_ids_csv" format="csv" label="Uniprot IDs" />
     </outputs>
     <help><![CDATA[
+Selenzyme
+================
 
-usage: selenzy-wrapper [-h] [--log ARG] [--log_file LOG_FILE] [--silent] [--version] [--nb_targets NB_TARGETS] [--d D] [--NoMSA] [--smarts] [--host HOST] pathway_file outfile
+Performs enzyme selection from a reaction query.
 
-rpSBML wrapper for selenzy tool
+Input
+-----
 
-positional arguments:
-  pathway_file          path to pathway file
-  outfile               specify output file
+* **pathway_file**\ : (string) path to pathway file
+* **nb_targets**\ : (integer) Number of targets to display in results (before taxon IDs filtering) [default = 20]
+* **nb_ids**\ : (integer) Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]
+* **direction**\ : (float) Use similiarity values for preferred reaction direction only [default=0 (OFF)]
+* **NoMSA**\ : (boolean) Do not compute MSA/conservation scores
+* **taxonIDs**\ : (string) Comma separated taxon ids [default: 83333 (E. coli K12)]. The first taxon ID is the one of the chassis, following ones are taxon IDs of output enzyme sequences
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --log ARG, -l ARG     Adds a console logger for the specified level (default: error)
-  --log_file LOG_FILE   Filename where to put logs
-  --silent, -s          run selenzy-wrapper silently
-  --version             show the version number and exit
-  --nb_targets NB_TARGETS
-                        Number of targets to display in results [default = 20]
-  --d D                 Use similiarity values for preferred reaction direction only [default=0 (OFF)]
-  --NoMSA               Do not compute MSA/conservation scores
-  --host HOST           Comma separated taxon ids [default: E. coli]
+Output
+------
+
+* **outfile**\ : (string) Path to output file
+
+Project Links
+------------------
+
+* `GitHub <https://github.com/brsynth/selenzy-wrapper>`_
+
+Version
+----------
+
+0.1.0
+
+Authors
+-------
+* **Joan Hérisson**
+
+License
+-------
+
+* `MIT <https://github.com/brsynth/selenzy-wrapper/blob/master/LICENSE>`_
+
+Acknowledgments
+---------------
+
+* Thomas Duigou
 
     ]]></help>
     <citations>
