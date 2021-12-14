@@ -28,6 +28,14 @@
         <data name="uniprot_ids" format="xml" label="Uniprot IDs" />
         <data name="uniprot_ids_csv" format="csv" label="Uniprot IDs" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="pathway" value="pathway.xml" />
+            <output name="uniprot_ids" file="uniprod_ids_out.csv" ftype="xml" compare="diff" sort="true"/>
+            <output name="uniprot_ids_csv" file="uniprod_ids_out.xml" ftype="csv" compare="diff"/>
+        </test>
+    </tests>
     <help><![CDATA[
 Selenzyme
 ================
