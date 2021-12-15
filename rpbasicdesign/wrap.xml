@@ -50,9 +50,9 @@
         <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
         <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
         <output_collection name="sbol_dir" type="list">
-            <discovered_dataset designation="BASIC_construct_A1" ftype="xml" file="BASIC_construct_A1.xml"/>
-            <discovered_dataset designation="BASIC_construct_B1" ftype="xml" file="BASIC_construct_B1.xml"/>
-            <discovered_dataset designation="BASIC_construct_C1" ftype="xml" file="BASIC_construct_C1.xml"/>
+            <element name="BASIC_construct_A1" ftype="xml" value="BASIC_construct_A1.xml" sort="true"/>
+            <element name="BASIC_construct_B1" ftype="xml" value="BASIC_construct_B1.xml" sort="true"/>
+            <element name="BASIC_construct_C1" ftype="xml" value="BASIC_construct_C1.xml" sort="true"/>
         </output_collection>
         </test>
     </tests>
