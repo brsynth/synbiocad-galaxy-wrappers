@@ -32,8 +32,8 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="pathway" value="pathway.xml" />
-            <output name="uniprot_ids" file="uniprod_ids_out.csv" ftype="xml" compare="diff" sort="true"/>
-            <output name="uniprot_ids_csv" file="uniprod_ids_out.xml" ftype="csv" compare="diff"/>
+            <output name="uniprot_ids" file="uniprod_ids_out.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="uniprot_ids_csv" file="uniprod_ids_out.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
