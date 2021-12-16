@@ -1,7 +1,7 @@
-<tool id="OptDoE" name="Design of Experiment" version="1.0.0">
+<tool id="OptDoE" name="Design of Experiment" version="2.0.1">
     <description>An optimal design of experiments (DoE) base package for synthetic biology</description>
     <requirements>
-        <requirement type="package" version="1.0.0">doebase</requirement>
+        <requirement type="package" version="v2.0.1">doebase</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m doebase
@@ -29,6 +29,13 @@
     <outputs>
         <data name="constructs" format="xml" label="Constructs" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="genes_file" value="genes_lycopene.csv" />
+            <output name="constructs" file="constructs_lycopene.xml" ftype="xml" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 OptDoE
 ===========
