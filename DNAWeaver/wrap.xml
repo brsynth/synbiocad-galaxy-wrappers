@@ -1,18 +1,18 @@
-<tool id="DNAWeaver" name="DNA Weaver" version="1.0.0">
+<tool id="DNAWeaver" name="DNA Weaver" version="1.0.1">
   <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
   <requirements>
-        <requirement type="package" version="1.0.0">dnaweaver_synbiocad</requirement>
+        <requirement type="package" version="1.0.1">dnaweaver_synbiocad</requirement>
   </requirements>
   <stdio>
 		<regex match="WARNING:" level="warning" />
 		<regex match="ERROR:" level="error" />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
-    python -m dnaweaver_cli
+    python -m dnaweaver_synbiocad
         '$input'
         '$output'
         '$method'
-        --max_constructs '$adv.max_constructs'
+        --constructs '$adv.max_constructs'
   ]]></command>
   <inputs>
     <param name="input" type="data" format="xml" label="Constructs" />
@@ -96,7 +96,7 @@ For constructs with repeated parts and other homologies (such as, in the example
 Version
 -------
 
-0.1
+1.0.1
 
 Authors
 -------
