@@ -10,9 +10,10 @@
     <command detect_errors="exit_code"><![CDATA[
         python -m dnaweaver_synbiocad
         '$input'
-        '$output'
+        output.xlsx
         '$method'
         --constructs '$adv.max_constructs'
+        && cp output.xlsx '$output'
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" label="Constructs" />
