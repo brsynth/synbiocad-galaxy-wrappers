@@ -37,7 +37,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="genes_file" value="genes_lycopene.csv" />
-            <output name="constructs" file="constructs_lycopene.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="constructs" file="constructs_lycopene.xml" ftype="xml" compare="sim_size"/>
         </test>
     </tests>
     <help><![CDATA[
