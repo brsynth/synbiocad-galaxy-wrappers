@@ -28,6 +28,11 @@
     <outputs>
         <data name="output" format="xlsx" label="Assembly Plan" />
     </outputs>
+    <test>
+    <!-- test 1: check if identical outputs are produced with default parameters  -->
+        <param name="input" value="constructs_lycopene.xml" />
+        <output name="output" file="assembly_plan_lycopene.xlsx" ftype="xlsx" compare="diff" sort="true"/>
+    </test>
     <help><![CDATA[
 DNAWeaver
 ==========================
