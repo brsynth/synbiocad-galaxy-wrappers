@@ -5,7 +5,7 @@
     </requirements>
     <stdio>
 	    <regex match="WARNING:" level="warning" />
-		<regex match="ERROR:" level="error" />
+		<regex match="ERROR:" level="fatal" />
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m dnaweaver_synbiocad
@@ -18,9 +18,9 @@
     <inputs>
         <param name="input" type="data" format="xml" label="Constructs" />
         <param name="method" type="select" label="Assembly method">
-            <option value="golden_gate" type="text" selected="true">Golden Gate</option>
-            <option value="gibson" type="text">Gibson</option>
-            <option value="any_method" type="text">Any Method</option>
+            <option value="golden_gate" selected="true">Golden Gate</option>
+            <option value="gibson" >Gibson</option>
+            <option value="any_method" >Any Method</option>
         </param>
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="max_constructs" value="-1" type="integer" label="Maximal number of constructs" />
@@ -29,11 +29,13 @@
     <outputs>
         <data name="output" format="xlsx" label="Assembly Plan" />
     </outputs>
-    <test>
-    <!-- test 1: check if identical outputs are produced with default parameters  -->
-        <param name="input" value="constructs_lycopene.xml" />
-        <output name="output" file="assembly_plan_lycopene.xlsx" ftype="xlsx" compare="diff" sort="true"/>
-    </test>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="input" value="constructs_lycopene.xml" />
+            <output name="output" file="assembly_plan_lycopene.xlsx" ftype="xlsx" compare="diff" sort="true"/>
+        </test>
+    </tests>
     <help><![CDATA[
 DNAWeaver
 ==========================
