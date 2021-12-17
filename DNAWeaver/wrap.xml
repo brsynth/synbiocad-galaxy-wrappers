@@ -1,39 +1,46 @@
-<tool id="DNAWeaver" name="DNA Weaver" version="1.0.0">
-  <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
-  <requirements>
-        <requirement type="package" version="1.0.0">dnaweaver_synbiocad</requirement>
-  </requirements>
-  <stdio>
-		<regex match="WARNING:" level="warning" />
-		<regex match="ERROR:" level="error" />
+<tool id="DNAWeaver" name="DNA Weaver" version="1.0.1">
+    <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
+    <requirements>
+        <requirement type="package" version="1.0.1">dnaweaver_synbiocad</requirement>
+    </requirements>
+    <stdio>
+	    <regex match="WARNING:" level="warning" />
+		<regex match="ERROR:" level="fatal" />
 	</stdio>
-  <command detect_errors="exit_code"><![CDATA[
-    python -m dnaweaver_cli
+    <command detect_errors="exit_code"><![CDATA[
+        python -m dnaweaver_synbiocad
         '$input'
-        '$output'
+        output.xlsx
         '$method'
-        --max_constructs '$adv.max_constructs'
-  ]]></command>
-  <inputs>
-    <param name="input" type="data" format="xml" label="Constructs" />
-    <param name="method" type="select" label="Assembly method">
-      <option value="golden_gate" type="text" selected="true">Golden Gate</option>
-      <option value="gibson" type="text">Gibson</option>
-      <option value="any_method" type="text">Any Method</option>
-    </param>
+        --constructs '$adv.max_constructs'
+        && cp output.xlsx '$output'
+    ]]></command>
+    <inputs>
+        <param name="input" type="data" format="xml" label="Constructs" />
+        <param name="method" type="select" label="Assembly method">
+            <option value="golden_gate" selected="true">Golden Gate</option>
+            <option value="gibson" >Gibson</option>
+            <option value="any_method" >Any Method</option>
+        </param>
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="max_constructs" value="-1" type="integer" label="Maximal number of constructs" />
 		</section>
-  </inputs>
-  <outputs>
-    <data name="output" format="xlsx" label="Assembly Plan" >
-    </data>
+    </inputs>
+    <outputs>
+        <data name="output" format="xlsx" label="Assembly Plan" />
     </outputs>
-  <help><![CDATA[
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="input" value="constructs_lycopene.xml" />
+            <output name="output" file="assembly_plan_lycopene.xlsx" ftype="xlsx" compare="sim_size"/>
+        </test>
+    </tests>
+    <help><![CDATA[
 DNAWeaver
 ==========================
 
-This tool uses a multi-objective algorithm to predict the best synthesis and assembling strategy for the previously designed plasmid using either Golden gate assembly, or Gibson assembly, or a mix of both. Given a set of designs (one design is a construct name and list of its parts), it finds a valid and efficient assembly plan to build all the designs. The designs and sequences of parts are provided as an SBOL file (see test_input.xml for an example)
+This tool uses a multi-objective algorithm to predict the best synthesis and assembling strategy for the previously designed plasmid using either Golden gate assembly, or Gibson assembly, or a mix of both. Given a set of designs (one design is a construct name and list of its parts), it finds a valid and efficient assembly plan to build all the designs. The designs and sequences of parts are provided as an SBOL file (see test.xml for an example).
 
 Input
 -----
@@ -96,7 +103,7 @@ For constructs with repeated parts and other homologies (such as, in the example
 Version
 -------
 
-0.1
+1.0.1
 
 Authors
 -------
@@ -117,6 +124,5 @@ Acknowledgments
 * Thomas Duigou
 * Joan Hérisson
 
-
-]]></help>
+    ]]></help>
 </tool>
