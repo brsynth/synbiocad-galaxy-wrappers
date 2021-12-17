@@ -1,7 +1,7 @@
-<tool id="LCRGenie" name="LCR Genie" version="1.0.0">
+<tool id="LCRGenie" name="LCR Genie" version="1.0.1">
   <description></description>
   <requirements>
-        <requirement type="package" version="1.0.0">lcr_genie</requirement>
+        <requirement type="package" version="1.0.1">lcr_genie</requirement>
   </requirements>
   <stdio>
 		<regex match="WARNING:" level="warning" />
