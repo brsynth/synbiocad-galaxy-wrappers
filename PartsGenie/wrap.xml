@@ -1,7 +1,7 @@
-<tool id="PartsGenie" name="PartsGenie" version="1.0.0">
+<tool id="PartsGenie" name="PartsGenie" version="1.0.1">
     <description>An integrated tool for optimizing and sharing synthetic biology parts</description>
     <requirements>
-        <requirement type="package" version="1.0.0">partsgenie_client</requirement>
+        <requirement type="package" version="1.0.1">partsgenieclient</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m partsgenie_client
