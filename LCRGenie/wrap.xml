@@ -20,7 +20,7 @@
 		</section>
   </inputs>
   <outputs>
-    <data name="output" format="xlsx" label="Assembly Plan" >
+    <data name="output" format="xlsx" label="LCR Genie - Assembly Plan" >
     </data>
     </outputs>
   <help><![CDATA[
