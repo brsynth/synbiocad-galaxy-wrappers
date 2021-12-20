@@ -25,8 +25,8 @@
             <param name="genes_sbol_file" type="data" format="xml" label="Optimised Genes" optional="true"/>
             <param name="ref_parts_file" type="data" format="xml" value="None" label="Ref Parts (default: E. coli compliant)" optional="true"/>
             <param name="libsize" type="integer" value="32" label="Maximal library size" />
-            <param name="get_sequences" type="boolean" label="" checked="true" />
-            <param name="backtranslate" type="boolean" label="" checked="true" />
+            <param name="get_sequences" type="boolean" label=" Get sequences" checked="true" />
+            <param name="backtranslate" type="boolean" label="Back translate" checked="true" />
             <param name="codon_table" type="select" label="Codon Table">
                 <option value="Eecoli.cut">Escherichia coli K12</option>
                 <option value="Ehuman.cut">Homo sapiens</option>
