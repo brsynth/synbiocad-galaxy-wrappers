@@ -23,7 +23,7 @@
         <param name="genes_file" type="data" format="csv" label="Genes" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="genes_sbol_file" type="data" format="xml" label="Optimised Genes" optional="true"/>
-            <param name="ref_parts_file" type="data" format="xml" value="None" label="Ref Parts" optional="true"/>
+            <param name="ref_parts_file" type="data" format="xml" value="None" label="Ref Parts (default: E. coli compliant)" optional="true"/>
             <param name="libsize" type="integer" value="32" label="Maximal library size" />
             <param name="get_sequences" type="boolean" label="" checked="true" />
             <param name="backtranslate" type="boolean" label="" checked="true" />
