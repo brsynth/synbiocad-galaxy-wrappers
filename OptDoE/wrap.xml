@@ -72,7 +72,6 @@
                 <option value="Edicdi_high.cut">Dictyostelium discoideum (high)</option>
                 <option value="Edrome.cut">Drosophila melanogaster</option>
                 <option value="Edrome_high.cut">Drosophila melanogaster (high)</option>
-                <option value="Eecoli.cut">Escherichia coli K12</option>
                 <option value="Eecoli_high.cut">Escherichia coli K12 (high)</option>
                 <option value="Eemeni.cut">Emericella nidulans</option>
                 <option value="Eemeni_mit.cut">Emericella nidulans mitochondrion</option>
