@@ -27,7 +27,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="LCR_input" value="LCR_input_lycopene.xml" />
-            <output name="LCR_output" file="LCR_output_lycopene.xlsx" ftype="xlsx" compare="diff"/>
+            <output name="LCR_output" file="LCR_output_lycopene.xlsx" ftype="xlsx" compare="sim_size" />
         </test>
     </tests>
     <help><![CDATA[
@@ -60,6 +60,7 @@ Version
 
 License
 -------
+
 `MIT <https://github.com/neilswainston/LCRGenie/blob/master/LICENSE>`_
 
 
