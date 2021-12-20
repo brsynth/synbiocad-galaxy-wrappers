@@ -9,10 +9,10 @@
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m lcr_genie
-        '$input'
+        '$LCR_input'
         output.xlsx
         --melting_temp '$adv.melting_temp'
-        && cp output.xlsx '$output'
+        && cp output.xlsx '$LCR_output'
     ]]></command>
     <inputs>
         <param name="LCR_input" type="data" format="xml" label="Constructs" />
@@ -34,7 +34,7 @@
 LCRGenie
 ========
 
-LCR Genie47 is a web-based tool for supporting the design of bridging oligos, which are required for annealing together individual synthetic DNA parts (designed by PartsGenie) into multi-gene plasmid assemblies, designed by OptDoE. 
+LCR Genie is a web-based tool for supporting the design of bridging oligos, which are required for annealing together individual synthetic DNA parts (designed by PartsGenie) into multi-gene plasmid assemblies, designed by OptDoE. 
 
 
 Input
