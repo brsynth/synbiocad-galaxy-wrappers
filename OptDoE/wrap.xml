@@ -94,9 +94,6 @@ Input
 Required:
 
 * **genes_file**\ : (string) Path to either tar.xz input collection of rpSBML files or a single rpSBML file.
-* **-input_format**\ : (string) Format of the input
-* **-input_sbol**\ : (string) Path to the SBOL input file
-* **-input_parts**\ : (string) CSV with the genetic parts. Default (if left empty) is the above table. To generate a new compatible CSV file, please use the "OptDoE Parts Reference Generator" tool
 
 Advanced options:
 
