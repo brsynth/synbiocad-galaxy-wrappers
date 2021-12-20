@@ -86,7 +86,7 @@ Note: if advanced parameter "input_parts" is left empty, the following parts are
     | Ter     | Terminator | https://synbiohub.org/public/igem/BBa_B1006/1    |
     +---------+------------+--------------------------------------------------+
 	  
-To generate another CSV
+The source of this file can be found here as a model: https://raw.githubusercontent.com/pablocarb/doebase/master/doebase/data/ref_parts.csv
 
 Input
 -----
