@@ -10,9 +10,8 @@
     <command detect_errors="exit_code"><![CDATA[
         python -m lcr_genie
         '$LCR_input'
-        output.xlsx
+        '$LCR_output'
         --melting_temp '$adv.melting_temp'
-        && cp output.xlsx '$LCR_output'
     ]]></command>
     <inputs>
         <param name="LCR_input" type="data" format="xml" label="Constructs" />

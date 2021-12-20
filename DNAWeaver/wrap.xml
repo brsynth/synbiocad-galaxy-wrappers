@@ -27,7 +27,7 @@
 		</section>
     </inputs>
     <outputs>
-        <data name="output" format="xlsx" label="Assembly Plan" />
+        <data name="output" format="xlsx" label="DNA Weaver - Assembly Plan" />
     </outputs>
     <tests>
         <test>

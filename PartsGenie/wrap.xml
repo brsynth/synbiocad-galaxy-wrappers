@@ -1,7 +1,7 @@
-<tool id="PartsGenie" name="PartsGenie" version="1.0.0">
+<tool id="PartsGenie" name="PartsGenie" version="1.0.1">
     <description>An integrated tool for optimizing and sharing synthetic biology parts</description>
     <requirements>
-        <requirement type="package" version="1.0.0">partsgenie_client</requirement>
+        <requirement type="package" version="1.0.1">partsgenieclient</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m partsgenie_client
@@ -14,7 +14,7 @@
         <param name="enzymes_file" type="data" format="xml" label="Enzymes" />
         <param name="taxonomy_id" type="integer" value="83333" label="Chassis taxonomy ID" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="url" type="text" value="partsgenie.micalis.inrae.fr" label="PartsGenie server URL" />
+            <param name="url" type="text" value="https://partsgenie.micalis.inrae.fr" label="PartsGenie server URL" />
         </section>
     </inputs>
     <outputs>
