@@ -23,6 +23,13 @@
     <outputs>
         <data name="LCR_output" format="xlsx" label="LCR Genie: Assembly Plan" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="LCR_input" value="LCR_input_lycopene.xml" />
+            <output name="LCR_output" file="LCR_output_lycopene.xlsx" ftype="xlsx" compare="diff"/>
+        </test>
+    </tests>
     <help><![CDATA[
 LCRGenie
 ========
