@@ -1,54 +1,73 @@
 <tool id="LCRGenie" name="LCR Genie" version="1.0.1">
-  <description></description>
-  <requirements>
+    <description>Ligase Chain Reaction</description>
+    <requirements>
         <requirement type="package" version="1.0.1">lcr_genie</requirement>
-  </requirements>
-  <stdio>
+    </requirements>
+    <stdio>
 		<regex match="WARNING:" level="warning" />
-		<regex match="ERROR:" level="error" />
+		<regex match="ERROR:" level="fatal" />
 	</stdio>
-  <command detect_errors="exit_code"><![CDATA[
-    python -m lcr_genie
-        '$input'
-        '$output'
+    <command detect_errors="exit_code"><![CDATA[
+        python -m lcr_genie
+        '$LCR_input'
+        '$LCR_output'
         --melting_temp '$adv.melting_temp'
-  ]]></command>
-  <inputs>
-    <param name="input" type="data" format="xml" label="Constructs" />
-		<section name="adv" title="Advanced Options" expanded="false">
-			<param name="melting_temp" value="60.0" type="float" label="Target melting temperature for the bridging oligos" />
-		</section>
-  </inputs>
-  <outputs>
-    <data name="output" format="xlsx" label="LCR Genie - Assembly Plan" >
-    </data>
+    ]]></command>
+    <inputs>
+        <param name="LCR_input" type="data" format="xml" label="Constructs" />
+        <section name="adv" title="Advanced Options" expanded="false">
+            <param name="melting_temp" value="60.0" type="float" label="Target melting temperature for the bridging oligos" />
+        </section>
+    </inputs>
+    <outputs>
+        <data name="LCR_output" format="xlsx" label="LCR Genie: Assembly Plan" />
     </outputs>
-  <help><![CDATA[
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="LCR_input" value="LCR_input_lycopene.xml" />
+            <output name="LCR_output" file="LCR_output_lycopene.xlsx" ftype="xlsx" compare="sim_size" />
+        </test>
+    </tests>
+    <help><![CDATA[
 LCRGenie
 ========
 
-Install
+LCR Genie is a web-based tool for supporting the design of bridging oligos, which are required for annealing together individual synthetic DNA parts (designed by PartsGenie) into multi-gene plasmid assemblies, designed by OptDoE. 
+
+
+Input
+-----
+
+* **input**\ : (string) is the path to an .xml SBOL file containing constructs designs and sequences
+* **melting_temp**\ : (float) is the target melting temperature for the bridging oligos (default=60.0)
+
+Output
+------
+
+* **output**\ : (string) is the path to the output spreadsheet
+
+Project Links
+---------------------
+
+* `GitHub <https://github.com/neilswainston/LCRGenie/>`_
+
+Version
+----------
+
+1.0.1
+
+Authors
 -------
-```bash
-conda install -c conda-forge lcr_genie
-```
 
-Run
----
-```bash
-python -m lcr_genie <input_file> <output_file> [--melting_temp TEMP]
-```
-where:
-* **input** is the path to an .xml SBOL file containing constructs designs and sequences
-* **output** is the path to the output spreadsheet
-* **melting_temp** is the target melting temperature for the bridging oligos
+* **Neil Swainston**
+* **Joan Hérisson**
 
-Example
+License
 -------
-```bash
-python -m lcr_genie tests/data/input/example.xml out.xlsx --melting_temp 60.0
-```
+
+`MIT <https://github.com/neilswainston/LCRGenie/blob/master/LICENSE>`_
 
 
-]]></help>
+    ]]></help>
 </tool>
