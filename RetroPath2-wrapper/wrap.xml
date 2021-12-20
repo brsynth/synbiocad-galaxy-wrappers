@@ -55,10 +55,10 @@
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
-            <param name="rulesfile" value="rules.csv.gz" decompress="true" />
+            <param name="rulesfile" value="rules.csv.gz" />
             <param name="sinkfile" value="sink.csv" />
             <param name="source_inchi" value="InChI=1S/C6H6O4/c7-5(8)3-1-2-4-6(9)10/h1-4H,(H,7,8)(H,9,10)/p-2" />
-            <output name="output" file="results_retropath2.csv" ftype="csv" compare="diff"/>
+            <output name="Reaction_Network" file="results_retropath2.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
