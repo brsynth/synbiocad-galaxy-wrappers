@@ -24,7 +24,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="enzymes_file" value="enzymes_lycopene.xml" />
-            <output name="parts" file="parts_lycopene_output.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="parts" file="parts_lycopene_output.xml" ftype="xml" compare="sim_size" />
         </test>
     </tests>
     <help><![CDATA[
