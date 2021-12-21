@@ -20,10 +20,21 @@
     <outputs>
         <data name="parts" format="xml" label="Parts" />
     </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with default parameters  -->
+            <param name="enzymes_file" value="enzymes_lycopene.xml" />
+            <output name="parts" file="parts_lycopene_output.xml" ftype="xml" compare="sim_size" />
+        </test>
+    </tests>
     <help><![CDATA[
-Introduction
+PartsGenie
+===========
 
 PartsGenie allows for the design and optimisation of novel, reusable synthetic biology parts.
+
+* **Introduction**\ 
+
 This user interface consists of a number of components:
 
 Parts: an interactive drag-and-drop interface for assembling parts from features such as promoters, ribosome binding sites (RBS) and coding sequences (CDS).
@@ -32,7 +43,7 @@ Filters: a panel for specifying filters to consider in optimising the parts.
 Results: a panel for displaying and querying results of the part optimisations.
 In addition, there is also the functionality for saving optimised parts to an instance of JBEI-ICE.
 
-Parts
+* **Parts**\ 
 
 The Parts panel offers a simple drag-and-drop interface for defining multiple parts from a collection of features represented as buttons.
 
@@ -52,7 +63,7 @@ Multiple parts may be specified, by either clicking the '+' icon, or by duplicat
 
 Upon completing the set of parts, and adhering to all restrictions, the Submit button will turn green, and the job may be submitted.
 
-Feature
+* **Feature**\ 
 
 The Feature panel is viewed on selecting a given feature in the Design panel.
 The Feature panel is specific to the selected feature, which can be one of the following types:
@@ -79,31 +90,76 @@ Ribosome binding sites require a desired translation initiation rate TIR.
 
 Coding sequences require an Amino acid sequence to be specified, which may be extracted automatically through the Search Uniprot facility:
 
-Filters
+* **Filters**\ 
 
 The Filters facility allow for the specification of constraints that must be applied during the optimisation process. A Max repeating nucleotides may be specified, preventing long runs of repeating nucleotides which impede synthesis of designed parts. Excluded codons and Excluded restriction sites may be specified.
 In all cases, such Filters should be kept to a minimum, as specifying too many unnecessary constraints will increase optimisation time and, in some cases, prevent optimisation altogether. For example, specifying either too few max repeating nucleotides, or too many excluded codons or restriction sites may result in the design space being constraint to such an extent that no valid reverse translation of an amino acid coding sequence exists.
 
-Results
+* **Results**\ 
 
 Upon completion of an optimisation job (including one or more parts), the Results panel is displayed.
 The Results panel allows for the inspection of all optimised parts, allowing for the part as a whole, and individual features, to be viewed.
 
 Individual features can be viewed by selecting the feature, and metadata specific to that feature can be inspected. (This may include TIR for a RBS, or Codon Adaptation Index (CAI) - a measure of how optimised codon usage is for the target host organism - for CDS features.)
 
-Results
-
-ICE
+* **ICE**\
 
 Upon clicking the ICE button, the user is presented with a form for logging into an instance of JBEI ICE. The required parameters are URL of the JBEI ICE instance, Username and Password. Finally, a Group may be specified, allowing any submitted designed part to be shared between members of a JBEI ICE defined group.
 Once a user has logged into ICE, the ICE button will turn green, after which, parts may be Saved to JBEI ICE from the Results panel.
 
-Further details
+Input
+-----
 
-Further details are available from the publication describing this work. Please cite this reference in any scientific disclosure that utilises PartsGenie.
-PartsGenie: an integrated tool for optimising and sharing synthetic biology parts. 
-Neil Swainston, Mark Dunstan, Adrian J Jervis, Christopher J Robinson, Pablo Carbonell, Alan R Williams, Jean-Loup Faulon, Nigel S Scrutton, Douglas B Kell. 
-bioRxiv, 189357 
-https://doi.org/10.1101/189357
+* **infile**\ : (string) Specify input (SBOL) file.
+* **taxonomy_id**\ : (integer) The NCBI taxonomy id of the target host organism (Default=83333).
+* **url**\ : (string) The URL of the PartsGenie server.
+
+
+Output
+------
+
+* **outfile**\ : (string) Filename to store the modified SBOL input file.
+
+
+Project Links
+---------------------
+
+* `GitHub <https://github.com/neilswainston/PartsGenieClient/>`_
+
+
+Version
+----------
+
+1.0.1
+
+Authors
+-------
+
+* **Neil Swainston**
+* **Joan Hérisson**
+
+License
+-------
+
+`MIT <https://github.com/neilswainston/PartsGenieClient/blob/master/LICENSE>`_
     ]]></help>
+    <citations>
+        <citation type="bibtex">
+            @article{8dc3e3be28b540bc928664e9ff6204e3,
+            title = "PartsGenie: an integrated tool for optimizing and sharing synthetic biology parts",
+            abstract = "Synthetic biology is typified by developing novel genetic constructs from the assembly of reusable synthetic DNA parts, which contain one or more features such as promoters, ribosome binding sites, coding sequences and terminators. PartsGenie is introduced to facilitate the computational design of such synthetic biology parts, bridging the gap between optimization tools for the design of novel parts, the representation of such parts in community-developed data standards such as Synthetic Biology Open Language, and their sharing in journal-recommended data repositories. Consisting of a drag-and-drop web interface, a number of DNA optimization algorithms, and an interface to the well-used data repository JBEI ICE, PartsGenie facilitates the design, optimization and dissemination of reusable synthetic biology parts through an integrated application.",
+            author = "Neil Swainston and Mark Dunstan and Jervis, {Adrian J} and Robinson, {Christopher J} and Pablo Carbonell and Williams, {Alan R} and Jean-loup Faulon and Scrutton, {Nigel S} and Kell, {Douglas B}",
+            year = "2018",
+            month = jul,
+            day = "1",
+            doi = "10.1093/bioinformatics/bty105",
+            language = "English",
+            volume = "34",
+            journal = "Bioinformatics (Oxford, England)",
+            issn = "1367-4803",
+            publisher = "Oxford University Press",
+            number = "12",
+            }
+        </citation>
+    </citations>
 </tool>
