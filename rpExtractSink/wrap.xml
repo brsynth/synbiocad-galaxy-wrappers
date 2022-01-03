@@ -1,7 +1,7 @@
-<tool id="rpExtractSink" name="Sink from SBML" version="5.9.2">
+<tool id="rpExtractSink" name="Sink from SBML" version="5.11.1">
     <description>Generate the RetroPath2.0 sink file from an SBML input</description>
     <requirements>
-        <requirement type="package" version="5.9.2">rptools</requirement>
+        <requirement type="package" version="5.11.1">rptools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         #if str($input_strain_type.strain_type) == "BiGG":
@@ -91,7 +91,11 @@
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
-            <param name="input" value="E.coli.sbml" />
+            <conditional name="input_strain_type">
+                <param name="strain_type" value="user"/>
+                <param name="input" value="E.coli.sbml" />
+            </conditional>
+            <param name="compartment_id" value="MNXC3"/>
             <output name="sink" file="sink.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
