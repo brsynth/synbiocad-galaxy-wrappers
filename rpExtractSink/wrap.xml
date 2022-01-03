@@ -3,6 +3,9 @@
     <requirements>
         <requirement type="package" version="5.11.1">rptools</requirement>
     </requirements>
+    <stdio>
+		<regex match="Could not retreive any species in the compartment" level="error" />
+	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         #if str($input_strain_type.strain_type) == "BiGG":
             curl http://bigg.ucsd.edu/static/models/$(input_strain_type.input).xml.gz --output $(input_strain_type.input).xml.gz;
