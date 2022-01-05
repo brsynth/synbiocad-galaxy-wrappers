@@ -1,0 +1,65 @@
+<tool id="rp2biosensor" name="rp2biosensor" version="1.0.1">
+    <description>Build Sensing-Enabling Metabolic Pathways from RetroPath2.0 output</description>
+    <requirements>
+        <requirement type="package" version="1.0.1">rp2biosensor</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python -m rp2biosensor
+        '$rp2_results'
+        --opath '$html_file'
+    ]]></command>
+    <inputs>
+        <param name="rp2_results" type="data" format="csv" label="RetroPath2 output"/>
+    </inputs>
+    <outputs>
+        <data name="html_file" format="html" label="${tool.name} - ${rp2_results.name}"/>
+    </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced -->
+        <param name="rp2_results" value="rp2-results_dmax-16.csv" />
+        <output name="html_file" md5="4abb29e769106e75e68a939764dd2e31"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+rp2biosensor
+================
+
+Generate HTML outputs to explore Sensing Enabling Metabolic Pathway from RetroPath2 results.
+
+Input
+-----
+
+Required:
+
+* **rp2_results**\ : (string) RetroPath2.0 results.
+
+Output
+------
+
+* **opath**\ : (string) Output path. Default: biosensor.html.
+
+* **o_sbol_dir**\ : (string) Output type. This could be either (i) "dir" which means ouput files will outputted into this directory, or (ii) "file" which means that all files will be embedded into a single HTML page. Default: file.
+
+Project Links
+------------------
+
+* `GitHub <https://github.com/brsynth/rp2biosensor>`_
+
+Version
+----------
+
+1.0.1
+
+Authors
+-------
+
+* **Thomas Duigou**
+
+License
+-------
+
+* `MIT <https://github.com/brsynth/rp2biosensor/blob/master/LICENSE.md>`_
+
+    ]]></help>
+</tool>
