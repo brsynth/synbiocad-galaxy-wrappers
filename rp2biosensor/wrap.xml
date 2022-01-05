@@ -6,9 +6,7 @@
     <command detect_errors="exit_code"><![CDATA[
         python -m rp2biosensor
         '$rp2_results'
-        --opath '$html_file.files_path'
-        --otype dir
-        && cp '$html_file.files_path'/index.html '$html_file'
+        --opath '$html_file'
     ]]></command>
     <inputs>
         <param name="rp2_results" type="data" format="csv" label="RetroPath2 output"/>
