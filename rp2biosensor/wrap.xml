@@ -17,8 +17,8 @@
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced -->
-        <param name="rp2_results" value="rp2_results.csv" />
-        <output name="html_file" file="biosensor.html" ftype="html" compare="diff"/>
+        <param name="rp2_results" value="rp2-results_dmax-16.csv" />
+        <output name="html_file" md5="4abb29e769106e75e68a939764dd2e31"/>
         </test>
     </tests>
     <help><![CDATA[
