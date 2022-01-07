@@ -1,7 +1,7 @@
-<tool id="retropath2" name="RetroPath2.0" version="2.1.0">
+<tool id="retropath2" name="RetroPath2.0" version="2.3.0">
     <description>Build a reaction network from a set of source compounds to a set of sink compounds</description>
     <requirements>
-        <requirement type="package" version="2.1.0">retropath2_wrapper</requirement>
+        <requirement type="package" version="2.3.0">retropath2_wrapper</requirement>
     </requirements>
     <stdio>
         <exit_code range="1" level="fatal"   description="Source has been found in the sink"                          />
@@ -15,10 +15,8 @@
             '$sinkfile'
             '$rulesfile'
             out
-            --source_inchi '$source_inchi'
-            #if $source_name:
-                --source_name '$source_name'
-            #end if
+            --source_inchi '$source_inchi_type.source_inchi'
+            --source_name '$source_name'
             --rp2_version '$adv.version'
             --max_steps '$adv.max_steps'
             --topx '$adv.topx'
@@ -34,16 +32,25 @@
         fi
     ]]></command>
     <inputs>
-        <param name="rulesfile"    type="data" format="csv" label="Rules File"             />
-        <param name="sinkfile"     type="data" format="csv" label="Sink File"              />
-        <param name="source_inchi" type="text" label="Source InChI" optional="false"    >
-            <validator type="empty_field" message="You must provide the InChI key" />
-        </param>
-        <param name="source_name"  type="text" value="target" optional="true" label="Source name"         />
+        <param name="rulesfile"    type="data" format="csv" label="Rules File"/>
+        <param name="sinkfile"     type="data" format="csv" label="Sink File"/>
+        <conditional name="source_inchi_type">
+            <param name="inchi_type" type="select" label="InChI type">
+                <!-- <option value="name" selected="true">By name</option> -->
+                <option value="string">By string</option>
+            </param>
+            <when value="string">
+                <param name="source_inchi" type="text" label="Source InChI" optional="false">
+                    <validator type="empty_field" message="You must provide the InChI string"/>
+                </param>
+            </when>
+        </conditional>
+        <param name="source_name" type="text" value="target" optional="true" label="Source name"/>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="version" type="select" label="Workflow version">
-                <option value="20210127">20210127</option>
-                <option value="20211221" selected="true">20211221</option>
+                <option value="v9">v9</option>
+                <option value="r20210127">r20210127</option>
+                <option value="r20220104" selected="true">r20220104</option>
             </param>
             <param name="max_steps"    type="integer" value="3"    label="Maximal Pathway length" />
             <param name="topx"         type="integer" value="100"  label="TopX"                                  />
@@ -78,15 +85,19 @@ Input
 
 Required:
 
-
 * **-sinkfile**\ : (string) Path to the sink file
 * **-sourcefile**\ : (string) Path to the source file
 * **-max_steps**\ : (integer) Maximal number of steps
 * **-rulesfile**\ : (string) Path to the rules file
 * **-rulesfile_format**\ : (string) Valid Options: tar, csv. Format of the rules file
 
-Advanced options:
+The InChI source DB entries are obtained by the following command:
 
+`cat chem_prop.tsv | awk -F'\\t' '{print "\\t\\t\\t\\t\\t<option value=\\""$6"\\"\\>" "["$1"]\\t " $2 "</option>"}' | sed 's/\\&/\\&amp;/g'`
+
+where `chem_prop.tsv` has been downloaded on MetaNetX.
+
+Advanced options:
 
 * **-topx**\ : (integer, default: 100) For each iteration, number of rules
 * **-dmin**\ : (integer, default: 0)
@@ -98,20 +109,13 @@ Advanced options:
 Output
 ------
 
-
 * **-scope_csv**\ : (string) Path to the output scope csv file
-
-Version
--------
-
-v2.0.4
 
 Authors
 -------
 
-
-* **Melchior du Lac**
-* Joan Hérisson
+* **Joan Hérisson**
+* Melchior du Lac
 
 License
 -------
@@ -120,7 +124,6 @@ This project is licensed under the MIT License.
 
 Acknowledgments
 ---------------
-
 
 * Thomas Duigou
 
