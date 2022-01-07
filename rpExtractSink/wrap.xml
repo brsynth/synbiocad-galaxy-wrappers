@@ -23,7 +23,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="sink" format="csv" label="${tool.name} - ${sbml_model.name}" />
+        <data name="sink" format="csv" label="${tool.name} - ${input.name}" />
     </outputs>
     <tests>
         <test>
