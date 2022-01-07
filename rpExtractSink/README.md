@@ -26,7 +26,7 @@ In order to execute tests on rpExtractSink wrapper, you need to:
   - run the tests:
 
   ```bash
-  planemo test --conda_channels conda-forge,brsynth,bioconda --conda_debug tools/BRSynthTools/rpExtractSink/wrap.xml
+  planemo test --conda_channels conda-forge,bioconda --conda_debug tools/synbiocad-galaxy-wrappers/rpExtractSink/wrap.xml
   ```
 
   IMPORTANT: Maybe you will need to remove CONDA from your PATH for the command `planemo test` to run correctly. To do that, you can edit this file `~/.bashrc`, comment this line `PATH="/root/anaconda3/bin:$PATH"` and save changes.

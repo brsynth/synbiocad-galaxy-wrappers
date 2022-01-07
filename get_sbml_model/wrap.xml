@@ -1,0 +1,91 @@
+<tool id="get_sbml_model" name="Pick SBML Model" version="0.0.1">
+    <description>Pick an SBML model among a list</description>
+    <command detect_errors="exit_code"><![CDATA[
+            curl
+                -o -
+                http://bigg.ucsd.edu/static/models/$(input).xml.gz
+            | gunzip > $(sbml_model)
+    ]]></command>
+    <inputs>
+        <param name="input" type="select" label="Strain">
+            <option value="iCN718">(iCN718) Acinetobacter baumannii AYE</option>
+            <option value="iYO844">(iYO844) Bacillus subtilis subsp. subtilis str. 168</option>
+            <option value="iRC1080">(iRC1080) Chlamydomonas reinhardtii</option>
+            <option value="iCN900">(iCN900) Clostridioides difficile 630</option>
+            <option value="iHN637">(iHN637) Clostridium ljungdahlii DSM 13528</option>
+            <option value="iCHOv1_DG44">(iCHOv1_DG44) Cricetulus griseus</option>
+            <option value="iCHOv1">(iCHOv1) Cricetulus griseus</option>
+            <option value="iAF1260b">(iAF1260b) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="iAF1260">(iAF1260) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="iML1515" selected="true">(iML1515) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="iJO1366">(iJO1366) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="iJR904">(iJR904) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="e_coli_core">(e_coli_core) Escherichia coli str. K-12 substr. MG1655</option>
+            <option value="iAF987">(iAF987) Geobacter metallireducens GS-15</option>
+            <option value="iIT341">(iIT341) Helicobacter pylori 26695</option>
+            <option value="iAT_PLT_636">(iAT_PLT_636) Homo sapiens</option>
+            <option value="Recon3D">(Recon3D) Homo sapiens</option>
+            <option value="iAB_RBC_283">(iAB_RBC_283) Homo sapiens</option>
+            <option value="RECON1">(RECON1) Homo sapiens</option>
+            <option value="iYL1228">(iYL1228) Klebsiella pneumoniae subsp. pneumoniae MGH 78578</option>
+            <option value="iNF517">(iNF517) Lactococcus lactis subsp. cremoris MG1363</option>
+            <option value="iAF692">(iAF692) Methanosarcina barkeri str. Fusaro</option>
+            <option value="iMM1415">(iMM1415) Mus musculus</option>
+            <option value="iNJ661">(iNJ661) Mycobacterium tuberculosis H37Rv</option>
+            <option value="iEK1008">(iEK1008) Mycobacterium tuberculosis H37Rv</option>
+            <option value="iLB1027_lipid">(iLB1027_lipid) Phaeodactylum tricornutum CCAP 1055/1</option>
+            <option value="iAM_Pb448">(iAM_Pb448) Plasmodium berghei</option>
+            <option value="iAM_Pc455">(iAM_Pc455) Plasmodium cynomolgi strain B</option>
+            <option value="iAM_Pf480">(iAM_Pf480) Plasmodium falciparum 3D7</option>
+            <option value="iAM_Pk459">(iAM_Pk459) Plasmodium knowlesi strain H</option>
+            <option value="iAM_Pv461">(iAM_Pv461) Plasmodium vivax Sal-1</option>
+            <option value="iJN746">(iJN746) Pseudomonas putida KT2440</option>
+            <option value="iJN1463">(iJN1463) Pseudomonas putida KT2440</option>
+            <option value="iND750">(iND750) Saccharomyces cerevisiae S288C</option>
+            <option value="iMM904">(iMM904) Saccharomyces cerevisiae S288C</option>
+            <option value="STM_v1_0">(STM_v1_0) Salmonella enterica subsp. enterica serovar Typhimurium str. LT2</option>
+            <option value="iYS1720">(iYS1720) Salmonella pan-reactome</option>
+            <option value="iSB619">(iSB619) Staphylococcus aureus subsp. aureus N315</option>
+            <option value="iYS854">(iYS854) Staphylococcus aureus subsp. aureus USA300_TCH1516</option>
+            <option value="iJB785">(iJB785) Synechococcus elongatus PCC 7942</option>
+            <option value="iJN678">(iJN678) Synechocystis sp. PCC 6803</option>
+            <option value="iSynCJ816">(iSynCJ816) Synechocystis sp. PCC 6803</option>
+            <option value="iLJ478">(iLJ478) Thermotoga maritima MSB8</option>
+            <option value="iIS312">(iIS312) Trypanosoma cruzi Dm28c</option>
+            <option value="iIS312_Trypomastigote">(iIS312_Trypomastigote) Trypanosoma cruzi Dm28c</option>
+            <option value="iIS312_Epimastigote">(iIS312_Epimastigote) Trypanosoma cruzi Dm28c</option>
+            <option value="iIS312_Amastigote">(iIS312_Amastigote) Trypanosoma cruzi Dm28c</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="sbml_model" format="xml" label="${tool.name} - ${input}" />
+    </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced with iML1515 model input  -->
+            <param name="input" value="iML1515" />
+            <output name="sink" file="iML1515.xml" ftype="xml" compare="diff"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+
+Authors
+-------
+
+* Joan Hérisson
+
+License
+-------
+
+`MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
+
+Acknowledgments
+---------------
+
+
+* Kenza Bazi-Kabbaj
+
+
+
+    ]]></help>
+</tool>
