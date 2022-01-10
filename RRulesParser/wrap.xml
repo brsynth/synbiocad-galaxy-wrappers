@@ -1,7 +1,7 @@
-<tool id="rrparser" name="RRules Parser" version="2.4.5">
+<tool id="rrparser" name="RRules Parser" version="2.4.6">
     <description>Reaction Rules Parser</description>
     <requirements>
-        <requirement type="package" version="2.4.5">rrparser</requirement>
+        <requirement type="package" version="2.4.6">rrparser</requirement>
     </requirements>
     <stdio>
         <regex match="WARNING:" level="warning" />
