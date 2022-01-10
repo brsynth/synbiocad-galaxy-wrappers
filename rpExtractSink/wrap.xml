@@ -8,7 +8,7 @@
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rpextractsink
-            $(input)
+            '$input'
             '$sink'
             --compartment_id '$adv.compartment_id'
         #if str($adv.remove_dead_end) == "true":
@@ -27,8 +27,8 @@
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical outputs are produced with iML1515 model input  -->
-            <param name="input" value="iML1515" />
+        <!-- test 1: check if identical outputs are produced with iCN718 model input  -->
+            <param name="input" value="iCN718.xml.gz" />
             <output name="sink" file="sink.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
