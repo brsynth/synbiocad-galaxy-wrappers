@@ -70,16 +70,28 @@
         </test>
     </tests>
     <help><![CDATA[
+Pick SBML Model
+=================
+
+Download the selected SBML model.
+
+
+Version
+----------
+0.0.1
+
 
 Authors
 -------
 
 * Joan Hérisson
 
+
 License
 -------
 
 `MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
+
 
 Acknowledgments
 ---------------
