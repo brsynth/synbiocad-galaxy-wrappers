@@ -11,7 +11,7 @@
         python -m lcr_genie
             '$LCR_input'
             out.xlsx
-            --melting_temp '$adv.melting_temp' ;
+            --melting_temp '$adv.melting_temp' &&
         cp out.xlsx '$LCR_output'
     ]]></command>
     <inputs>
