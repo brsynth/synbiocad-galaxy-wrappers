@@ -66,7 +66,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with iML1515 model input  -->
             <param name="input" value="iML1515" />
-            <output name="sink" file="iML1515.xml" ftype="xml" compare="diff"/>
+            <output name="sbml_model" md5="9bf81d20cab5476700697ded95b716d1"/>
         </test>
     </tests>
     <help><![CDATA[
@@ -84,10 +84,7 @@ License
 Acknowledgments
 ---------------
 
-
 * Kenza Bazi-Kabbaj
-
-
 
     ]]></help>
 </tool>
