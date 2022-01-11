@@ -1,5 +1,9 @@
-<tool id="get_sbml_model" name="Pick SBML Model" version="0.0.1">
+<tool id="get_sbml_model" name="Pick SBML Model" version="0.0.1" profile="19.09">
     <description>Pick an SBML model among a list</description>
+    <requirements>
+        <requirement type="package" version="7.81.0">curl</requirement>
+        <requirement type="package" version="1.11">gzip</requirement>
+    </requirements>
     <command detect_errors="exit_code"><![CDATA[
             curl
                 -o -
