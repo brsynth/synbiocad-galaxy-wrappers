@@ -1,7 +1,7 @@
-<tool id="rpFBA" name="FBA" version="5.9.2">
+<tool id="rpfba" name="FBA" version="5.11.1" profile="19.09">
     <description>Perform FBA for the RetroPath2.0 heterologous pathways</description>
 	<requirements>
-        <requirement type="package" version="5.9.2">rptools</requirement>
+        <requirement type="package" version="5.11.1">rptools</requirement>
     </requirements>
     <stdio>
         <regex match="WARNING" level="warning" />
@@ -71,9 +71,10 @@
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical outputs are produced with default parameters  -->
+        <!-- test 1: check if identical outputs are produced with R_BIOMASS__3 biomass name ID and BiGG model (iCN718)  -->
             <param name="pathway" value="rp_001_0001.xml" />
-            <param name="model" value="e_coli_iML1515.sbml" />
+            <param name="model" value="iCN718.xml.gz" />
+            <param name="biomass_rxn_id" value="R_BIOMASS__3" />
             <output name="pathway_with_fba" file="rp_001_0001_with_fba.xml" ftype="xml" compare="diff" sort="true"/>
         </test>
     </tests>
@@ -136,7 +137,7 @@ Project Links
 Version
 ----------
 
-5.9.2
+5.11.1
 
 Authors
 -------
@@ -152,33 +153,10 @@ License
 Acknowledgments
 ---------------
 
-
 * Thomas Duigou
     ]]></help>
     <citations>
-        <citation type="bibtex">
-@article{hucka2016sbml,
-  title={SBML Level 3 package: Groups, Version 1 Release 1},
-  author={Hucka, Michael and Smith, Lucian P},
-  journal={Journal of integrative bioinformatics},
-  volume={13},
-  number={3},
-  pages={8--29},
-  year={2016},
-  publisher={De Gruyter}
-}
-        </citation>
-        <citation type="bibtex">
-@article{ebrahim2013cobrapy,
-  title={COBRApy: COnstraints-based reconstruction and analysis for python},
-  author={Ebrahim, Ali and Lerman, Joshua A and Palsson, Bernhard O and Hyduke, Daniel R},
-  journal={BMC systems biology},
-  volume={7},
-  number={1},
-  pages={74},
-  year={2013},
-  publisher={Springer}
-}
-        </citation>
+        <citation type="doi">10.1186/1752-0509-7-74</citation>
+        <citation type="doi">10.1515/jib-2016-290 </citation>    
     </citations>
 </tool>
