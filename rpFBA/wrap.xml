@@ -8,7 +8,7 @@
     </requirements>
     <stdio>
         <regex match="WARNING" level="warning" />
-        <regex match="ERROR"   level="fatal" />
+        <regex match="ERROR" level="fatal" />
     </stdio>
     <command detect_errors="exit_code"><![CDATA[
 	    python -m rptools.rpfba '$pathway' '$model' '$compartment_id' '$pathway_with_fba'
@@ -36,35 +36,35 @@
     ]]></command>
     <inputs>
 		<param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
-		<param name="model"   type="data" format="xml" label="Model (SBML)" />
+		<param name="model" type="data" format="xml" label="Model (SBML)" />
         <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" />
         <conditional name="input_sim_type">
-            <param name="sim_type"     type="select" label="Constraint based simulation type">
+            <param name="sim_type" type="select" label="Constraint based simulation type">
                 <option value="fraction" selected="true">Fraction of Reaction</option>
                 <option value="fba" >FBA</option>
                 <option value="pfba">Parsimonious FBA</option>
             </param>
 			<when value="fraction">
-				<param name="fraction_of"        type="float" value="0.75"       label="Fraction of the optimum" />
-				<param name="objective_rxn_id"    type="text"  value="rxn_target" label="reaction ID to optimise" />
-				<param name="biomass_rxn_id"    type="text"  value="biomass"    label="biomass reaction ID" />
+				<param name="fraction_of" type="float" value="0.75" label="Fraction of the optimum" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
+				<param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" />
 			</when>
 			<when value="pfba">
-				<param name="fraction_of"        type="float" value="0.95"       label="Fraction of the optimum" />
-				<param name="objective_rxn_id"    type="text"  value="rxn_target" label="reaction ID to optimise" />
+				<param name="fraction_of" type="float" value="0.95" label="Fraction of the optimum" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
 			</when>
 			<when value="fba">
-				<param name="objective_rxn_id"    type="text"  value="rxn_target" label="reaction ID to optimise" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
 			</when>
         </conditional>
-		<section name="adv" title="Advanced Options" expanded="false">
-			<param name="merge"     type="boolean" label="Output the merged model?"       checked="false"   display="checkboxes" />
-            <param name="ignore_orphan_species"         type="boolean" label="Ignore metabolites that are only consumed or produced?"              checked="true" />
-			<param name="log_level"      type="select"  label="Log level">
+	    <section name="adv" title="Advanced Options" expanded="false">
+		    <param name="merge" type="boolean" label="Output the merged model?" checked="false" display="checkboxes" />
+            <param name="ignore_orphan_species" type="boolean" label="Ignore metabolites that are only consumed or produced?" checked="true" />
+		    <param name="log_level" type="select" label="Log level">
                 <option value="debug" >debug</option>
                 <option value="info" >info</option>
 			    <option value="warning" >warning</option>
-			    <option value="error"   selected="true">error</option>
+			    <option value="error" selected="true">error</option>
 			    <option value="critical" >critical</option>
             </param>
 		</section>
