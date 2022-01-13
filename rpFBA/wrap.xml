@@ -35,8 +35,8 @@
             #end if
     ]]></command>
     <inputs>
-        <param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
-        <param name="model" type="data" format="xml" label="Model (SBML)" />
+        <param name="pathway" type="data" format="sbml" label="Pathway (rpSBML)" />
+        <param name="model" type="data" format="sbml" label="Model (SBML)" />
         <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" >
             <validator type="empty_field" message="A compartment ID is required"/>
         </param>
@@ -73,7 +73,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="pathway_with_fba" format="xml" label="${tool.name}(${input_sim_type.sim_type}) - ${pathway.name}" />
+        <data name="pathway_with_fba" format="sbml" label="${tool.name}(${input_sim_type.sim_type}) - ${pathway.name}" />
     </outputs>
     <tests>
         <test>
