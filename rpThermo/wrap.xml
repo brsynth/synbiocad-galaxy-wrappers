@@ -90,17 +90,6 @@ Acknowledgments
 
     ]]></help>
     <citations>
-        <citation type="bibtex">
-@article{noor2013consistent,
-  title={Consistent estimation of Gibbs energy using component contributions},
-  author={Noor, Elad and Haraldsd{\'o}ttir, Hulda S and Milo, Ron and Fleming, Ronan MT},
-  journal={PLoS Comput Biol},
-  volume={9},
-  number={7},
-  pages={e1003098},
-  year={2013},
-  publisher={Public Library of Science}
-}
-        </citation>
+        <citation type="doi">10.1371/journal.pcbi.1003098 </citation>
     </citations>
 </tool>
