@@ -20,7 +20,7 @@
             #if str($adv.ignore_orphan_species) == "true":
                 --ignore_orphan_species
 			#end if
-				--log '$adv.log_level'
+				--log "error"
 			#if str($input_sim_type.sim_type)=="fraction"
 				--biomass_rxn_id '$input_sim_type.biomass_rxn_id'
 				--fraction_of '$input_sim_type.fraction_of'
@@ -70,13 +70,6 @@
 	    <section name="adv" title="Advanced Options" expanded="false">
 		    <param name="merge" type="boolean" label="Output the merged model?" checked="false" display="checkboxes" />
             <param name="ignore_orphan_species" type="boolean" label="Ignore metabolites that are only consumed or produced?" checked="true" />
-		    <param name="log_level" type="select" label="Log level">
-                <option value="debug" >debug</option>
-                <option value="info" >info</option>
-			    <option value="warning" >warning</option>
-			    <option value="error" selected="true">error</option>
-			    <option value="critical" >critical</option>
-            </param>
 		</section>
     </inputs>
     <outputs>
