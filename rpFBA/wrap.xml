@@ -81,7 +81,16 @@
             <param name="pathway" value="rp_001_0001.xml" />
             <param name="model" value="iCN718.xml.gz" />
             <param name="biomass_rxn_id" value="R_BIOMASS__3" />
-            <output name="pathway_with_fba" file="rp_001_0001_with_fba.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="pathway_with_fba" file="rp_001_0001_with_fba.xml" ftype="xml" compare="diff" sort="true" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <!--check fba_fraction value-->
+                    <has_text text='value="5.543029317315827"' />
+                    <!--check fba_biomass value-->
+                    <has_text text='value="1.3135912923635622"' />
+                    <has_n_lines n="408" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
