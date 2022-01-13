@@ -37,7 +37,21 @@
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="input" value="rp_013_0001.xml" />
             <param name="model" value="e_coli_iML1515.sbml" />
-            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <!--check thermo_dG0_prime value-->
+                    <has_text text="-289.68604" />
+                    <has_text text="-294.36576" />
+                    <has_text text="-999.14922" />
+                    <has_text text="-2309.75600" />
+                    <!--check thermo_dGm_prime value-->
+                    <has_text text="-323.91571" />
+                    <has_text text="-260.13609" />
+                    <has_text text="-947.80470" />
+                    <has_n_lines n="483" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
