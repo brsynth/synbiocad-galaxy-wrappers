@@ -37,7 +37,9 @@
     <inputs>
 		<param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
 		<param name="model" type="data" format="xml" label="Model (SBML)" />
-        <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" />
+        <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" >
+            <validator type="empty_field" message="A compartment ID is required"/>
+        </param>
         <conditional name="input_sim_type">
             <param name="sim_type" type="select" label="Constraint based simulation type">
                 <option value="fraction" selected="true">Fraction of Reaction</option>
@@ -46,15 +48,23 @@
             </param>
 			<when value="fraction">
 				<param name="fraction_of" type="float" value="0.75" label="Fraction of the optimum" />
-				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
-				<param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" >
+                    <validator type="empty_field" message="Reaction ID is required"/>
+                </param>
+				<param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
+                    <validator type="empty_field" message="Biomass reaction ID is required"/>
+                </param>
 			</when>
 			<when value="pfba">
 				<param name="fraction_of" type="float" value="0.95" label="Fraction of the optimum" />
-				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" >
+                    <validator type="empty_field" message="Reaction ID is required"/>
+                </param>
 			</when>
 			<when value="fba">
-				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" />
+				<param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" >
+                    <validator type="empty_field" message="Reaction ID is required"/>
+                </param>
 			</when>
         </conditional>
 	    <section name="adv" title="Advanced Options" expanded="false">
