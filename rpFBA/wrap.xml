@@ -26,11 +26,11 @@
                 --fraction_of '$input_sim_type.fraction_of'
             #end if
             #if str($input_sim_type.sim_type)=="pfba"
-                --biomass_rxn_id ''
+                --biomass_rxn_id '$input_sim_type.biomass_rxn_id'
                 --fraction_of '$input_sim_type.fraction_of'
             #end if
             #if str($input_sim_type.sim_type)=="fba"
-                --biomass_rxn_id ''
+                --biomass_rxn_id '$input_sim_type.biomass_rxn_id'
                 --fraction_of 0.0
             #end if
     ]]></command>
