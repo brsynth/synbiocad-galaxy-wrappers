@@ -92,6 +92,42 @@
                 </assert_contents>
             </output>
         </test>
+        <test>
+        <!-- test 2: check if identical outputs are produced with R_BIOMASS__3 biomass name ID and BiGG model (iCN718)  and sim_type=fba-->
+            <param name="pathway" value="rp_001_0001.xml" />
+            <param name="model" value="iCN718.xml.gz" />
+            <param name="biomass_rxn_id" value="R_BIOMASS__3" />
+            <conditional name="input_sim_type">
+                <param name="sim_type" value="fba"/>
+            </conditional>
+            <output name="pathway_with_fba" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <!--check fba_fba value-->
+                    <has_text text="16.47058" />
+                    <not_has_text text="fba_fraction" />
+                    <has_n_lines n="392" />
+                </assert_contents>
+            </output>
+        </test>
+        <test>
+        <!-- test 3: check if identical outputs are produced with R_DM_biomass_c biomass name ID and BiGG model (iCN718)  and sim_type=pfba-->
+            <param name="pathway" value="rp_001_0001.xml" />
+            <param name="model" value="iCN718.xml.gz" />
+            <param name="biomass_rxn_id" value="R_DM_biomass_c" />
+            <conditional name="input_sim_type">
+                <param name="sim_type" value="pfba"/>
+            </conditional>
+            <output name="pathway_with_fba" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <!--check fba_pfba value-->
+                    <has_text text="2623.54248" />
+                    <not_has_text text="fba_fraction" />
+                    <has_n_lines n="392" />
+                </assert_contents>
+            </output>
+        </test>
     </tests>
     <help><![CDATA[
 FBA
