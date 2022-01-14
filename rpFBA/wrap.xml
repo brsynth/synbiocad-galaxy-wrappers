@@ -51,9 +51,6 @@
                 <param name="objective_rxn_id" type="text" value="rxn_target" label="reaction ID to optimise" >
                     <validator type="empty_field" message="Reaction ID is required"/>
                 </param>
-                <param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
-                    <validator type="empty_field" message="Biomass reaction ID is required"/>
-                </param>
             </when>
             <when value="pfba">
                 <param name="fraction_of" type="float" value="0.95" min="0" max="1.0" label="Fraction of the optimum" />
@@ -67,6 +64,9 @@
                 </param>
             </when>
         </conditional>
+        <param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
+            <validator type="empty_field" message="Biomass reaction ID is required"/>
+        </param>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="merge" type="boolean" label="Output the merged model?" checked="false" display="checkboxes" />
             <param name="ignore_orphan_species" type="boolean" label="Ignore metabolites that are only consumed or produced?" checked="true" />
