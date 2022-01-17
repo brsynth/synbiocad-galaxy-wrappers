@@ -34,7 +34,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="sink" format="csv" label="${tool.name}(${input_sim_type.sim_type}) - ${pathway.name}" />
+        <data name="sink" format="csv" label="${tool.name} - ${inchi_name}" />
     </outputs>
     <tests>
         <test>
