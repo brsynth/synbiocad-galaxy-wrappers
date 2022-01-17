@@ -21,7 +21,7 @@
         --temp_k '$adv.temp_k' 
     ]]></command>
     <inputs>
-        <param name="input" type="data" format="xml" label="Input File" />
+        <param name="input" type="data" format="sbml" label="Pathway (rpSBML)" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="ph" type="float" value="7.5" label="Compartment PH of the pathway" />
             <param name="ionic_strength" type="float" value="200.0" label="Compartment ionic strength of the pathway" />
@@ -30,14 +30,13 @@
         </section>
     </inputs>
     <outputs>
-        <data name="pathway_with_thermo" format="xml" label="${tool.name} - ${input.name}" />
+        <data name="pathway_with_thermo" format="sbml" label="${tool.name} - ${input.name}" />
     </outputs>
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="input" value="rp_013_0001.xml" />
-            <param name="model" value="e_coli_iML1515.sbml" />
-            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true" >
+            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="sbml" compare="diff" sort="true" >
                 <assert_contents>
                     <is_valid_xml />
                     <!--check thermo_dG0_prime value-->
