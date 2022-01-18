@@ -26,11 +26,14 @@
             #else
                 --fraction_of '$input_sim_type.fraction_of'
             #end if
-                --biomass_rxn_id '$adv.biomass_rxn_id'
+                --biomass_rxn_id 'biomass_rxn_id'
     ]]></command>
     <inputs>
         <param name="pathway" type="data" format="sbml" label="Pathway (rpSBML)" />
         <param name="model" type="data" format="sbml" label="Model (SBML)" />
+        <param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
+            <validator type="empty_field" message="Biomass reaction ID is required"/>
+        </param>
         <param name="compartment_id" type="text" label="SBML compartment ID" value="MNXC3" >
             <validator type="empty_field" message="A compartment ID is required"/>
         </param>
@@ -61,9 +64,6 @@
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="merge" type="boolean" label="Output the merged model?" checked="false" display="checkboxes" />
             <param name="ignore_orphan_species" type="boolean" label="Ignore metabolites that are only consumed or produced?" checked="true" />
-            <param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
-                <validator type="empty_field" message="Biomass reaction ID is required"/>
-            </param>
         </section>
     </inputs>
     <outputs>
