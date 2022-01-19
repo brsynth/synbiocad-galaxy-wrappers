@@ -64,7 +64,7 @@
     <outputs>
         <data name="model" format="xml" label="${input} - model" />
         <data name="compartments" format="tsv" label="${input} - compartments" />
-        <data name="biomass" format="tsv" label="${input} - biomass rxn ID" />
+        <data name="biomass" format="tsv" label="${input} - biomass reaction ID" />
     </outputs>
     <tests>
         <test>
