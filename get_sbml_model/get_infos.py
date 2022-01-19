@@ -35,7 +35,7 @@ def entry_point():
     if params.biomass:
         reactions = sbml_doc.getModel().getListOfReactions()
         with open(params.biomass, 'w') as f:
-            f.write('#BIOMASS_RXN_ID\n')
+            f.write('#ID\n')
             for rxn in reactions:
                 if 'biomass' in rxn.getId().lower():
                     f.write(f'{rxn.getId()}\n')
