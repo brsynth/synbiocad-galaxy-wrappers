@@ -1,5 +1,5 @@
 <tool id="get_sbml_model" name="Pick SBML Model" version="0.0.1" profile="19.09">
-    <description>Pick an SBML model among a list</description>
+    <description>Get an SBML model (BiGG)</description>
     <requirements>
         <requirement type="package" version="7.81.0">curl</requirement>
         <requirement type="package" version="1.11">gzip</requirement>
@@ -64,7 +64,7 @@
     <outputs>
         <data name="model" format="xml" label="${input}" />
         <data name="compartments" format="tsv" label="${input} (compartments)" />
-        <data name="biomass" format="tsv" label="${input} (biomass reaction ID)" />
+        <data name="biomass" format="tsv" label="${input} (biomass reactions)" />
     </outputs>
     <tests>
         <test>
