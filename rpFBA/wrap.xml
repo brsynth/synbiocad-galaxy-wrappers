@@ -31,10 +31,10 @@
     <inputs>
         <param name="pathway" type="data" format="sbml" label="Pathway (rpSBML)" />
         <param name="model" type="data" format="sbml" label="Model (SBML)" />
-        <param name="biomass_rxn_id" type="text" value="biomass" label="biomass reaction ID" >
+        <param name="biomass_rxn_id" type="text" label="biomass reaction ID" value="" >
             <validator type="empty_field" message="Biomass reaction ID is required"/>
         </param>
-        <param name="compartment_id" type="text" label="SBML compartment ID" value="c" >
+        <param name="compartment_id" type="text" label="SBML compartment ID" value="" >
             <validator type="empty_field" message="A compartment ID is required"/>
         </param>
         <conditional name="input_sim_type">
