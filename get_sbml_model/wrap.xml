@@ -62,9 +62,9 @@
         </param>
     </inputs>
     <outputs>
-        <data name="model" format="xml" label="${input} - model" />
-        <data name="compartments" format="tsv" label="${input} - compartments" />
-        <data name="biomass" format="tsv" label="${input} - biomass reaction ID" />
+        <data name="model" format="xml" label="${input}" />
+        <data name="compartments" format="tsv" label="${input} (compartments)" />
+        <data name="biomass" format="tsv" label="${input} (biomass reaction ID)" />
     </outputs>
     <tests>
         <test>
