@@ -39,7 +39,7 @@ Sink from SBML
 
 Sink refers to the collection of chemical species used by the restrosynthesis algorithm of RetroPath2.0 to finish metabolic route exploration. This tool uses an SBML file of the desired chassis organism, parses all the molecules within a specified compartment (example: cytoplasm, Golgi apparatus, nucleus, etc) and uses its MIRIAM annotation to find their InChI structures. You can use "Remove dead-end metabolites using FVA evaluation? to conduct Flux Variability Analysis to remove metabolites that lack the requisite flux that would account for their production or consumption within the metabolic network.
 
-In the advanced options, one can specify the compartment from which the tool will extract the chemical species. The default is MNXC3, the MetaNetX code for the cytoplasm. If the user wishes to upload an SBML file from another source, then this value must be changed.
+In the advanced options, one can specify the compartment from which the tool will extract the chemical species. The default is 'c', the BiGG code for the cytoplasm. If the user wishes to upload an SBML file from another source, then this value must be changed.
 
 The results are written to a RetroPath2.0 friendly CSV file format that can be used as sink input.
 
@@ -50,11 +50,11 @@ Input
 Required:
 
 * **input_sbml**\ : (string) Path to the input SBML file
+* **compartment_id**\ : (string, default: c) Specify the compartment from which to extract the sink molecules. The default are for BiGG models
 
 Advanced options:
 
 * **remove_dead_end**\ : (boolean, default: True) Perform FVA evaluation to remove dead end metabolites
-* **compartment_id**\ : (string, default: MNXC3) Specify the compartment from which to extract the sink molecules. The default are for MetaNetX files
 
 Output
 ------
