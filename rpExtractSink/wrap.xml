@@ -10,20 +10,20 @@
         python -m rptools.rpextractsink
             '$input'
             '$sink'
-            --compartment_id '$adv.compartment_id'
+            --compartment_id '$compartment_id'
         #if str($adv.remove_dead_end) == "true":
             --remove_dead_end
         #end if
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" optional="false" label="Strain" />
+        <param name="compartment_id" type="text" value="c" label="SBML compartment ID" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="compartment_id" type="text" value="c" label="SBML compartment ID" />
             <param name="remove_dead_end" type="boolean" checked="true" label="Remove dead-end metabolites using FVA evaluation?" />
         </section>
     </inputs>
     <outputs>
-        <data name="sink" format="csv" label="${tool.name} - ${input.name}" />
+        <data name="sink" format="csv" metadata_source="input" label="Sink - ${input.name}" />
     </outputs>
     <tests>
         <test>
