@@ -3,10 +3,12 @@
     <requirements>
         <requirement type="package" version="7.81.0">curl</requirement>
         <requirement type="package" version="1.11">gzip</requirement>
+        <requirement type="package" version="5.19.2">python-libsbml</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         curl -o - 'http://bigg.ucsd.edu/static/models/$(input).xml.gz'
-        | gunzip > '$sbml_model'
+        | gunzip > '$model';
+        python '$__tool_directory__/'get_infos.py '$model' --comp '$compartments' --biomass '$biomass'
     ]]></command>
     <inputs>
         <param name="input" type="select" label="Strain">
@@ -60,13 +62,17 @@
         </param>
     </inputs>
     <outputs>
-        <data name="sbml_model" format="xml" label="${tool.name} - ${input}" />
+        <data name="model" format="xml" label="${input} - model" />
+        <data name="compartments" format="tsv" label="${input} - compartments" />
+        <data name="biomass" format="tsv" label="${input} - biomass rxn ID" />
     </outputs>
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced with iML1515 model input  -->
             <param name="input" value="iML1515" />
-            <output name="sbml_model" md5="9bf81d20cab5476700697ded95b716d1"/>
+            <output name="model" md5="9bf81d20cab5476700697ded95b716d1"/>
+            <output name="comp" md5="1cd21cd325d4ec568261d2ff2382fa0d"/>
+            <output name="biomass" md5="79b517cec0deb85a48f6475a5de12128"/>
         </test>
     </tests>
     <help><![CDATA[
