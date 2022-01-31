@@ -1,7 +1,10 @@
-<tool id="DNAWeaver" name="DNA Weaver" version="1.0.1">
+<tool id="DNAWeaver" name="DNA Weaver" version="@TOOL_VERSION@" profile="19.09">
     <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
+    <macros>
+        <token name="@TOOL_VERSION@">1.0.2</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="1.0.1">dnaweaver_synbiocad</requirement>
+        <requirement type="package" version="@TOOL_VERSION@1">dnaweaver_synbiocad</requirement>
     </requirements>
     <stdio>
 	    <regex match="WARNING:" level="warning" />
@@ -12,7 +15,7 @@
         '$input'
         output.xlsx
         '$method'
-        --constructs '$adv.max_constructs'
+        --nb_constructs '$adv.max_constructs'
         && cp output.xlsx '$output'
     ]]></command>
     <inputs>

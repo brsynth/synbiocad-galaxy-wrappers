@@ -1,7 +1,10 @@
-<tool id="rpThermo" name="Thermo" version="5.9.2">
+<tool id="rpThermo" name="Thermo" version="@TOOL_VERSION@" profile="19.09">
     <description>Calculate the formation energy of chemical species and the Gibbs free energy of their reactions and pathways in an SBML</description>
+    <macros>
+        <token name="@TOOL_VERSION@">5.12.1</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="5.9.2">rptools</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
     </requirements>
     <stdio>
         <regex match="WARNING:" level="warning" />
@@ -12,18 +15,18 @@
         python -m rptools.rpthermo
         '$input'
         '$pathway_with_thermo' 
-        --ph '$adv.ph'
+        --pH '$adv.ph'
         --ionic_strength '$adv.ionic_strength'
         --pMg '$adv.pMg'
-        --temp_k '$adv.temp_k' 
+        <!-- --temp_k '$adv.temp_k'  -->
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" label="Input File" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="ph" type="float" value="7.5" label="Compartment PH of the pathway" />
-            <param name="ionic_strength" type="float" value="200.0" label="Compartment ionic strength of the pathway" />
-            <param name="pMg" type="float" value="10.0" label="Compartment pMg of the pathway" />
-            <param name="temp_k" type="float" value="298.15" label="Compartment temperature in Kelvin" />
+            <param name="ph" type="float" value="7.5" label="Compartment pH of the pathway" />
+            <param name="ionic_strength" type="float" value="0.25" label="Compartment ionic strength of the pathway" />
+            <param name="pMg" type="float" value="3.0" label="Compartment pMg of the pathway" />
+            <!-- <param name="temp_k" type="float" value="298.15" label="Compartment temperature in Kelvin" /> -->
         </section>
     </inputs>
     <outputs>
