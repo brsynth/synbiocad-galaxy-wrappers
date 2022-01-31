@@ -6,43 +6,25 @@
     <requirements>
         <requirement type="package" version="0.5">echo</requirement>
     </requirements>
-    <stdio>
-        <regex match="WARNING" level="warning" />
-        <regex match="ERROR" level="fatal" />
-    </stdio>
     <command detect_errors="exit_code"><![CDATA[
-        #if str($adv.inchi_full_name) != "" and str($adv.inchi_ref) == ""
-            echo -e '"Name","InChI","Full Name"\n"$inchi_name","$source_inchi","$adv.inchi_full_name"' > '$sink'
-        #elif str($adv.inchi_full_name) == "" and str($adv.inchi_ref) != ""
-            echo -e '"Name","InChI","Reference"\n"$inchi_name","$source_inchi","$adv.inchi_ref"' > '$sink'
-        #elif str($adv.inchi_full_name) != "" and str($adv.inchi_ref) != ""
-            echo -e '"Name","InChI","Full Name","Reference"\n"$inchi_name","$source_inchi","$adv.inchi_full_name","$adv.inchi_ref"' > '$sink'
-        #else
-            echo -e '"Name","InChI"\n"$inchi_name","$source_inchi"' > '$sink'
-        #end if
+        echo -e '"name","inchi"\n"$source_name","$source_inchi"' > '$sink'
     ]]></command>
     <inputs>
         <param name="source_inchi" type="text" label="Source InChI" optional="false">
             <validator type="empty_field" message="InChI string is required"/>
         </param>
-        <param name="inchi_name" type="text" label="InChI name" optional="false">
-            <validator type="empty_field" message="InChI name is required"/>
+        <param name="source_name" type="text" value="target" label="Source name">
+            <validator type="empty_field" message="Source name is required"/>
         </param>
-        <section name="adv" title="Advanced Options" expanded="false">
-            <param name="inchi_full_name" type="text" label="InChI full name"/>
-            <param name="inchi_ref" type="text" label="InChI Reference"/>
-        </section>
     </inputs>
     <outputs>
-        <data name="sink" format="csv" label="${tool.name} - ${inchi_name}" />
+        <data name="sink" format="csv" label="${tool.name} - ${source_name}" />
     </outputs>
     <tests>
         <test>
         <!-- test 1: check if identical outputs are produced -->
             <param name="source_inchi" value="InChI=1S/C5H14NO/c1-6(2,3)4-5-7/h7H,4-5H2,1-3H3/q+1" />
-            <param name="inchi_name" value="Choline" />
-            <param name="adv.inchi_full_name" value="Choline chloride" />
-            <param name="adv.inchi_ref" value="67-48-1" />
+            <param name="source_name" value="Choline" />
             <output name="sink" file="sink_to-detect_choline.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
@@ -57,16 +39,11 @@ Input
 
 Required:
 
-
 * **source_inchi**\ : (string) Inchi string
-* **inchi_name**\ : (string) Inchi name
 
+Optional:
 
-Advanced options:
-
-
-* **inchi_full_name**\ : (string) Inchi full name
-* **inchi_ref**\ : (string)  Inchi Reference
+* **source_name**\ : (string) Inchi name (Default=target)
 
 
 Version
