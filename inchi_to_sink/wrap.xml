@@ -12,13 +12,13 @@
     </stdio>
     <command detect_errors="exit_code"><![CDATA[
         #if str($adv.inchi_full_name) != "" and str($adv.inchi_ref) == ""
-            echo '"Name","InChI","Full Name"\n"$inchi_name","$source_inchi","$inchi_full_name"' > '$sink'
+            echo -e '"Name","InChI","Full Name"\n"$inchi_name","$source_inchi","$adv.inchi_full_name"' > '$sink'
         #elif str($adv.inchi_full_name) == "" and str($adv.inchi_ref) != ""
-            echo '"Name","InChI","Reference"\n"$inchi_name","$source_inchi","$inchi_ref"' > '$sink'
+            echo -e '"Name","InChI","Reference"\n"$inchi_name","$source_inchi","$adv.inchi_ref"' > '$sink'
         #elif str($adv.inchi_full_name) != "" and str($adv.inchi_ref) != ""
-            echo '"Name","InChI","Full Name","Reference"\n"$inchi_name","$source_inchi","$inchi_full_name","$inchi_ref"' > '$sink'
+            echo -e '"Name","InChI","Full Name","Reference"\n"$inchi_name","$source_inchi","$adv.inchi_full_name","$adv.inchi_ref"' > '$sink'
         #else
-            echo '"Name","InChI""\n"$inchi_name","$source_inchi"' > '$sink'
+            echo -e '"Name","InChI"\n"$inchi_name","$source_inchi"' > '$sink'
         #end if
     ]]></command>
     <inputs>
@@ -68,11 +68,6 @@ Advanced options:
 * **inchi_full_name**\ : (string) Inchi full name
 * **inchi_ref**\ : (string)  Inchi Reference
 
-
-Project Links
----------------------
-
-* `GitHub <https://github.com/brsynth/rptools/tree/master/rptools/rpfba>`_
 
 Version
 ----------
