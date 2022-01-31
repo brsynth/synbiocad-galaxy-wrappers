@@ -1,0 +1,60 @@
+<tool id="inchi_to_sink" name="Inchi to sink" version="@TOOL_VERSION@" profile="19.09">
+    <description>Convert InChI input to CSV sink</description>
+    <macros>
+        <token name="@TOOL_VERSION@">1.0.0</token>
+    </macros>
+    <requirements>
+        <requirement type="package" version="0.5">echo</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        echo -e '"name","inchi"\n"$source_name","$source_inchi"' > '$sink'
+    ]]></command>
+    <inputs>
+        <param name="source_inchi" type="text" label="Source InChI" optional="false">
+            <validator type="empty_field" message="InChI string is required"/>
+        </param>
+        <param name="source_name" type="text" value="target" label="Source name">
+            <validator type="empty_field" message="Source name is required"/>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="sink" format="csv" label="${tool.name} - ${source_name}" />
+    </outputs>
+    <tests>
+        <test>
+        <!-- test 1: check if identical outputs are produced -->
+            <param name="source_inchi" value="InChI=1S/C5H14NO/c1-6(2,3)4-5-7/h7H,4-5H2,1-3H3/q+1" />
+            <param name="source_name" value="Choline" />
+            <output name="sink" file="sink_to-detect_choline.csv" ftype="csv" compare="diff"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+Inchi to sink
+===============
+
+Convert Inchi string to CSV sink file for Retropath2.0 Input.
+
+Input
+-----
+
+Required:
+
+* **source_inchi**\ : (string) Inchi string
+
+Optional:
+
+* **source_name**\ : (string) Inchi name (Default=target)
+
+
+Version
+----------
+
+1.0.0
+
+Authors
+-------
+
+* **Kenza BAZI KABBAJ**
+
+    ]]></help>
+</tool>
