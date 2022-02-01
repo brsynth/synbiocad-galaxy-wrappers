@@ -1,5 +1,5 @@
 <tool id="rrparser" name="RRules Parser" version="@TOOL_VERSION@" profile="19.09">
-    <description>Reaction Rules Parser</description>
+    <description>Retrieve the reaction rules from RetroRules</description>
     <macros>
         <token name="@TOOL_VERSION@">2.4.6</token>
     </macros>
