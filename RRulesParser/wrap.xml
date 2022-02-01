@@ -22,8 +22,8 @@
         --diameters '$diameters'
         --output-format csv
         #if str($compress) == "true":
-            --outfile '$out_rules'.csv.gz ;
-            mv '$out_rules'.csv.gz '$out_rules'
+            --outfile '$out_rules'.csv.gz
+            && mv '$out_rules'.csv.gz '$out_rules'
         #else:
             --outfile '$out_rules'
         #end if
