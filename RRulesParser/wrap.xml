@@ -86,20 +86,18 @@ Input
 * **input-format**: (string) Valid options: csv, tsv. Format of the input file
 * **rule-type**: (string) Valid options: retro, forward, all. Return the rules that are in reverse, forward or both direction
 * **diameters**: (integer list) Valid options: 2, 4, 6, 8, 10, 12, 14, 16. The diameter of the rules to return
-* **outdir**: (string) Path where output files will be written
-* **outfile**: (string) Path where output files will be written
 * **output-format**: (string) Valid options: csv, tar.gz. Format of the returned file
 
 Ouput
 -----
 
-* **output**: (string): Path of the output file. Either a compressed tar.gz (containing a csv) or csv list of reaction rules that are in a RetroPath2.0 friendly format
+* **outfile**: (string): Path of the output file. Either a compressed tar.gz (containing a csv) or csv list of reaction rules that are in a RetroPath2.0 friendly format
 
 
 Version
 -------
 
-v2.4.5
+v2.4.6
 
 Authors
 -------
@@ -111,7 +109,7 @@ Authors
 License
 -------
 
-This project is licensed under the MIT License - see the `LICENSE <LICENSE>`_ file for details
+This project is licensed under the MIT License - see the `LICENSE <https://github.com/brsynth/RRParser/blob/master/LICENSE>`_ file for details
 
 Acknowledgments
 ---------------
