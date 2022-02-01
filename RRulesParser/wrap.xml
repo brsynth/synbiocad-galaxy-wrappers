@@ -8,7 +8,7 @@
     </requirements>
     <stdio>
         <regex match="WARNING:" level="warning" />
-	    <regex match="ERROR:" level="fatal" />
+        <regex match="ERROR:" level="fatal" />
     </stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rrparser
