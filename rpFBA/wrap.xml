@@ -1,7 +1,7 @@
 <tool id="rpfba" name="FBA" version="@TOOL_VERSION@" profile="19.09">
     <description>Perform FBA for the RetroPath2.0 heterologous pathways</description>
     <macros>
-        <token name="@TOOL_VERSION@">5.12.0</token>
+        <token name="@TOOL_VERSION@">5.12.1</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
@@ -15,7 +15,7 @@
             #if str($adv.merge) == "true":
                 --merge
             #end if
-                --objective_rxn_id '$input_sim_type.objective_rxn_id'
+                --objective_rxn_id '$objective_rxn_id'
                 --sim '$input_sim_type.sim_type'
             #if str($adv.ignore_orphan_species) == "true":
                 --ignore_orphan_species
