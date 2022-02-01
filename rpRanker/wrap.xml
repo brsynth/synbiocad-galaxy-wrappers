@@ -1,7 +1,10 @@
-<tool id="rpranker" name="Rank Pathways" version="5.10.0">
+<tool id="rpranker" name="Rank Pathways" version="@TOOL_VERSION@">
     <description>Rank heterologous pathways according to their global score</description>
+    <macros>
+        <token name="@TOOL_VERSION@">5.12.0</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="5.10.0">rptools</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
     </requirements>
     <stdio>
 	    <regex match="WARNING" level="warning" />
@@ -9,14 +12,15 @@
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rprank
-        --pathways
-        #for $input in $pathway_collection
-            '$input'
-        #end for
+            --pathways '$input'
         > '$sorted_pathways'
     ]]></command>
     <inputs>
-        <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways" />
+        <param name="pathway" type="data" format="sbml" label="Pathway (rpSBML)" />
+        <!-- <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways" /> -->
+        <!-- #for $input in $pathway_collection
+            '$input'
+        #end for -->
     </inputs>
     <outputs>
         <data name="sorted_pathways" format="csv" label="Ranked Pathways" />
