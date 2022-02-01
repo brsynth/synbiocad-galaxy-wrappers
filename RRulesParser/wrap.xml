@@ -70,7 +70,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with compress option -->
             <param name="compress" value="True" />
-            <output name="out_rules" file="rules.csv.gz" compare="diff" decompress="True"/>
+            <output name="out_rules" md5="7acc27b1e9ca404ed65e6f6646d0c57d"/>
         </test>
     </tests>
     <help><![CDATA[
