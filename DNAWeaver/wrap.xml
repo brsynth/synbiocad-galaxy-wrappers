@@ -1,4 +1,4 @@
-<tool id="DNAWeaver" name="DNA Weaver" version="@TOOL_VERSION@" profile="19.09">
+<tool id="dnaweaver" name="DNA Weaver" version="@TOOL_VERSION@" profile="19.09">
     <description>Given a SBOL input, calculate assembly parts for Gibson or Golden Gate</description>
     <macros>
         <token name="@TOOL_VERSION@">1.0.2</token>
