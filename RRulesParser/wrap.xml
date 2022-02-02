@@ -73,6 +73,14 @@
             <param name="diameters" value="2,4,6"/>
             <output name="out_rules" md5="12a55e1a3c7822a35ed799afa59b2aa2"/>
         </test>
+        <test>
+        <!-- test 3: check if identical outputs are produced with csv input rules file-->
+            <conditional name="rules">
+                <param name="type" value="other"/>
+                <param name="file" value="rules_in.csv" />
+            </conditional>
+            <output name="out_rules" file="rules_out.csv" ftype="csv" compare="diff"/>
+        </test>
     </tests>
     <help><![CDATA[
 RRulesParser
