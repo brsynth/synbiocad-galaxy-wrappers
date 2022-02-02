@@ -68,9 +68,13 @@
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical outputs are produced with compress option -->
-            <param name="compress" value="True" />
-            <output name="out_rules" md5="7acc27b1e9ca404ed65e6f6646d0c57d"/>
+        <!-- test 1: check if identical outputs are produced with default parameters-->
+            <output name="out_rules" md5="54806bd44f7a8414e78439e3bb99e6d8"/>
+        </test>
+        <test>
+        <!-- test 2: check if identical outputs are produced with diameters=2,4,6-->
+            <param name="diameters" value="2,4,6"/>
+            <output name="out_rules" md5="12a55e1a3c7822a35ed799afa59b2aa2"/>
         </test>
     </tests>
     <help><![CDATA[
