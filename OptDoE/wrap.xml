@@ -164,7 +164,7 @@
             <output name="constructs" >
                 <assert_contents>
                     <is_valid_xml />
-                    <has_n_lines n="6756" />
+                    <has_size value="451293" delta="100" />
                 </assert_contents>
             </output>
         </test>
