@@ -1,7 +1,10 @@
-<tool id="OptDoE" name="Design of Experiment" version="2.0.1">
+<tool id="OptDoE" name="Design of Experiment" version="@TOOL_VERSION@" profile="19.09">
     <description>An optimal design of experiments (DoE) base package for synthetic biology</description>
+    <macros>
+        <token name="@TOOL_VERSION@">2.0.2</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="v2.0.1">doebase</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">doebase</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m doebase
