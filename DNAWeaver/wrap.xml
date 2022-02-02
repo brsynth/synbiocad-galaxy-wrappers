@@ -36,7 +36,11 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="input" value="constructs_lycopene.xml" />
-            <output name="output" file="assembly_plan_lycopene.xlsx" ftype="xlsx" compare="sim_size"/>
+            <output name="output" >
+                <assert_contents>
+                    <has_n_lines n="306" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
@@ -105,7 +109,7 @@ For constructs with repeated parts and other homologies (such as, in the example
 Version
 -------
 
-1.0.1
+1.0.2
 
 Authors
 -------
