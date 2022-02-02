@@ -59,7 +59,7 @@
     <outputs>
         <data name="out_rules" format="csv" label="${tool.name}(${rules.type}, d=$diameters)" >
             <change_format>
-                <when input="compress" format="csv.gz" value="true"/>
+                <when input="compress" format="tar" value="true"/>
             </change_format>
         </data>
     </outputs>
