@@ -26,7 +26,7 @@
         <param name="genes_file" type="data" format="csv" label="Genes" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="genes_sbol_file" type="data" format="xml" optional="true" label="Optimised Genes" />
-            <param name="ref_parts_file" type="data" format="xml" value="None" optional="true" label="Ref Parts (default: E. coli compliant)"/>
+            <param name="ref_parts_file" type="data" format="csv" value="None" optional="true" label="Ref Parts (default: E. coli compliant)"/>
             <param name="libsize" type="integer" value="32" min="32" label="Maximal library size" />
             <param name="get_sequences" type="boolean" checked="true" label="Get sequences" />
             <param name="backtranslate" type="boolean" checked="true" label="Back translate" />
@@ -217,16 +217,16 @@ Input
 
 Required:
 
-* **genes_file**\ : (string) Path to either tar.xz input collection of rpSBML files or a single rpSBML file.
+* **genes_file**\ : (string) Genes File (csv).
 
 Advanced options:
 
-* **genes_sbol_file**\ : (string) Path to the optimised gens file (SBOL)
+* **genes_sbol_file**\ : (string) SBOL file containing optimised versions of the genes (RBS, etc)
 * **ref_parts_file**\ : (string) CSV with the genetic parts. Default (if left empty) is the above table. To generate a new compatible CSV file, please use the "OptDoE Parts Reference Generator" tool
 * **libsize**\ : (integer, default: 32) Maximal library size 
 * **get_sequences**\ : (boolean, default: True)
 * **backtranslate**\ : (boolean, default: True)
-* **codon_table**\ : (text, default: Eecoli.cut)
+* **codon_table**\ : (text, default: Eecoli.cut) Codon Usage Table. See `codon_table <https://www.ebi.ac.uk/seqdb/confluence/display/JDSAT/EMBOSS+backtranseq+Help+and+Documentation#EMBOSSbacktranseqHelpandDocumentation-WebServices>`_ for more codons.
 
 Output
 ------
