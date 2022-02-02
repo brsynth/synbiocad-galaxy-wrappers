@@ -172,7 +172,8 @@
     <help><![CDATA[
 OptDoE
 ===========
-This tool takes as input a rpSBML file, that contains for each heterologous reaction a ranked list of UniProt identifiers for the sequences, and the list of links to the DNA registry SynBioHub for the desired vector backbones, resistance cassette, and promoters (generated using the tool "OptDoE Parts Reference Generator"). An optimal design of experiments is performed by using OptBioDes based on logistic regression analysis with an assumed linear model for the response. The design is evaluated by its D-efficiency, defined as:
+
+An optimal design of experiments is performed by using OptBioDes based on logistic regression analysis with an assumed linear model for the response. The design is evaluated by its D-efficiency, defined as:
 
 .. math:: D_{eff} = \frac{1}{n}\abs{X^{T}X}^{\frac{1}{p}}
 
