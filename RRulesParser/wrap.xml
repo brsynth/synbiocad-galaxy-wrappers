@@ -92,15 +92,15 @@ Input
 -----
 
 * **rules-file**: (string) Filename of reaction rules
-* **input-format**: (string) Valid options: csv, tsv. Format of the input file
-* **rule-type**: (string) Valid options: retro, forward, all. Return the rules that are in reverse, forward or both direction
-* **diameters**: (integer list) Valid options: 2, 4, 6, 8, 10, 12, 14, 16. The diameter of the rules to return
-* **output-format**: (string) Valid options: csv, tar.gz. Format of the returned file
+* **input-format**: (string) input file format (default: csv)
+* **rule-type**: (string) {all,retro,forward} rule usage to filter from rules file
+* **diameters**: (integer list) diameter of the sphere including the atoms around the reacting center (default is including all values: 2,4,6,8,10,12,14,16). The higher is the diameter, the more specific are the rules
+* **output-format**: (string) {csv,tsv} output file format (default: csv)
 
 Ouput
 -----
 
-* **outfile**: (string): Path of the output file. Either a compressed tar.gz (containing a csv) or csv list of reaction rules that are in a RetroPath2.0 friendly format
+* **outfile**: (string): file where results are written. If file ends with '.gz', it will be gzipped.
 
 
 Version
