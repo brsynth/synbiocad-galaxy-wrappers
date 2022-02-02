@@ -1,13 +1,5 @@
 # RRulesParser Galaxy wrapper
 
-
-<!-- ## Prerequisites
-
-As RetroRules is a docker galaxy tool, a Docker engine has to be reachable from Galaxy host.
-
-* The Galaxy Project - [Galaxy](https://galaxyproject.org)
-* Docker - [Install](https://docs.docker.com/install/) -->
-
 The open-source software package RRulesParser is available here : https://github.com/brsynth/RRParser
 
 ## Installing
@@ -15,7 +7,7 @@ The open-source software package RRulesParser is available here : https://github
 * Create a new section in the Galaxy config file `config/tool_conf.xml` and paste the following:
 ```
 <section id="sbc-rs" name="SynBioCAD RetroSynthesis">
-    <tool file="BRSynthTools/RRulesParser/wrap.xml" />
+    <tool file="synbiocad-galaxy-wrappers/RRulesParser/wrap.xml" />
 </section>
 ```
 
@@ -23,12 +15,6 @@ The open-source software package RRulesParser is available here : https://github
 ```
 <destination id="local" runner="local" />
 ```
-<!-- <destination id="docker" runner="local">
-  <param id="docker_enabled">true</param>
-  <param id="docker_sudo">false</param>
-  <param id="docker_set_user">root</param>
-  <param id="docker_auto_rm">true</param>
-</destination> -->
 
 And that the destination of the tool is referred under the tools tag in `config/job_conf.xml`:
 
@@ -57,10 +43,12 @@ In order to execute tests on RRulesParser wrapper, you need to:
   pip install -U planemo
   ```
 
+  Upgrade pip if needed.
+
   - run the tests:
 
   ```bash
-  planemo test --conda_channels conda-forge,brsynth --conda_debug tools/BRSynthTools/RRulesParser/wrap.xml
+  planemo test --conda_channels conda-forge tools/synbiocad-galaxy-wrappers/RRulesParser/wrap.xml --biocontainers --no_conda_auto_init
   ```
 
   IMPORTANT: Maybe you will need to remove CONDA from your PATH for the command `planemo test` to run correctly. To do that, you can edit this file `~/.bashrc`, comment this line `PATH="/root/anaconda3/bin:$PATH"` and save changes.
