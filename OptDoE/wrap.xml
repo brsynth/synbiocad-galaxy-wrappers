@@ -1,7 +1,10 @@
-<tool id="OptDoE" name="Design of Experiment" version="2.0.1">
+<tool id="optdoe" name="Design of Experiment" version="@TOOL_VERSION@" profile="19.09">
     <description>An optimal design of experiments (DoE) base package for synthetic biology</description>
+    <macros>
+        <token name="@TOOL_VERSION@">2.0.2</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="v2.0.1">doebase</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">doebase</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m doebase
@@ -22,11 +25,11 @@
     <inputs>
         <param name="genes_file" type="data" format="csv" label="Genes" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="genes_sbol_file" type="data" format="xml" label="Optimised Genes" optional="true"/>
-            <param name="ref_parts_file" type="data" format="xml" value="None" label="Ref Parts (default: E. coli compliant)" optional="true"/>
-            <param name="libsize" type="integer" value="32" label="Maximal library size" />
-            <param name="get_sequences" type="boolean" label=" Get sequences" checked="true" />
-            <param name="backtranslate" type="boolean" label="Back translate" checked="true" />
+            <param name="genes_sbol_file" type="data" format="xml" optional="true" label="Optimised Genes" />
+            <param name="ref_parts_file" type="data" format="csv" value="None" optional="true" label="Ref Parts (default: E. coli compliant)"/>
+            <param name="libsize" type="integer" value="32" min="32" label="Maximal library size" />
+            <param name="get_sequences" type="boolean" checked="true" label="Get sequences" />
+            <param name="backtranslate" type="boolean" checked="true" label="Back translate" />
             <param name="codon_table" type="select" label="Codon Table">
                 <option value="Eecoli.cut">Escherichia coli K12</option>
                 <option value="Ehuman.cut">Homo sapiens</option>
@@ -158,13 +161,19 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="genes_file" value="genes_lycopene.csv" />
-            <output name="constructs" file="constructs_lycopene.xml" ftype="xml" compare="sim_size"/>
+            <output name="constructs" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <has_size value="451293" delta="100" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
 OptDoE
 ===========
-This tool takes as input a rpSBML file, that contains for each heterologous reaction a ranked list of UniProt identifiers for the sequences, and the list of links to the DNA registry SynBioHub for the desired vector backbones, resistance cassette, and promoters (generated using the tool "OptDoE Parts Reference Generator"). An optimal design of experiments is performed by using OptBioDes based on logistic regression analysis with an assumed linear model for the response. The design is evaluated by its D-efficiency, defined as:
+
+An optimal design of experiments is performed by using OptBioDes based on logistic regression analysis with an assumed linear model for the response. The design is evaluated by its D-efficiency, defined as:
 
 .. math:: D_{eff} = \frac{1}{n}\abs{X^{T}X}^{\frac{1}{p}}
 
@@ -214,16 +223,16 @@ Input
 
 Required:
 
-* **genes_file**\ : (string) Path to either tar.xz input collection of rpSBML files or a single rpSBML file.
+* **genes_file**\ : (string) Genes File (csv).
 
 Advanced options:
 
-* **genes_sbol_file**\ : (string) Path to the optimised gens file (SBOL)
+* **genes_sbol_file**\ : (string) SBOL file containing optimised versions of the genes (RBS, etc)
 * **ref_parts_file**\ : (string) CSV with the genetic parts. Default (if left empty) is the above table. To generate a new compatible CSV file, please use the "OptDoE Parts Reference Generator" tool
 * **libsize**\ : (integer, default: 32) Maximal library size 
 * **get_sequences**\ : (boolean, default: True)
 * **backtranslate**\ : (boolean, default: True)
-* **codon_table**\ : (text, default: Eecoli.cut)
+* **codon_table**\ : (text, default: Eecoli.cut) Codon Usage Table. See `codon_table <https://www.ebi.ac.uk/seqdb/confluence/display/JDSAT/EMBOSS+backtranseq+Help+and+Documentation#EMBOSSbacktranseqHelpandDocumentation-WebServices>`_ for more codons.
 
 Output
 ------
