@@ -1,4 +1,4 @@
-<tool id="OptDoE" name="Design of Experiment" version="@TOOL_VERSION@" profile="19.09">
+<tool id="optdoe" name="Design of Experiment" version="@TOOL_VERSION@" profile="19.09">
     <description>An optimal design of experiments (DoE) base package for synthetic biology</description>
     <macros>
         <token name="@TOOL_VERSION@">2.0.2</token>
