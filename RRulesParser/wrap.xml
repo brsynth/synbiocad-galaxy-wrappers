@@ -30,7 +30,7 @@
     ]]></command>
     <inputs>
         <conditional name="rules">
-            <param name="type" type="select" optional="True" label="Rule Type" help="">
+            <param name="type" type="select" label="Rule Type" help="">
                 <option value="retro" selected="True">RetroRules (retro)</option>
                 <option value="forward">RetroRules (forward)</option>
                 <option value="all">RetroRules (all)</option>
@@ -42,9 +42,6 @@
                     <option value="csv" selected="True">csv</option>
                     <option value="tsv">tsv</option>
                 </param>
-            </when>
-            <when value="retro|forward|all">
-                <param name="file" type="data" format="csv" optional="True" label="Rules File"/>
             </when>
         </conditional>
         <param name="diameters" type="select" display="checkboxes" multiple="True" label="Select the diameters of the reactions rules">
