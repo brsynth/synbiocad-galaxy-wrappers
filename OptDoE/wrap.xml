@@ -161,7 +161,12 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="genes_file" value="genes_lycopene.csv" />
-            <output name="constructs" file="constructs_lycopene.xml" ftype="xml" compare="sim_size"/>
+            <output name="constructs" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <has_n_lines n="6756" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
