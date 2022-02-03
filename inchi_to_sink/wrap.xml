@@ -7,13 +7,14 @@
         <requirement type="package" version="0.5">echo</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        echo -e '"name","inchi"\n"$source_name","$source_inchi"' > '$sink'
+        #set inchi=$source_inchi.rstrip()
+        echo -e '"name","inchi"\n"$source_name","$inchi"' > '$sink'
     ]]></command>
     <inputs>
         <param name="source_inchi" type="text" label="Source InChI" optional="false">
             <validator type="empty_field" message="InChI string is required"/>
         </param>
-        <param name="source_name" type="text" value="target" label="Source name">
+        <param name="source_name" type="text" value="Biosensor" label="Source name">
             <validator type="empty_field" message="Source name is required"/>
         </param>
     </inputs>
