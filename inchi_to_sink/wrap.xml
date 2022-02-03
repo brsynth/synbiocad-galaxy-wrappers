@@ -44,7 +44,7 @@ Required:
 
 Optional:
 
-* **source_name**\ : (string) Inchi name (Default=target)
+* **source_name**\ : (string) Inchi name (Default=Biosensor)
 
 
 Version
