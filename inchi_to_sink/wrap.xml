@@ -13,7 +13,7 @@
         <param name="source_inchi" type="text" label="Source InChI" optional="false">
             <validator type="empty_field" message="InChI string is required"/>
         </param>
-        <param name="source_name" type="text" value="target" label="Source name">
+        <param name="source_name" type="text" value="biosensor" label="Source name">
             <validator type="empty_field" message="Source name is required"/>
         </param>
     </inputs>
