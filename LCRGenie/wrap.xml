@@ -7,15 +7,15 @@
         <requirement type="package" version="@TOOL_VERSION@">lcr_genie</requirement>
     </requirements>
     <stdio>
-		<regex match="WARNING:" level="warning" />
-		<regex match="ERROR:" level="fatal" />
-	</stdio>
+        <regex match="WARNING:" level="warning" />
+        <regex match="ERROR:" level="fatal" />
+    </stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m lcr_genie
             '$LCR_input'
             out.xlsx
-            --melting_temp '$adv.melting_temp' &&
-        cp out.xlsx '$LCR_output'
+            --melting_temp '$adv.melting_temp'
+        && cp out.xlsx '$LCR_output'
     ]]></command>
     <inputs>
         <param name="LCR_input" type="data" format="xml" label="Constructs" />
@@ -30,7 +30,11 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="LCR_input" value="LCR_input_lycopene.xml" />
-            <output name="LCR_output" file="LCR_output_lycopene.xlsx" ftype="xlsx" compare="sim_size" />
+            <output name="LCR_output" >
+                <assert_contents>
+                    <has_size value="58196" delta="100" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
@@ -59,7 +63,7 @@ Project Links
 Version
 ----------
 
-1.0.1
+1.0.2
 
 Authors
 -------
