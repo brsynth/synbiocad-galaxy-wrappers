@@ -38,7 +38,7 @@
             <param name="input" value="constructs_lycopene.xml" />
             <output name="output" >
                 <assert_contents>
-                    <has_n_lines n="306" />
+                    <has_size value="77431" delta="100" />
                 </assert_contents>
             </output>
         </test>
