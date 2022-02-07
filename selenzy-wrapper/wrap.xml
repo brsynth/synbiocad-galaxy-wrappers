@@ -1,4 +1,4 @@
-<tool id="selenzy-wrapper" name="Selenzyme" version="@TOOL_VERSION@">
+<tool id="selenzy-wrapper" name="Selenzyme" version="@TOOL_VERSION@" profile="19.09">
     <description>Performs enzyme selection from a reaction query</description>
     <macros>
         <token name="@TOOL_VERSION@">0.2.0</token>
