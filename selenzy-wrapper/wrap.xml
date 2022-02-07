@@ -3,11 +3,11 @@
     <macros>
         <token name="@TOOL_VERSION@">0.2.0</token>
     </macros>
-	<requirements>
+    <requirements>
         <requirement type="package" version="@TOOL_VERSION@">selenzy_wrapper</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-	    python -m selenzy_wrapper '$pathway' '$uniprot_ids'
+        python -m selenzy_wrapper '$pathway' '$uniprot_ids'
         --nb_targets '$adv.nb_targets'
         --d '$adv.direction'
         #if str($adv.NoMSA) == "false":
@@ -21,14 +21,14 @@
         --to_csv '$uniprot_ids_csv'
     ]]></command>
     <inputs>
-		<param name="pathway" type="data" format="xml" label="Pathway (SBML)" />
+        <param name="pathway" type="data" format="xml" label="Pathway (SBML)" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="host_taxID"    type="integer" value="83333" label="Host taxon ID" />
-            <param name="enzyme_taxIDs" type="text"    value=""      label="Comma separated taxon IDs of output enzyme sequences" />
-		    <param name="nb_ids"        type="integer" value="-1"    label="Number of uniprot IDs with top score to keep" />
-		    <param name="nb_targets"    type="integer" value="500"   label="Number of targets to display in results" />
-            <param name="direction"     type="float"   value="0"     label="Use similiarity values for preferred reaction direction only" />
-            <param name="NoMSA"         type="boolean" checked="true"  display="checkboxes" label="Do not compute MSA/conservation scores ?" />
+            <param name="host_taxID" type="integer" value="83333" label="Host taxon ID" />
+            <param name="enzyme_taxIDs" type="text" value="" label="Comma separated taxon IDs of output enzyme sequences" />
+            <param name="nb_ids" type="integer" value="-1" label="Number of uniprot IDs with top score to keep" />
+            <param name="nb_targets" type="integer" value="500" label="Number of targets to display in results" />
+            <param name="direction" type="float" value="0"  label="Use similiarity values for preferred reaction direction only" />
+            <param name="NoMSA" type="boolean" checked="true" display="checkboxes" label="Do not compute MSA/conservation scores ?" />
         </section>
     </inputs>
     <outputs>
@@ -57,6 +57,7 @@ Input
 * **nb_ids**\ : (integer) Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]
 * **direction**\ : (float) Use similiarity values for preferred reaction direction only [default=0 (OFF)]
 * **NoMSA**\ : (boolean) Do not compute MSA/conservation scores
+
 * **taxonIDs**\ : (string) Comma separated taxon ids [default: 83333 (E. coli K12)]. The first taxon ID is the one of the chassis, following ones are taxon IDs of output enzyme sequences
 
 Output
