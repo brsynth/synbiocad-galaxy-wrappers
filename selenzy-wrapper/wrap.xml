@@ -57,8 +57,8 @@ Input
 * **nb_ids**\ : (integer) Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]
 * **direction**\ : (float) Use similiarity values for preferred reaction direction only [default=0 (OFF)]
 * **NoMSA**\ : (boolean) Do not compute MSA/conservation scores
-
-* **taxonIDs**\ : (string) Comma separated taxon ids [default: 83333 (E. coli K12)]. The first taxon ID is the one of the chassis, following ones are taxon IDs of output enzyme sequences
+* **host_taxID**\ : (string) Taxon ID of the chassis (default: 83333 [E. coli K12])
+* **enzyme_taxIDs**\ : (string) Comma separated taxon IDs of output enzyme sequences
 
 Output
 ------
