@@ -1,14 +1,17 @@
-<tool id="retropath2" name="RetroPath2.0" version="2.3.0">
+<tool id="retropath2" name="RetroPath2.0" version="@TOOL_VERSION@" profile="19.09">
     <description>Build a reaction network from a set of source compounds to a set of sink compounds</description>
+    <macros>
+        <token name="@TOOL_VERSION@">2.3.0</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="2.3.0">retropath2_wrapper</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">retropath2_wrapper</requirement>
     </requirements>
     <stdio>
-        <exit_code range="1" level="fatal"   description="Source has been found in the sink"                          />
-        <exit_code range="2" level="fatal"   description="Cannot find source-in-sink file"                            />
-        <exit_code range="3" level="fatal"   description="Running the RetroPath2.0 Knime program produced an OSError" />
-        <exit_code range="4" level="warning" description="RetroPath2.0 has found no solution"                         />
-        <exit_code range="5" level="warning" description="Time limit reached"                                         />
+        <exit_code range="1" level="fatal" description="Source has been found in the sink" />
+        <exit_code range="2" level="fatal" description="Cannot find source-in-sink file" />
+        <exit_code range="3" level="fatal" description="Running the RetroPath2.0 Knime program produced an OSError" />
+        <exit_code range="4" level="warning" description="RetroPath2.0 has found no solution" />
+        <exit_code range="5" level="warning" description="Time limit reached" />
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m retropath2_wrapper
@@ -18,22 +21,21 @@
             --source_inchi '$source_inchi_type.source_inchi'
             --source_name '$source_name'
             --rp2_version '$adv.version'
-            --max_steps '$adv.max_steps'
+            --max_steps '$max_steps'
             --topx '$adv.topx'
             --dmin '$adv.dmin'
             --dmax '$adv.dmax'
             --mwmax_source '$adv.mwmax_source'
-            --mwmax_cof '$adv.mwmax_cof'
-            --timeout '$adv.timeout';
+            --timeout '$adv.timeout' &&
         if compgen -G 'out/*_scope.csv' > /dev/null; then
-            cp out/*_scope.csv '$Reaction_Network';
+            cp 'out/*_scope.csv' '$Reaction_Network';
         else
-            cp out/results.csv '$Reaction_Network';
+            cp 'out/results.csv' '$Reaction_Network';
         fi
     ]]></command>
     <inputs>
-        <param name="rulesfile"    type="data" format="csv" label="Rules File"/>
-        <param name="sinkfile"     type="data" format="csv" label="Sink File"/>
+        <param name="rulesfile" type="data" format="csv,tar" label="Rules File"/>
+        <param name="sinkfile" type="data" format="csv" label="Sink File"/>
         <conditional name="source_inchi_type">
             <param name="inchi_type" type="select" label="InChI type">
                 <!-- <option value="name" selected="true">By name</option> -->
@@ -45,20 +47,21 @@
                 </param>
             </when>
         </conditional>
-        <param name="source_name" type="text" value="target" optional="true" label="Source name"/>
+        <param name="max_steps" type="integer" value="3" min="1" max="10" label="Maximal Pathway length" />
+        <param name="source_name" type="text" value="target" optional="true" label="Source name">
+            <validator type="empty_field" message="Source name is required"/>
+        </param>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="version" type="select" label="Workflow version">
                 <option value="v9">v9</option>
                 <option value="r20210127">r20210127</option>
                 <option value="r20220104" selected="true">r20220104</option>
             </param>
-            <param name="max_steps"    type="integer" value="3"    label="Maximal Pathway length" />
-            <param name="topx"         type="integer" value="100"  label="TopX"                                  />
-            <param name="dmin"         type="integer" value="0"    label="Minimum rule diameter"                 />
-            <param name="dmax"         type="integer" value="1000" label="Maximum rule diameter"                 />
-            <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)"       />
-            <param name="mwmax_cof"    type="integer" value="1000" label="Molecular weight of cofactors (Da)" />
-            <param name="timeout"      type="integer" value="60"   label="Timeout (min)"                         />
+            <param name="topx" type="integer" value="100" min="1" max="1000" label="TopX" />
+            <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" />
+            <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" />
+            <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" />
+            <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" />
         </section>
     </inputs>
     <outputs>
@@ -103,7 +106,6 @@ Advanced options:
 * **-dmin**\ : (integer, default: 0)
 * **-dmax**\ : (integer, default: 1000)
 * **-mwmax_source**\ : (integer, default: 1000)
-* **-mwmax_cof**\ : (integer, default: 1000)
 * **-timeout**\ : (integer, default: 30) Timeout in minutes
 
 Output
@@ -129,15 +131,6 @@ Acknowledgments
 
     ]]></help>
     <citations>
-        <citation type="bibtex">
-@article{delepine2018retropath2,
-  title={RetroPath2. 0: a retrosynthesis workflow for metabolic engineers},
-  author={Del{\'e}pine, Baudoin and Duigou, Thomas and Carbonell, Pablo and Faulon, Jean-Loup},
-  journal={Metabolic engineering},
-  volume={45},
-  pages={158--170},
-  year={2018},
-  publisher={Elsevier}}
-        </citation>
+        <citation type="doi">10.1016/j.ymben.2017.12.002 </citation>
     </citations>
 </tool>
