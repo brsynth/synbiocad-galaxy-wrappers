@@ -27,7 +27,7 @@
             <param name="enzyme_taxIDs" type="text" value="" label="Comma separated taxon IDs of output enzyme sequences" />
             <param name="nb_ids" type="integer" value="-1" label="Number of uniprot IDs with top score to keep" />
             <param name="nb_targets" type="integer" value="500" label="Number of targets to display in results" />
-            <param name="direction" type="float" value="0"  label="Use similiarity values for preferred reaction direction only" />
+            <param name="direction" type="float" value="0" label="Use similiarity values for preferred reaction direction only" />
             <param name="NoMSA" type="boolean" checked="true" display="checkboxes" label="Do not compute MSA/conservation scores ?" />
         </section>
     </inputs>
@@ -73,7 +73,7 @@ Project Links
 Version
 ----------
 
-0.1.0
+0.2.0
 
 Authors
 -------
@@ -91,16 +91,6 @@ Acknowledgments
 
     ]]></help>
     <citations>
-        <citation type="bibtex">
-@article{10.1093/bioinformatics/bty065,
-  title={Selenzyme: enzyme selection tool for pathway design},
-  author={Pablo Carbonell, Jerry Wong, Neil Swainston, Eriko Takano, Nicholas J Turner, Nigel S Scrutton, Douglas B Kell, Rainer Breitling, Jean-Loup Faulon},
-  volume={34},
-  pages={2153–2154},
-  year={2018},
-  doi = {10.1093/bioinformatics/bty065},
-  url = {https://doi.org/10.1093/bioinformatics/bty065},
-}
-        </citation>
+        <citation type="doi">10.1093/bioinformatics/bty065</citation>
     </citations>
 </tool>
