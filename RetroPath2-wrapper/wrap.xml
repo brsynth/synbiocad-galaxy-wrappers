@@ -26,7 +26,6 @@
             --dmin '$adv.dmin'
             --dmax '$adv.dmax'
             --mwmax_source '$adv.mwmax_source'
-            --mwmax_cof '$adv.mwmax_cof'
             --timeout '$adv.timeout' &&
         if compgen -G 'out/*_scope.csv' > /dev/null; then
             cp 'out/*_scope.csv' '$Reaction_Network';
@@ -62,7 +61,6 @@
             <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" />
             <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" />
             <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" />
-            <param name="mwmax_cof" type="integer" value="1000" label="Molecular weight of cofactors (Da)" />
             <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" />
         </section>
     </inputs>
@@ -108,7 +106,6 @@ Advanced options:
 * **-dmin**\ : (integer, default: 0)
 * **-dmax**\ : (integer, default: 1000)
 * **-mwmax_source**\ : (integer, default: 1000)
-* **-mwmax_cof**\ : (integer, default: 1000)
 * **-timeout**\ : (integer, default: 30) Timeout in minutes
 
 Output
