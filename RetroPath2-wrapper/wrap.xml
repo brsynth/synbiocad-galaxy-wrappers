@@ -48,7 +48,7 @@
                 </param>
             </when>
         </conditional>
-        <param name="max_steps" type="integer" value="3" label="Maximal Pathway length" />
+        <param name="max_steps" type="integer" value="3" min="1" max="10" label="Maximal Pathway length" />
         <param name="source_name" type="text" value="target" optional="true" label="Source name">
             <validator type="empty_field" message="Source name is required"/>
         </param>
@@ -58,12 +58,12 @@
                 <option value="r20210127">r20210127</option>
                 <option value="r20220104" selected="true">r20220104</option>
             </param>
-            <param name="topx" type="integer" value="100" label="TopX" />
-            <param name="dmin" type="integer" value="0" label="Minimum rule diameter" />
-            <param name="dmax" type="integer" value="1000" label="Maximum rule diameter" />
-            <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)" />
+            <param name="topx" type="integer" value="100" min="1" max="1000" label="TopX" />
+            <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" />
+            <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" />
+            <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" />
             <param name="mwmax_cof" type="integer" value="1000" label="Molecular weight of cofactors (Da)" />
-            <param name="timeout" type="integer" value="60" label="Timeout (min)" />
+            <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" />
         </section>
     </inputs>
     <outputs>
