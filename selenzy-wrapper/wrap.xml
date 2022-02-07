@@ -13,7 +13,7 @@
         #if str($adv.NoMSA) == "false":
             --NoMSA
         #end if
-        --taxonIDs '$adv.host_taxID'
+        --host_taxID '$adv.host_taxID'
         #if str($adv.enzyme_taxIDs) != "":
             --enzyme_taxIDs '$adv.enzyme_taxIDs'
         #end if
