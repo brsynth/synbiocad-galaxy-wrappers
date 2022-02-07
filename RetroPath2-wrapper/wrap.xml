@@ -7,11 +7,11 @@
         <requirement type="package" version="@TOOL_VERSION@">retropath2_wrapper</requirement>
     </requirements>
     <stdio>
-        <exit_code range="1" level="fatal"   description="Source has been found in the sink"                          />
-        <exit_code range="2" level="fatal"   description="Cannot find source-in-sink file"                            />
-        <exit_code range="3" level="fatal"   description="Running the RetroPath2.0 Knime program produced an OSError" />
-        <exit_code range="4" level="warning" description="RetroPath2.0 has found no solution"                         />
-        <exit_code range="5" level="warning" description="Time limit reached"                                         />
+        <exit_code range="1" level="fatal" description="Source has been found in the sink" />
+        <exit_code range="2" level="fatal" description="Cannot find source-in-sink file" />
+        <exit_code range="3" level="fatal" description="Running the RetroPath2.0 Knime program produced an OSError" />
+        <exit_code range="4" level="warning" description="RetroPath2.0 has found no solution" />
+        <exit_code range="5" level="warning" description="Time limit reached" />
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m retropath2_wrapper
@@ -35,8 +35,8 @@
         fi
     ]]></command>
     <inputs>
-        <param name="rulesfile"    type="data" format="csv" label="Rules File"/>
-        <param name="sinkfile"     type="data" format="csv" label="Sink File"/>
+        <param name="rulesfile" type="data" format="csv" label="Rules File"/>
+        <param name="sinkfile" type="data" format="csv" label="Sink File"/>
         <conditional name="source_inchi_type">
             <param name="inchi_type" type="select" label="InChI type">
                 <!-- <option value="name" selected="true">By name</option> -->
@@ -48,7 +48,7 @@
                 </param>
             </when>
         </conditional>
-        <param name="max_steps"    type="integer" value="3"    label="Maximal Pathway length" />
+        <param name="max_steps" type="integer" value="3" label="Maximal Pathway length" />
         <param name="source_name" type="text" value="target" optional="true" label="Source name"/>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="version" type="select" label="Workflow version">
@@ -56,12 +56,12 @@
                 <option value="r20210127">r20210127</option>
                 <option value="r20220104" selected="true">r20220104</option>
             </param>
-            <param name="topx"         type="integer" value="100"  label="TopX"                                  />
-            <param name="dmin"         type="integer" value="0"    label="Minimum rule diameter"                 />
-            <param name="dmax"         type="integer" value="1000" label="Maximum rule diameter"                 />
-            <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)"       />
-            <param name="mwmax_cof"    type="integer" value="1000" label="Molecular weight of cofactors (Da)" />
-            <param name="timeout"      type="integer" value="60"   label="Timeout (min)"                         />
+            <param name="topx" type="integer" value="100" label="TopX" />
+            <param name="dmin" type="integer" value="0" label="Minimum rule diameter" />
+            <param name="dmax" type="integer" value="1000" label="Maximum rule diameter" />
+            <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)" />
+            <param name="mwmax_cof" type="integer" value="1000" label="Molecular weight of cofactors (Da)" />
+            <param name="timeout" type="integer" value="60" label="Timeout (min)" />
         </section>
     </inputs>
     <outputs>
