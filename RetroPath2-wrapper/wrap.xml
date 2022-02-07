@@ -35,7 +35,7 @@
         fi
     ]]></command>
     <inputs>
-        <param name="rulesfile" type="data" format="csv" label="Rules File"/>
+        <param name="rulesfile" type="data" format="csv,tar" label="Rules File"/>
         <param name="sinkfile" type="data" format="csv" label="Sink File"/>
         <conditional name="source_inchi_type">
             <param name="inchi_type" type="select" label="InChI type">
