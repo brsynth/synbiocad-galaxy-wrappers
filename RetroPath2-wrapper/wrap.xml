@@ -18,7 +18,7 @@
             --source_inchi '$source_inchi_type.source_inchi'
             --source_name '$source_name'
             --rp2_version '$adv.version'
-            --max_steps '$adv.max_steps'
+            --max_steps '$max_steps'
             --topx '$adv.topx'
             --dmin '$adv.dmin'
             --dmax '$adv.dmax'
@@ -45,6 +45,7 @@
                 </param>
             </when>
         </conditional>
+        <param name="max_steps"    type="integer" value="3"    label="Maximal Pathway length" />
         <param name="source_name" type="text" value="target" optional="true" label="Source name"/>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="version" type="select" label="Workflow version">
@@ -52,7 +53,6 @@
                 <option value="r20210127">r20210127</option>
                 <option value="r20220104" selected="true">r20220104</option>
             </param>
-            <param name="max_steps"    type="integer" value="3"    label="Maximal Pathway length" />
             <param name="topx"         type="integer" value="100"  label="TopX"                                  />
             <param name="dmin"         type="integer" value="0"    label="Minimum rule diameter"                 />
             <param name="dmax"         type="integer" value="1000" label="Maximum rule diameter"                 />
