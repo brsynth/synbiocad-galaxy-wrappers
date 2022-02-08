@@ -23,8 +23,8 @@
     <inputs>
         <param name="input" type="data" format="xml" label="Input File" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="ph" type="float" value="7.5" label="Compartment pH of the pathway" />
-            <param name="ionic_strength" type="float" value="0.25" label="Compartment ionic strength of the pathway" />
+            <param name="ph" type="float" value="7.5" min="0" max="14" label="Compartment pH of the pathway" />
+            <param name="ionic_strength" type="float" value="0.25" min="0" max="500" label="Compartment ionic strength of the pathway" />
             <param name="pMg" type="float" value="3.0" label="Compartment pMg of the pathway" />
             <!-- <param name="temp_k" type="float" value="298.15" label="Compartment temperature in Kelvin" /> -->
         </section>
