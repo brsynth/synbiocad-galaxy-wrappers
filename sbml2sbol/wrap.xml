@@ -1,7 +1,10 @@
-<tool id="sbml2sbol" name="SbmlToSbol" version="0.1.12">
+<tool id="sbml2sbol" name="SbmlToSbol" version="@TOOL_VERSION@" profile="19.09">
     <description>Convert sbml to sbol format</description>
+    <macros>
+        <token name="@TOOL_VERSION@">0.1.13</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="0.1.12">sbml2sbol</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">sbml2sbol</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m sbml2sbol
