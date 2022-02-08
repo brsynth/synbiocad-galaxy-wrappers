@@ -28,9 +28,9 @@
             --mwmax_source '$adv.mwmax_source'
             --timeout '$adv.timeout' &&
         if compgen -G 'out/*_scope.csv' > /dev/null; then
-            cp 'out/*_scope.csv' '$Reaction_Network';
+            cp out/*_scope.csv '$Reaction_Network';
         else
-            cp 'out/results.csv' '$Reaction_Network';
+            cp out/results.csv '$Reaction_Network';
         fi
     ]]></command>
     <inputs>
