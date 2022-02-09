@@ -1,11 +1,14 @@
-<tool id="rpextractsink" name="Sink from SBML" version="5.11.1" profile="19.09">
+<tool id="rpextractsink" name="Sink from SBML" version="@TOOL_VERSION@" profile="19.09">
     <description>Generate the RetroPath2.0 sink file from an SBML input</description>
+    <macros>
+        <token name="@TOOL_VERSION@">5.12.1</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="5.11.1">rptools</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
     </requirements>
     <stdio>
-		<regex match="Could not retreive any species in the compartment" level="fatal" />
-	</stdio>
+        <regex match="Could not retreive any species in the compartment" level="fatal" />
+    </stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rpextractsink
             '$input'
@@ -17,7 +20,9 @@
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" optional="false" label="Strain" />
-        <param name="compartment_id" type="text" value="c" label="SBML compartment ID" />
+        <param name="compartment_id" type="text" value="c" label="SBML compartment ID" >
+            <validator type="empty_field" message="SBML compartment ID is required"/>
+        </param>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="remove_dead_end" type="boolean" checked="true" label="Remove dead-end metabolites using FVA evaluation?" />
         </section>
@@ -69,7 +74,7 @@ Project Links
 Version
 ----------
 
-5.9.2
+5.12.1
 
 Authors
 -------
