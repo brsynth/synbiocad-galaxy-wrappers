@@ -1,4 +1,4 @@
-<tool id="rpThermo" name="Thermo" version="@TOOL_VERSION@" profile="19.09">
+<tool id="rpthermo" name="Thermo" version="@TOOL_VERSION@" profile="19.09">
     <description>Calculate the formation energy of chemical species and the Gibbs free energy of their reactions and pathways in an SBML</description>
     <macros>
         <token name="@TOOL_VERSION@">5.12.1</token>
@@ -18,15 +18,13 @@
         --pH '$adv.ph'
         --ionic_strength '$adv.ionic_strength'
         --pMg '$adv.pMg'
-        <!-- --temp_k '$adv.temp_k'  -->
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" label="Input File" />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="ph" type="float" value="7.5" label="Compartment pH of the pathway" />
-            <param name="ionic_strength" type="float" value="0.25" label="Compartment ionic strength of the pathway" />
+            <param name="ph" type="float" value="7.5" min="0" max="14" label="Compartment pH of the pathway" />
+            <param name="ionic_strength" type="float" value="0.25" min="0" max="500" label="Compartment ionic strength of the pathway" />
             <param name="pMg" type="float" value="3.0" label="Compartment pMg of the pathway" />
-            <!-- <param name="temp_k" type="float" value="298.15" label="Compartment temperature in Kelvin" /> -->
         </section>
     </inputs>
     <outputs>
@@ -37,7 +35,16 @@
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="input" value="rp_013_0001.xml" />
             <param name="model" value="e_coli_iML1515.sbml" />
-            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="pathway_with_thermo" file="rp_013_0001_with_thermo.xml" ftype="xml" compare="diff" sort="true" >
+                <assert_contents>
+                    <is_valid_xml />
+                    <!--check thermo_dG0_prime value-->
+                    <has_text text="-2308.11630" />
+                    <!--check thermo_dG value-->
+                    <has_text text="-2151.84763" />
+                    <has_n_lines n="483" />
+                </assert_contents>
+            </output>
         </test>
     </tests>
     <help><![CDATA[
@@ -65,7 +72,6 @@ Advanced Options:
 * **--ph**\ :(float) Compartment PH of the pathway
 * **--ionic_strength**\ :(float) Compartment ionic strength of the pathway
 * **--pMg**\ :(float) Compartment pMg of the pathway
-* **--temp_k**\ :(float) Compartment temperature in Kelvin
 
 Project Links
 ---------------------
@@ -75,7 +81,7 @@ Project Links
 Version
 ----------
 
-v5.9.2
+v5.12.1
 
 Authors
 -------
@@ -90,17 +96,6 @@ Acknowledgments
 
     ]]></help>
     <citations>
-        <citation type="bibtex">
-@article{noor2013consistent,
-  title={Consistent estimation of Gibbs energy using component contributions},
-  author={Noor, Elad and Haraldsd{\'o}ttir, Hulda S and Milo, Ron and Fleming, Ronan MT},
-  journal={PLoS Comput Biol},
-  volume={9},
-  number={7},
-  pages={e1003098},
-  year={2013},
-  publisher={Public Library of Science}
-}
-        </citation>
+        <citation type="doi">10.1371/journal.pcbi.1003098</citation>
     </citations>
 </tool>
