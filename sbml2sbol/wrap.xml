@@ -17,7 +17,7 @@
         #end if
         --max_prot_per_react '$adv.max_prot_per_react'
         #if $adv.tirs 
-            --tirs $adv.tirs
+            --tirs '$adv.tirs'
         #end if
         --pathway_id '$adv.pathway_id'
         --uniprotID_key '$adv.uniprotID_key'
@@ -28,8 +28,12 @@
             <param name="rbs" type="boolean" checked="true" label="Calculate the RBS strength?" />
             <param name="max_prot_per_react" type="integer" value="3" label="The maximum number of proteins per reaction" />
             <param name="tirs" type="text" optional="true" label="Space separated RBS strength values" />
-            <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" />
-            <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" />
+            <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" >
+                <validator type="empty_field" message="Pathway ID is required"/>
+            </param>
+            <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" >
+                <validator type="empty_field" message="Uniprot ID is required"/>
+            </param>
         </section>
     </inputs>
     <outputs>
