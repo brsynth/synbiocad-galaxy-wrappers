@@ -1,7 +1,10 @@
-<tool id="sbml2sbol" name="SbmlToSbol" version="0.1.12">
+<tool id="sbml2sbol" name="SbmlToSbol" version="@TOOL_VERSION@" profile="19.09">
     <description>Convert sbml to sbol format</description>
+    <macros>
+        <token name="@TOOL_VERSION@">0.1.13</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="0.1.12">sbml2sbol</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">sbml2sbol</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m sbml2sbol
@@ -14,7 +17,7 @@
         #end if
         --max_prot_per_react '$adv.max_prot_per_react'
         #if $adv.tirs 
-            --tirs $adv.tirs
+            --tirs '$adv.tirs'
         #end if
         --pathway_id '$adv.pathway_id'
         --uniprotID_key '$adv.uniprotID_key'
@@ -25,8 +28,12 @@
             <param name="rbs" type="boolean" label="Calculate the RBS strength?" checked="true" />
             <param name="max_prot_per_react" type="integer" value="3" min="1" max="20" label="The maximum number of proteins per reaction" />
             <param name="tirs" type="text" optional="true" label="Space separated RBS strength values" />
-            <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" />
-            <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" />
+            <param name="pathway_id" type="text" value="rp_pathway" label="Group ID of the heterologous pathway" >
+                <validator type="empty_field" message="Pathway ID is required"/>
+            </param>
+            <param name="uniprotID_key" type="text" value="selenzy" label="Uniprot ID" >
+                <validator type="empty_field" message="Uniprot ID is required"/>
+            </param>
         </section>
     </inputs>
     <outputs>
@@ -72,7 +79,7 @@ Project Links
 
 Version
 ----------
-0.1.12
+0.1.13
 
 License
 -------
