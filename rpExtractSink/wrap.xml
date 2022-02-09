@@ -20,7 +20,9 @@
     ]]></command>
     <inputs>
         <param name="input" type="data" format="xml" optional="false" label="Strain" />
-        <param name="compartment_id" type="text" value="c" label="SBML compartment ID" />
+        <param name="compartment_id" type="text" value="c" label="SBML compartment ID" >
+            <validator type="empty_field" message="SBML compartment ID is required"/>
+        </param>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="remove_dead_end" type="boolean" checked="true" label="Remove dead-end metabolites using FVA evaluation?" />
         </section>
