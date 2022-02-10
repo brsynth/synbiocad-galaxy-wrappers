@@ -1,25 +1,28 @@
-<tool id="rpscore" name="Score Pathway" version="5.9.2">
+<tool id="rpscore" name="Score Pathway" version="@TOOL_VERSION@" profile="19.09">
     <description>Computes a global score for a heterologous pathway.</description>
-	<requirements>
-        <requirement type="package" version="5.9.2">rptools</requirement>
+    <macros>
+        <token name="@TOOL_VERSION@">5.12.1</token>
+    </macros>
+    <requirements>
+        <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-	    python -m rptools.rpscore '$pathway' '$scored_pathway'
+        python -m rptools.rpscore '$pathway' '$scored_pathway'
         --no_of_rxns_thres '$adv.no_of_rxns_thres'
         --log '$adv.log_level'
     ]]></command>
     <inputs>
-		<param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
-		<section name="adv" title="Advanced Options" expanded="false">
+        <param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
+        <section name="adv" title="Advanced Options" expanded="false">
             <param name="no_of_rxns_thres" type="integer" value="10" label="number of reactions above which a pathway is not scored" />
-			<param name="log_level"      type="select"  label="Log level">
+            <param name="log_level"      type="select"  label="Log level">
                 <option type="text" value="debug"                    >debug</option>
                 <option type="text" value="info"                     >info</option>
-			    <option type="text" value="warning"                  >warning</option>
-			    <option type="text" value="error"     selected="true">error</option>
-			    <option type="text" value="critical"                 >critical</option>
+                <option type="text" value="warning"                  >warning</option>
+                <option type="text" value="error"     selected="true">error</option>
+                <option type="text" value="critical"                 >critical</option>
             </param>
-		</section>
+        </section>
     </inputs>
     <outputs>
         <data name="scored_pathway" format="xml" label="${tool.name} - ${pathway.name}" />
@@ -55,7 +58,7 @@ Advanced options:
 Version
 ----------
 
-5.9.2
+5.12.1
 
 Authors
 -------
