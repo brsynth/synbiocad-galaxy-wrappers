@@ -9,19 +9,12 @@
     <command detect_errors="exit_code"><![CDATA[
         python -m rptools.rpscore '$pathway' '$scored_pathway'
         --no_of_rxns_thres '$adv.no_of_rxns_thres'
-        --log '$adv.log_level'
+        --log "error"
     ]]></command>
     <inputs>
         <param name="pathway" type="data" format="xml" label="Pathway (rpSBML)" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="no_of_rxns_thres" type="integer" value="10" label="number of reactions above which a pathway is not scored" />
-            <param name="log_level"      type="select"  label="Log level">
-                <option type="text" value="debug"                    >debug</option>
-                <option type="text" value="info"                     >info</option>
-                <option type="text" value="warning"                  >warning</option>
-                <option type="text" value="error"     selected="true">error</option>
-                <option type="text" value="critical"                 >critical</option>
-            </param>
         </section>
     </inputs>
     <outputs>
@@ -53,7 +46,6 @@ Required:
 Advanced options:
 
 * **--no_of_rxns_thres**\ :(integer, default: 10) Number of reactions above which pathway are not scored (too long)
-* **--log**: (string, default=error) Set the log level, choices are 'debug', 'info', 'warning', 'error', 'critical'
 
 Version
 ----------
