@@ -1,0 +1,34 @@
+<tool id="merge_data" name="Merge single dataset with collection" version="@TOOL_VERSION@">
+    <description>Rank heterologous pathways according to their global score</description>
+    <macros>
+        <token name="@TOOL_VERSION@">1.0.0</token>
+    </macros>
+    <requirements>
+        <requirement type="package" version="@TOOL_VERSION@">rptools</requirement>
+    </requirements>
+    <stdio>
+        <regex match="WARNING" level="warning" />
+        <regex match="ERROR" level="fatal" />
+    </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+        #set files = '" "'.join([str($file) for $file in $pathway_collection])
+        #if $input_single_sbml
+            cp "${files}" '$input_single_sbml' > $merged_data
+        #else
+            cp "${files}" > $merged_data
+        #end if
+    ]]></command>
+    <inputs>
+        <param name="input_single_sbml" type="data" format="xml" label="Single SBML" optional="true" />
+        <param name="pathway_collection" type="data_collection" collection_type="list" label="Pathways Collection" />
+    </inputs>
+    <outputs>
+        <collection name="merged_data" type="list" label="SBML Collection"/>
+    </outputs>
+
+    <help><![CDATA[
+Merge data
+================
+
+    ]]></help>
+</tool>
