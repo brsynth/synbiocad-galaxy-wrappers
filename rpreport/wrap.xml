@@ -40,34 +40,48 @@ predicted with RetroPath suite</description>
         <data format="html" name="html_file" label="Pathways HTML Report"/>
     </outputs>
     <help><![CDATA[
-        usage: rpreport [-h] [--log ARG] [--log_file LOG_FILE] [--silent] [--version]
-                [-d] [--dev] [-v] [--standalone]
-                source_path output_folder
+rpReport
+=========
 
-generates HTML pages to explore the main characteristics (thermodynamics,
+Generates HTML pages to explore the main characteristics (thermodynamics,
 fluxes, number of metabolic steps, reaction rule score) of pathways predicted
 with RetroPath suite
 
-positional arguments:
-  source_path          Path to a tar archive (default) or folder (using '-d'
-                       option) containing rpSBML file(s).
-                       
-  output_folder        Output folder where report file(s) will be generated.
 
-optional arguments:
-  -h, --help           show this help message and exit
-  --log ARG, -l ARG    Adds a console logger for the specified level (default:
-                       error)
-  --log_file LOG_FILE  Filename where to put logs
-  --silent, -s         run rpreport silently
-  --version            show the version number and exit
-  -d, --input_dir      source_path is a folder containing standalone rpSBML
-                       file(s).
-  --dev                For dev purpose only : create supplementary files into
-                       a dev folder
-  -v, --verbose        Turn on console verbose mode.
-  --standalone         if set will output an autonomous HTML containing all
-                       css and js files dependencies.
+Input
+-----
 
+Required:
+
+* **source_path**: (string) Path to a tar archive (default) or folder (using '-d' option) containing rpSBML file(s).
+
+Output
+------
+* **output_folder**: (string) Output folder where report file(s) will be generated.
+
+Project Links
+---------------------
+* `GitHub <https://github.com/brsynth/rptools>`_
+
+Version
+----------
+
+5.12.1
+
+Authors
+-------
+
+* **Olivier Telle**
+
+Acknowledgments
+---------------
+
+* Thomas Duigou
+* Joan Hérisson
+
+Licence
+-------
+
+`MIT <https://github.com/brsynth/rptools/blob/master/LICENSE>`_
     ]]></help>
 </tool>
