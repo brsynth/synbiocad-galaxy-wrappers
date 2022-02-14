@@ -32,13 +32,23 @@ predicted with RetroPath suite</description>
                 <param name="input_tar" type="data" format="tar" label="Source SBML" />
             </when>
             <when value="sbml">
-                <param name="input_sbml" type="data_collection" collection_type="list" format="xml" label="Source SBML" />
+                <param name="input_sbml" type="data_collection" format="xml" collection_type="list" label="Source SBML" />
             </when>
         </conditional>
     </inputs>
     <outputs>
-        <data format="html" name="html_file" label="Pathways HTML Report"/>
+        <data name="html_file" format="html" label="Pathways HTML Report"/>
     </outputs>
+    <tests>
+        <test>
+        <!-- test 2: check if identical html output is produced (tar input) --> 
+            <conditional name="input_type_conditional">
+                <param name="input_type" value="tar"/>
+                <param name="input_tar" value="input_rpSBML.tar" />
+            </conditional>
+            <output name="html_file" file="rpreport_output.html" compare="sim_size"/>
+        </test>
+    </tests>
     <help><![CDATA[
 rpReport
 =========
