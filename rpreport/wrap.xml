@@ -46,7 +46,7 @@ predicted with RetroPath suite</description>
                 <param name="input_type" value="tar"/>
                 <param name="input_tar" value="input_rpSBML.tar" />
             </conditional>
-            <output name="html_file" file="rpreport_output.html" compare="sim_size"/>
+            <output name="html_file" file="rpreport_output.html" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
