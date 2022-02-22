@@ -9,17 +9,15 @@
 		<regex match="WARNING:" level="warning" />
 	</stdio>
     <command detect_errors="exit_code"><![CDATA[
-        #from os import path as os_path
-        cd /tmp &&
-        #set outFolder = os_path.basename(str($master_pathways))
-        mkdir '$outFolder' &&
+        mkdir out &&
         python -m rp2paths all
         '$rp2_pathways'
-        --outdir '$outFolder'
+        --outdir out
         --timeout '$adv.timeout' &&
-        cp '$outFolder'/compounds.txt '$compounds' &&
-        cp '$outFolder'/out_paths.csv '$master_pathways' &&
-        rm -rf $outFolder
+        if test -f "out/compounds.txt"; then
+          cp out/compounds.txt '$compounds';
+          cp out/out_paths.csv '$master_pathways';
+        fi
     ]]></command>
     <inputs>
         <param name="rp2_pathways" type="data" format="csv" label="RetroPath2.0 Pathways" />
