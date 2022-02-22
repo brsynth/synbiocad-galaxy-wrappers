@@ -1,7 +1,7 @@
-<tool id="dnabot" name="DNA-Bot" version="3.0.0">
+<tool id="dnabot" name="DNA-Bot" version="3.1.0">
     <description>DNA assembly using BASIC on OpenTrons</description>
     <requirements>
-        <requirement type="package" version="3.0.0">dnabot</requirement>
+        <requirement type="package" version="3.1.0">dnabot</requirement>
      </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m dnabot.dnabot_app
@@ -85,7 +85,7 @@ Ouput
 Version
 -------
 
-3.0.0
+3.1.0
 
 Authors
 -------
