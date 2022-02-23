@@ -1,8 +1,11 @@
-<tool id="dnabot" name="DNA-Bot" version="3.0.0">
+<tool id="dnabot" name="DNA-Bot" version="@TOOL_VERSION@" profile="19.09">
     <description>DNA assembly using BASIC on OpenTrons</description>
+    <macros>
+        <token name="@TOOL_VERSION@">3.1.0</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="3.0.0">dnabot</requirement>
-     </requirements>
+        <requirement type="package" version="@TOOL_VERSION@">dnabot</requirement>
+    </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m dnabot.dnabot_app
         #if $adv.default_settings_file
@@ -85,7 +88,7 @@ Ouput
 Version
 -------
 
-3.0.0
+3.1.0
 
 Authors
 -------
@@ -106,21 +109,6 @@ Acknowledgments
 * Geoff Baldwin
     ]]></help>
     <citations>
-        <citation type="bibtex">
-            @article{10.1093/synbio/ysaa010,
-                author = {Storch, Marko and Haines, Matthew C and Baldwin, Geoff S},
-                title = {DNA-BOT: a low-cost, automated DNA assembly platform for synthetic biology},
-                journal = {Synthetic Biology},
-                volume = {5},
-                number = {1},
-                year = {2020},
-                month = {07},
-                issn = {2397-7000},
-                doi = {10.1093/synbio/ysaa010},
-                url = {https://doi.org/10.1093/synbio/ysaa010},
-                note = {ysaa010},
-                eprint = {https://academic.oup.com/synbio/article-pdf/5/1/ysaa010/33722340/ysaa010.pdf},
-            }
-        </citation>
+        <citation type="doi">10.1093/synbio/ysaa010</citation>
     </citations>
 </tool>
