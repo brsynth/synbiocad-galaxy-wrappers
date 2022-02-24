@@ -1,7 +1,10 @@
-<tool id="rp2biosensor" name="rp2biosensor" version="1.0.1">
+<tool id="rp2biosensor" name="rp2biosensor" version="@TOOL_VERSION@" profile="19.09">
     <description>Build Sensing-Enabling Metabolic Pathways from RetroPath2.0 output</description>
+    <macros>
+        <token name="@TOOL_VERSION@">2.1.0</token>
+    </macros>
     <requirements>
-        <requirement type="package" version="1.0.1">rp2biosensor</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">rp2biosensor</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python -m rp2biosensor
@@ -49,7 +52,7 @@ Project Links
 Version
 ----------
 
-1.0.1
+2.1.0
 
 Authors
 -------
