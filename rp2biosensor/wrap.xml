@@ -22,7 +22,9 @@
     </inputs>
     <outputs>
         <data name="html_file" format="html" label="${tool.name} - ${rp2_results.name}"/>
-        <data name="json_file" format="json" label="${tool.name} -${rp2_results.name}"/>
+        <data name="json_file" format="json" label="${tool.name} -${rp2_results.name}">
+            <filter> adv['json_graph'] </filter>
+        </data>
     </outputs>
     <tests>
         <test>
