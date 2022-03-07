@@ -1,7 +1,7 @@
 <tool id="rp2biosensor" name="rp2biosensor" version="@TOOL_VERSION@" profile="19.09">
     <description>Build Sensing-Enabling Metabolic Pathways from RetroPath2.0 output</description>
     <macros>
-        <token name="@TOOL_VERSION@">2.1.0</token>
+        <token name="@TOOL_VERSION@">3.0.0</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">rp2biosensor</requirement>
@@ -9,6 +9,7 @@
     <command detect_errors="exit_code"><![CDATA[
         python -m rp2biosensor
         '$rp2_results'
+        '$sink_file'
         --opath '$html_file'
         #if str($adv.json_graph) == "true"
             --ojson '$json_file'
@@ -16,6 +17,7 @@
     ]]></command>
     <inputs>
         <param name="rp2_results" type="data" format="csv" label="RetroPath2 output"/>
+        <param name="sink_file" type="data" format="csv" label="Sink file used for RetroPath2.0"/>
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="json_graph" type="boolean" label="Output Graph in JSON?" checked="false" />
         </section>
@@ -45,6 +47,7 @@ Input
 Required:
 
 * **rp2_results**\ : (string) RetroPath2.0 results.
+* **sink_file**\ : (string) Sink file used for RetroPath2.0.
 
 Output
 ------
@@ -63,7 +66,7 @@ Project Links
 Version
 ----------
 
-2.1.0
+3.0.0
 
 Authors
 -------
