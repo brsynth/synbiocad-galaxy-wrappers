@@ -17,23 +17,19 @@
         --lmp_id '$adv.lmp_id'
         --backbone_id '$backbone_id'
         --sample_size '$sample_size'
-        #if str($adv.cds_permutation) == "true"
-            --cds_permutation true
-        #else
-            --cds_permutation false
-        #end if
+        $adv.cds_permutation
         --o_dnabot_dir 'out/dnabot_in'
         --o_sbol_dir 'out/sbol_export'
     ]]></command>
     <inputs>
-        <param name="rpsbml_file" type="data" format="xml" label="rpSBML file"/>
-        <param name="backbone_id" type="text" value="BASIC_SEVA_37_CmR-p15A.1" label="Backbone part ID" />
-        <param name="sample_size" type="integer" value="88" min="1" max="88" label="Number of constructs to generate" />
+        <param name="rpsbml_file" type="data" format="xml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
+        <param name="backbone_id" type="text" value="BASIC_SEVA_37_CmR-p15A.1" label="Backbone part ID" help="Part ID to be used as the backbone. Default: BASIC_SEVA_37_CmR-p15A.1"/>
+        <param name="sample_size" type="integer" value="88" min="1" max="88" label="Number of constructs to generate" help="Number of construct to generate. Default: 88"/>
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="parts_files" type="data" format="csv" optional="true" multiple="true" label="Linkers and user parts" />
-            <param name="lms_id" type="text" value="LMS" label="LMS part ID" />
-            <param name="lmp_id" type="text" value="LMP" label="LMP part ID" />
-            <param name="cds_permutation" type="boolean" label="Perform CDS permutation?" checked="true" />
+            <param name="parts_files" type="data" format="csv" optional="true" multiple="true" label="Linkers and user parts" help="List of files providing available linkers and user parts (backbone, promoters, ...) for constructs. Default: [data/biolegio_parts.csv, data/user_parts.csv]" />
+            <param name="lms_id" type="text" value="LMS" label="LMS part ID" help="Part ID to be used as the LMS methylated linker. Default: LMS."/>
+            <param name="lmp_id" type="text" value="LMP" label="LMP part ID" help="Part ID to be used as the LMP methylated linker. Default: LMP."/>
+            <param argument="--cds-permutation" type="boolean" truevalue="--cds-permutation true" falsevalue="--cd-permutation false" checked="true" label="Perform CDS permutation?" help="Whether all combinations of CDS permutation should be built. Default: true" />
         </section>
     </inputs>
     <outputs>
@@ -97,11 +93,11 @@ Required:
 
 Advanced options:
 
-* **parts_files**\ : (string) List of files providing available linkers and user parts (backbone, promoters, ...) for constructs. Default: [data/biolegio_parts.csv, user_parts.csv]
+* **parts_files**\ : (string) List of files providing available linkers and user parts (backbone, promoters, ...) for constructs. Default: [data/biolegio_parts.csv, data/user_parts.csv]
 * **lms_id**\ : (string) part ID to be used as the LMS methylated linker. Default: LMS.
 * **lmp_id**\ : (string) part ID to be used as the LMP methylated linker. Default: LMP.
 * **backbone_id**\ : (string) part ID to be used as the backbone. Default: BASIC_SEVA_37_CmR-p15A.1.
-* **sample_size**\ : (int) Number of construct to generate.Default: 3.
+* **sample_size**\ : (int) Number of construct to generate. Default: 88.
 * **cds_permutation**\ : (boolean) Whether all combinations of CDS permutation should be built Default: true.
 
 Output
