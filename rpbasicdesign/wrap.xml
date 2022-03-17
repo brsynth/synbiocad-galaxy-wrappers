@@ -64,44 +64,44 @@
         </section>
     </inputs>
     <outputs>
-        <data name="Constructs" format="csv" from_work_dir="out/dnabot_in/constructs.csv" label="${tool.name} - ${rpsbml_file.name}: constructs" />
+        <data name="Constructs" format="csv" from_work_dir="out/dnabot_in/constructs.csv" label="${tool.name} on ${rpsbml_file.name}: constructs" />
         <data name="User parts plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} - ${rpsbml_file.name}: User parts plate"/>
-        <data name="Biolegio plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} - ${rpsbml_file.name}: Biolegio plate"/>
-        <collection name="sbol_dir" type="list" label="${tool.name} - ${rpsbml_file.name}: SBOL constructs">
+        <data name="Biolegio plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} on ${rpsbml_file.name}: Biolegio plate"/>
+        <collection name="sbol_dir" type="list" label="${tool.name} on ${rpsbml_file.name}: SBOL constructs">
             <discover_datasets pattern="__designation_and_ext__" format="xml" directory="out/sbol_export" />
         </collection>
     </outputs>
     <tests>
         <test>
-        <!-- test 1: check if identical outputs are produced -->
-        <param name="rpsbml_file" value="lycopene_CrtEBI_from_selenzy.xml" />
-        <param name="sample_size" value="3" />
-        <output name="Constructs" file="constructs.csv" ftype="csv" compare="diff"/>
-        <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
-        <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
-        <output_collection name="sbol_dir" type="list">
-            <element name="BASIC_construct_A1">
-                <assert_contents>
-                    <is_valid_xml />
-                    <has_text text="BASIC_construct_A1" />
-                    <has_n_lines n="339" />
-                </assert_contents>
-            </element>
-            <element name="BASIC_construct_B1">
-                <assert_contents>
-                    <is_valid_xml />
-                    <has_text text="BASIC_construct_B1" />
-                    <has_n_lines n="339" />
-                </assert_contents>
-            </element>
-            <element name="BASIC_construct_C1">
-                <assert_contents>
-                    <is_valid_xml />
-                    <has_text text="BASIC_construct_C1" />
-                    <has_n_lines n="339" />
-                </assert_contents>
-            </element>
-        </output_collection>
+            <!-- test 1: check if identical outputs are produced -->
+            <param name="rpsbml_file" value="lycopene_CrtEBI_from_selenzy.xml" />
+            <param name="sample_size" value="3" />
+            <output name="Constructs" file="constructs.csv" ftype="csv" compare="diff"/>
+            <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
+            <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
+            <output_collection name="sbol_dir" type="list">
+                <element name="BASIC_construct_A1">
+                    <assert_contents>
+                        <is_valid_xml />
+                        <has_text text="BASIC_construct_A1" />
+                        <has_n_lines n="339" />
+                    </assert_contents>
+                </element>
+                <element name="BASIC_construct_B1">
+                    <assert_contents>
+                        <is_valid_xml />
+                        <has_text text="BASIC_construct_B1" />
+                        <has_n_lines n="339" />
+                    </assert_contents>
+                </element>
+                <element name="BASIC_construct_C1">
+                    <assert_contents>
+                        <is_valid_xml />
+                        <has_text text="BASIC_construct_C1" />
+                        <has_n_lines n="339" />
+                    </assert_contents>
+                </element>
+            </output_collection>
         </test>
     </tests>
     <help><![CDATA[
