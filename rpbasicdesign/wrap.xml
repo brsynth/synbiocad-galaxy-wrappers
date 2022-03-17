@@ -65,7 +65,7 @@
     </inputs>
     <outputs>
         <data name="Constructs" format="csv" from_work_dir="out/dnabot_in/constructs.csv" label="${tool.name} on ${rpsbml_file.name}: constructs" />
-        <data name="User parts plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} - ${rpsbml_file.name}: User parts plate"/>
+        <data name="User parts plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} on ${rpsbml_file.name}: User parts plate"/>
         <data name="Biolegio plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} on ${rpsbml_file.name}: Biolegio plate"/>
         <collection name="sbol_dir" type="list" label="${tool.name} on ${rpsbml_file.name}: SBOL constructs">
             <discover_datasets pattern="__designation_and_ext__" format="xml" directory="out/sbol_export" />
@@ -79,7 +79,7 @@
             <output name="Constructs" file="constructs.csv" ftype="csv" compare="diff"/>
             <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
             <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
-            <output_collection name="sbol_dir" type="list">
+            <output_collection name="sbol_dir" type="list" count="3">
                 <element name="BASIC_construct_A1">
                     <assert_contents>
                         <is_valid_xml />
