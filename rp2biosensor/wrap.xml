@@ -1,7 +1,7 @@
 <tool id="rp2biosensor" name="rp2biosensor" version="@TOOL_VERSION@" profile="19.09">
     <description>Build Sensing-Enabling Metabolic Pathways from RetroPath2.0 output</description>
     <macros>
-        <token name="@TOOL_VERSION@">3.0.0</token>
+        <token name="@TOOL_VERSION@">3.1.0</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">rp2biosensor</requirement>
@@ -32,6 +32,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced -->
         <param name="rp2_results" value="rp2-results-lactate.csv" />
+        <param name="sink_file" value="sink-h2o2.csv" />
         <output name="html_file" md5="88ba7cd2501c4d671b9eac396e7b4af9"/>
         </test>
     </tests>
@@ -66,7 +67,7 @@ Project Links
 Version
 ----------
 
-3.0.0
+3.1.0
 
 Authors
 -------
