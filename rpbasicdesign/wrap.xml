@@ -1,7 +1,7 @@
 <tool id="rpbasicdesign" name="BasicDesign" version="@TOOL_VERSION@" profile="19.09">
     <description>Build DNA-BOT input files from rpSBML</description>
     <macros>
-        <token name="@TOOL_VERSION@">0.3.4</token>
+        <token name="@TOOL_VERSION@">1.0.1</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">rpbasicdesign</requirement>
@@ -19,7 +19,7 @@
         --sample_size '$sample_size'
         $adv.cds_permutation
         --o_dnabot_dir 'out/dnabot_in'
-        --o_sbol_dir 'out/sbol_export'
+        $adv.sbol_output
     ]]></command>
     <inputs>
         <param name="rpsbml_file" type="data" format="xml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
@@ -61,6 +61,7 @@
                 <validator type="regex">[0-9a-zA-Z_:-]+</validator>
             </param>
             <param argument="--cds_permutation" type="boolean" truevalue="--cds_permutation true" falsevalue="--cds_permutation false" checked="true" label="Perform CDS permutation?" help="Whether all combinations of CDS permutation should be built. Default: true" />
+            <param name="sbol_output" type="boolean" checked="false" truevalue="--o_sbol_dir out/sbol_export" falsevalue="" label="Output SBOL results?" help="Output folder to write SBOL depictions of constructs (Default=False)." />
         </section>
     </inputs>
     <outputs>
@@ -68,6 +69,7 @@
         <data name="User parts plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} on ${rpsbml_file.name}: User parts plate"/>
         <data name="Biolegio plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} on ${rpsbml_file.name}: Biolegio plate"/>
         <collection name="sbol_dir" type="list" label="${tool.name} on ${rpsbml_file.name}: SBOL constructs">
+            <filter> adv['sbol_output'] </filter>
             <discover_datasets pattern="__designation_and_ext__" format="xml" directory="out/sbol_export" />
         </collection>
     </outputs>
@@ -79,6 +81,7 @@
             <output name="Constructs" file="constructs.csv" ftype="csv" compare="diff"/>
             <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
             <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
+            <param name="adv.sbol_output" value="--o_sbol_dir out/sbol_export" />
             <output_collection name="sbol_dir" type="list" count="3">
                 <element name="BASIC_construct_A1">
                     <assert_contents>
