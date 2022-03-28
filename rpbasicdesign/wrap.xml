@@ -20,6 +20,7 @@
         $adv.cds_permutation
         --o_dnabot_dir 'out/dnabot_in'
         $adv.sbol_output
+        --max_enz_per_rxn $adv.max_enz_per_rxn
     ]]></command>
     <inputs>
         <param name="rpsbml_file" type="data" format="xml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
@@ -62,6 +63,7 @@
             </param>
             <param argument="--cds_permutation" type="boolean" truevalue="--cds_permutation true" falsevalue="--cds_permutation false" checked="true" label="Perform CDS permutation?" help="Whether all combinations of CDS permutation should be built." />
             <param name="sbol_output" type="boolean" checked="false" truevalue="--o_sbol_dir out/sbol_export" falsevalue="" label="Output SBOL results?" help="Output folder to write SBOL depictions of constructs." />
+            <param name="max_enz_per_rxn" type="integer" value="1" min="1" max="99" label="Maximum number of enyzme to consider per reaction." help="Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept."/>
         </section>
     </inputs>
     <outputs>
@@ -133,12 +135,13 @@ Advanced options:
 * **backbone_id**\ : (string) part ID to be used as the backbone. Default: BASIC_SEVA_37_CmR-p15A.1.
 * **sample_size**\ : (int) Number of construct to generate. Default: 88.
 * **cds_permutation**\ : (boolean) Whether all combinations of CDS permutation should be built Default: true.
+* **max_enz_per_rxn**\ : (integer) Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept. (Default: 1). 
 
 Output
 ------
 
 * **o_dnabot_dir**\ : (string) Output folder to write construct and plate files. It will be created if it does not exist yet. Existing files will be overwritten. Default: out/dnabot_in.
-* **o_sbol_dir**\ : (string) Output folder to write SBOL depictions of constructs. It will be created if it does not exist yet. Existing files will be overwritten. Default: out/sbol_export.
+* **o_sbol_dir**\ : (string) Output folder to write SBOL depictions of constructs. Existing files will be overwritten. Default: not output.
 
 Project Links
 ------------------
