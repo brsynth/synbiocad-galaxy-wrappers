@@ -77,13 +77,17 @@
     </outputs>
     <tests>
         <test>
-            <!-- test 1: check if identical outputs are produced -->
+            <!-- test 1: check if identical outputs are produced (Lycopene input)-->
             <param name="rpsbml_file" value="lycopene_CrtEBI_from_selenzy.xml" />
             <param name="sample_size" value="3" />
-            <output name="Constructs" file="constructs.csv" ftype="csv" compare="diff"/>
-            <output name="User parts plate" file="user_parts_plate.csv" ftype="csv" compare="diff"/>
-            <output name="Biolegio plate" file="biolegio_plate.csv" ftype="csv" compare="diff"/>
-            <param name="adv.sbol_output" value="--o_sbol_dir out/sbol_export" />
+            <output name="Constructs" file="constructs_lycopene.csv" ftype="csv" compare="diff">
+                <assert_contents>
+                    <has_n_lines n="4"/>
+                </assert_contents>
+            </output>
+            <output name="User parts plate" file="user_parts_plate_lycopene.csv" ftype="csv" compare="diff"/>
+            <output name="Biolegio plate" file="biolegio_plate_lycopene.csv" ftype="csv" compare="diff"/>
+            <param name="sbol_output" value="--o_sbol_dir out/sbol_export" />
             <output_collection name="sbol_dir" type="list" count="3">
                 <element name="BASIC_construct_A1">
                     <assert_contents>
@@ -107,6 +111,18 @@
                     </assert_contents>
                 </element>
             </output_collection>
+        </test>
+        <test>
+            <!-- test 2: check if identical outputs are produced (Muconate input)-->
+            <param name="rpsbml_file" value="muconate_example.xml" />
+            <param name="sample_size" value="88" />
+            <output name="Constructs" file="constructs_muconate.csv" ftype="csv" compare="diff">
+                <assert_contents>
+                    <has_n_lines n="89"/>
+                </assert_contents>
+            </output>
+            <output name="User parts plate" file="user_parts_plate_muconate.csv" ftype="csv" compare="diff"/>
+            <output name="Biolegio plate" file="biolegio_plate_muconate.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
