@@ -75,7 +75,7 @@
         </collection>
     </outputs>
     <tests>
-        <test>
+        <test expect_num_outputs="4">
             <!-- test 1: check if identical outputs are produced (Lycopene input)-->
             <param name="rpsbml_file" value="lycopene_CrtEBI_from_selenzy.xml" />
             <param name="sample_size" value="3" />
@@ -111,7 +111,7 @@
                 </element>
             </output_collection>
         </test>
-        <test>
+        <test expect_num_outputs="3">
             <!-- test 2: check if identical outputs are produced (Muconate input)-->
             <param name="rpsbml_file" value="muconate_example.xml" />
             <param name="sample_size" value="88" />
