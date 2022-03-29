@@ -1,4 +1,4 @@
-<tool id="rpbasicdesign" name="BasicDesign" version="@TOOL_VERSION@" profile="19.09">
+<tool id="rpbasicdesign" name="BasicDesign" version="@TOOL_VERSION@" profile="21.09">
     <description>Build DNA-BOT input files from rpSBML</description>
     <macros>
         <token name="@TOOL_VERSION@">1.0.1</token>
