@@ -34,7 +34,6 @@
                 </valid>
             </sanitizer>
             <validator type="empty_field" message="Backbone ID is required"/>
-            <validator type="regex">[0-9a-zA-Z_:-]+</validator>
         </param>
         <param argument="--sample_size" type="integer" value="88" min="1" max="88" label="Number of constructs to generate" help="Number of construct to generate."/>
         <section name="adv" title="Advanced Options" expanded="false">
