@@ -61,7 +61,7 @@
                 <validator type="empty_field" message="LMP ID is required"/>
             </param>
             <param argument="--cds_permutation" type="boolean" truevalue="--cds_permutation true" falsevalue="--cds_permutation false" checked="true" label="Perform CDS permutation?" help="Whether all combinations of CDS permutation should be built." />
-            <param argument="--sbol_output" type="boolean" checked="false" truevalue="--o_sbol_dir out/sbol_export" falsevalue="" label="Output SBOL results?" help="Output folder to write SBOL depictions of constructs." />
+            <param argument="--sbol_output" type="boolean" checked="false" truevalue="--o_sbol_dir out/sbol_export" falsevalue="" label="Output SBOL results?" help="Whether SBOL (Synthetic Biology Open Language) depictions of constructs should be outputted" />
             <param argument="--max_enz_per_rxn" type="integer" value="1" min="1" max="99" label="Maximum number of enyzme to consider per reaction." help="Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept."/>
         </section>
     </inputs>
