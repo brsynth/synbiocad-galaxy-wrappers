@@ -23,7 +23,7 @@
         --max_enz_per_rxn $adv.max_enz_per_rxn
     ]]></command>
     <inputs>
-        <param name="rpsbml_file" type="data" format="xml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
+        <param name="rpsbml_file" type="data" format="sbml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
         <param argument="--backbone_id" type="text" value="BASIC_SEVA_37_CmR-p15A.1" label="Backbone part ID" help="Part ID to be used as the backbone.">
             <sanitizer invalid_char="">
                 <valid initial="string.letters,string.digits">
