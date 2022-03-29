@@ -68,8 +68,8 @@
     </inputs>
     <outputs>
         <data name="Constructs" format="csv" from_work_dir="out/dnabot_in/constructs.csv" label="${tool.name} on ${rpsbml_file.name}: constructs" />
-        <data name="User parts plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} on ${rpsbml_file.name}: User parts plate"/>
-        <data name="Biolegio plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} on ${rpsbml_file.name}: Biolegio plate"/>
+        <data name="User_parts_plate" format="csv" from_work_dir="out/dnabot_in/user_parts_plate.csv" label="${tool.name} on ${rpsbml_file.name}: User parts plate"/>
+        <data name="Biolegio_plate" format="csv" from_work_dir="out/dnabot_in/biolegio_plate.csv" label="${tool.name} on ${rpsbml_file.name}: Biolegio plate"/>
         <collection name="sbol_dir" type="list" label="${tool.name} on ${rpsbml_file.name}: SBOL constructs">
             <filter> adv['sbol_output'] </filter>
             <discover_datasets pattern="__designation_and_ext__" format="xml" directory="out/sbol_export" />
@@ -85,8 +85,8 @@
                     <has_n_lines n="4"/>
                 </assert_contents>
             </output>
-            <output name="User parts plate" file="user_parts_plate_lycopene.csv" ftype="csv" compare="diff"/>
-            <output name="Biolegio plate" file="biolegio_plate_lycopene.csv" ftype="csv" compare="diff"/>
+            <output name="User_parts_plate" file="user_parts_plate_lycopene.csv" ftype="csv" compare="diff"/>
+            <output name="Biolegio_plate" file="biolegio_plate_lycopene.csv" ftype="csv" compare="diff"/>
             <param name="sbol_output" value="--o_sbol_dir out/sbol_export" />
             <output_collection name="sbol_dir" type="list" count="3">
                 <element name="BASIC_construct_A1">
@@ -121,8 +121,8 @@
                     <has_n_lines n="89"/>
                 </assert_contents>
             </output>
-            <output name="User parts plate" file="user_parts_plate_muconate.csv" ftype="csv" compare="diff"/>
-            <output name="Biolegio plate" file="biolegio_plate_muconate.csv" ftype="csv" compare="diff"/>
+            <output name="User_parts_plate" file="user_parts_plate_muconate.csv" ftype="csv" compare="diff"/>
+            <output name="Biolegio_plate" file="biolegio_plate_muconate.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
     <help><![CDATA[
