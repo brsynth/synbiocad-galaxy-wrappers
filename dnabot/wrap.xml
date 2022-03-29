@@ -21,11 +21,11 @@
         && tar -cvf '$dnabot_scripts' 'output'
     ]]></command>
     <inputs>
-        <param name="construct_file" type="data" format="csv" label="Source Construct" />
-        <param name="plate_files" type="data" format="csv" multiple="true" label="Plate files" />
+        <param name="construct_file" type="data" format="csv" label="Source Construct" help="File listing constructs to be implemented."/>
+        <param name="plate_files" type="data" format="csv" multiple="true" label="Plate files" help="File(s) listing parts to be used in constructs." />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="default_settings_file" type="data" format="yaml" optional="true" label="Yaml file providing labware IDs and parameter to be used" />
-            <param name="etoh_well" type="select" label="Well coordinate for Ethanol">
+            <param name="etoh_well" type="select" label="Well coordinate for Ethanol" help="Coordinates of the well plate providing ethanol for the purification step.">
                 <option value="A2" >A2</option>
                 <option value="A3" >A3</option>
                 <option value="A4" >A4</option>
@@ -37,7 +37,7 @@
                 <option value="A10" >A10</option>
                 <option value="A11" selected="true">A11</option>
             </param>
-            <param name="soc_column" type="select" label="Column coordinate for SOC">
+            <param name="soc_column" type="select" label="Column coordinate for SOC" help="Coordinate of the column plate providing SOC media for the transformation step."> 
                 <option value="1" selected="true">1</option>
                 <option value="2" >2</option>
                 <option value="3" >3</option>
@@ -54,7 +54,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="dnabot_scripts" format="tar" label="${tool.name} scripts" />
+        <data name="dnabot_scripts" format="tar" />
     </outputs>
     <tests>
         <test>
@@ -73,17 +73,16 @@ DNA assembly using BASIC on OpenTrons
 Input
 -----
 
+* **construct_file**: (string) CSV file listing constructs to be implemented.
+* **plate_files**: (string) File(s) listing parts to be used in constructs.
+* **etoh_well**: (string) Coordinates of the well plate providing ethanol for the purification step. Default: A11
+* **soc_column**: (integer) Coordinate of the column plate providing SOC media for the transformation step. Default: 1.
 * **default_settings_file**: (string) file providing labware IDs and parameter to be used. Default: dnabot/default_settings.yaml.
-* **construct_path**: (string) Construct CSV file.
-* **source_paths**: (string) Source CSV files.
-* **etoh_well**: (string) Well coordinate for Ethanol. Default: A11.
-* **soc_column**: (integer) Column coordinate for SOC. Default: 1.
-* **template_dir**: (string) Template directory. Default: "template_ot2_scripts" located next to the present script.
 
 Ouput
 -----
 
-* **output_dir**: (string) Output directory. Default: same directory than the one containing the "construct_path" file.
+* **dnabot_scripts**: (string) DNA-Bot scripts in TAR format which implement the 4 assembly steps and metainformation to keep track of parameters.
 
 Version
 -------
@@ -99,7 +98,7 @@ Authors
 License
 -------
 
-`MIT <https://github.com/brsynth/DNA-BOT/blob/DNA-BOT-APIv2/LICENSE>`_
+`MIT <https://github.com/BASIC-DNA-ASSEMBLY/DNA-BOT/blob/master/LICENSE>`_
 
 
 Acknowledgments
