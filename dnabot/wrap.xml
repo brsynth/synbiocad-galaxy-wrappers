@@ -24,8 +24,8 @@
         <param name="construct_file" type="data" format="csv" label="Source Construct" help="File listing constructs to be implemented."/>
         <param name="plate_files" type="data" format="csv" multiple="true" label="Plate files" help="File(s) listing parts to be used in constructs." />
         <section name="adv" title="Advanced Options" expanded="false">
-            <param name="default_settings_file" type="data" format="yaml" optional="true" label="Lab settings file" help="Yaml file providing labware IDs and parameter to be used in the Opentrons scripts: `Default settings <https://github.com/BASIC-DNA-ASSEMBLY/DNA-BOT/blob/master/dnabot/default_settings.yaml>`_" />
-            <param name="etoh_well" type="select" label="Well coordinate for Ethanol" help="Coordinates of the well plate providing ethanol for the purification step.">
+            <param name="default_settings_file" type="data" format="yaml" optional="true" label="Lab settings file" help="Yaml file providing labware IDs and parameter to be used in the Opentrons scripts." />
+            <param argument="--etoh_well" type="select" label="Well coordinate for Ethanol" help="Coordinates of the well plate providing ethanol for the purification step.">
                 <option value="A2" >A2</option>
                 <option value="A3" >A3</option>
                 <option value="A4" >A4</option>
@@ -37,7 +37,7 @@
                 <option value="A10" >A10</option>
                 <option value="A11" selected="true">A11</option>
             </param>
-            <param name="soc_column" type="select" label="Column coordinate for SOC" help="Coordinate of the column plate providing SOC media for the transformation step."> 
+            <param argument="--soc_column" type="select" label="Column coordinate for SOC" help="Coordinate of the column plate providing SOC media for the transformation step."> 
                 <option value="1" selected="true">1</option>
                 <option value="2" >2</option>
                 <option value="3" >3</option>
@@ -70,8 +70,8 @@ DNA-Bot
 
 DNA assembly using BASIC on OpenTrons
 
-Input
------
+Inputs
+------
 
 * **Source Construct**: (string) CSV file listing constructs to be implemented.
 * **Plate files**: (string) File(s) listing parts to be used in constructs.
