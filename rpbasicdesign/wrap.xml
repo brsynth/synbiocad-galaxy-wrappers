@@ -1,7 +1,8 @@
-<tool id="rpbasicdesign" name="BasicDesign" version="@TOOL_VERSION@" profile="21.09">
+<tool id="rpbasicdesign" name="BasicDesign" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.09">
     <description>Build DNA-BOT input files from rpSBML</description>
     <macros>
-        <token name="@TOOL_VERSION@">1.0.1</token>
+        <token name="@VERSION_SUFFIX@">0</token>
+        <token name="@TOOL_VERSION@">1.1.0</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">rpbasicdesign</requirement>
@@ -21,6 +22,7 @@
         --o_dnabot_dir 'out/dnabot_in'
         $adv.sbol_output
         --max_enz_per_rxn $adv.max_enz_per_rxn
+        --max_gene_per_construct $adv.max_gene_per_construct
     ]]></command>
     <inputs>
         <param name="rpsbml_file" type="data" format="sbml" label="rpSBML file" help="SBML file from which enzymes UniProt IDs will be collected."/>
@@ -63,6 +65,7 @@
             <param argument="--cds_permutation" type="boolean" truevalue="--cds_permutation true" falsevalue="--cds_permutation false" checked="true" label="Perform CDS permutation?" help="Whether all combinations of CDS permutation should be built." />
             <param argument="--sbol_output" type="boolean" checked="false" truevalue="--o_sbol_dir out/sbol_export" falsevalue="" label="Output SBOL results?" help="Whether SBOL (Synthetic Biology Open Language) depictions of constructs should be outputted" />
             <param argument="--max_enz_per_rxn" type="integer" value="1" min="1" max="99" label="Maximum number of enyzme to consider per reaction." help="Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept."/>
+            <param argument="--max_gene_per_construct" type="integer" value="3" min="1" max="10" label="Maximum number of genes per construct" help="If more genes are required, i.e. more reactions are described in the input SBML file, then the execution will failed."/>
         </section>
     </inputs>
     <outputs>
@@ -127,44 +130,32 @@
     <help><![CDATA[
 rpbasicdesign
 ================
-
 rpbasicdesign extracts enzyme IDs from rpSBML (System Biology Markup Language) files containing additionnal annotations (e.g. reaction rules ID) and produced by the RP (RetroPath) suite available in `SynBioCAD Galaxy platform <https://galaxy-synbiocad.org/>`_, to generate genetic constructs compliant with the BASIC (Biopart Assembly Standard for Idempotent Cloning) assembly approach. CSV files produced are ready to be used with DNA-Bot to generate instructions for automated build of the genetic constructs using OpenTrons liquid handling robots.
-
 Input
 -----
-
 Required:
-
 * **rpSBML file**\ : rpSBML file from which enzymes UniProt IDs will be collected.
-
 Advanced options:
-
 * **Linkers and user parts**\ : (string) List of files providing available linkers and user parts (backbone, promoters, ...) for constructs. Default: ( `Standard Biolegio Parts <https://www.biolegio.com/>`_: BBP-18500).
 * **LMS part ID**\ : (string) part ID to be used as the LMS methylated linker. Default: LMS.
 * **LMP part ID**\ : (string) part ID to be used as the LMP methylated linker. Default: LMP.
 * **Backbone part ID**\ : (string) part ID to be used as the backbone. Default: BASIC_SEVA_37_CmR-p15A.1.
 * **Sample size**\ : (int) Number of construct to generate. Default: 88.
 * **Perform CDS permutation?**\ : (boolean) Whether all combinations of CDS permutation should be built Default: true.
-* **Maximum number of enyzme to consider per reaction**\ : (int) Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept. (Default: 1). 
-
+* **Maximum number of enyzme to consider per reaction**\ : (int) Maximum number of enyzme to consider per reaction. If more enzymes are available for a given reaction, then only the last one listed in the MIRIAM annotation section will be kept. (Default: 1).
+* **Maximum number of genes per construct**\ : (int) If more genes are required, i.e. more reactions are described in the input SBML file, then the execution will failed. (Default: 3).
 Output
 ------
-
 * **constructs**\ : CSV construct file listing the constructs to be built.
 * **User parts plate**\ : CSV file listing the DNA parts to be included into each construct.
 * **Biolegio plate**\ : CSV file listing the plate coordinates of the BASIC linkers.
 * **SBOL constructs**\ : (optional) one SBOL (Synthetic Biology Open Language) file is produced for each construct generated in XML format. 
-
 Project Links
 ------------------
-
 * `GitHub <https://github.com/brsynth/rpbasicdesign>`_
-
 License
 -------
-
 * `MIT <https://github.com/brsynth/rpbasicdesign/blob/master/LICENSE.txt>`_
-
     ]]></help>
     <citations>
         <citation type="doi">10.1093/synbio/ysaa010</citation>
