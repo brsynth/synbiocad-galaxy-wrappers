@@ -13,12 +13,12 @@
     </stdio>
     <command detect_errors="exit_code"><![CDATA[
         python -m rrparser
-        #if str($rules.type) != "other":
+        #if str($rules.type) != "rules-file":
             retrorules
             --rule-type '$rules.type'
         #else:
             '$rules.file'
-            --input-format '$rules.format'
+            --input-format '$rules.input_format'
         #end if
         --diameters '$diameters'
         --output-format csv
@@ -31,21 +31,21 @@
     ]]></command>
     <inputs>
         <conditional name="rules">
-            <param name="type" type="select" label="Rule Type" help="">
+            <param name="type" type="select" label="Rule Type" help="Return the rules that are in reverse, forward, both direction or from an input user file">
                 <option value="retro" selected="True">RetroRules (retro)</option>
                 <option value="forward">RetroRules (forward)</option>
                 <option value="all">RetroRules (all)</option>
-                <option value="other">Other reaction rules...</option>
+                <option value="rules-file">Other reaction rules...</option>
             </param>
-            <when value="other">
-                <param name="file" type="data" format="csv" optional="False" label="Rules File"/>
-                <param name="format" type="select" optional="False" label="File format">
+            <when value="rules-file">
+                <param name="file" type="data" format="csv" optional="False" label="Rules File" help="Filename of reaction rules"/>
+                <param name="input_format" type="select" optional="False" label="File format" help="Input file format (default: csv)">
                     <option value="csv" selected="True">csv</option>
                     <option value="tsv">tsv</option>
                 </param>
             </when>
         </conditional>
-        <param argument="--diameters" type="select" display="checkboxes" multiple="True" label="Select the diameters of the reactions rules">
+        <param argument="--diameters" type="select" display="checkboxes" multiple="True" label="Select the diameters of the reactions rules" help=" Diameter of the sphere including the atoms around the reacting center (default is including all values: 2,4,6,8,10,12,14,16). The higher is the diameter, the more specific are the rules">
             <option selected="true" value="2">2</option>
             <option selected="true" value="4">4</option>
             <option selected="true" value="6">6</option>
@@ -87,22 +87,22 @@
 RRulesParser
 ============
 
-Retrieve the reaction rules from `RetroRules <https://retrorules.org/>`_
+Retrieve the reaction rules from `RetroRules <https://retrorules.org/>`_ extracted from public databases and expressed in the community-standard SMARTS (SMILES arbitrary target specification) format, augmented by a rule representation at different levels of specificity (the atomic environment around the reaction center).
+
+The generated output is a file containing reaction rules which are generic descriptions of chemical reactions that can be used in retrosynthesis workflows in order to enumerate all possible biosynthetic routes connecting a target molecule to its precursors.
 
 Input
 -----
 
-* **rules-file**: (string) Filename of reaction rules
-* **input-format**: (string) input file format (default: csv)
-* **rule-type**: (string) {all,retro,forward} rule usage to filter from rules file
+* **Rule Type**: (string) Return the rules that are in reverse, forward, both direction or from an input user file
+* **rules-file**: (string) Filename of reaction rules provided in csv or tsv format.
+* **input_format**: (string) input file format (csv: default, tsv)
 * **diameters**: (integer list) diameter of the sphere including the atoms around the reacting center (default is including all values: 2,4,6,8,10,12,14,16). The higher is the diameter, the more specific are the rules
-* **output-format**: (string) {csv,tsv} output file format (default: csv)
 
 Ouput
 -----
 
-* **outfile**: (string): file where results are written. If file ends with '.gz', it will be gzipped.
-
+* **out_rules**: (string): file containing the parsed reactions rules (default=csv). It will be zipped if *Compress output* is set to yes.
 
 Version
 -------
