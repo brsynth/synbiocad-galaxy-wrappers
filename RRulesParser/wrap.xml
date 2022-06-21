@@ -55,7 +55,7 @@
             <option selected="true" value="14">14</option>
             <option selected="true" value="16">16</option>
         </param>
-        <param name="compress" type="boolean" display="checkboxes" label="Compress output" />
+        <param name="compress" type="boolean" checked="false" label="Compress output" />
     </inputs>
     <outputs>
         <data name="out_rules" format="csv" label="${tool.name}(${rules.type}, d=$diameters)" >
