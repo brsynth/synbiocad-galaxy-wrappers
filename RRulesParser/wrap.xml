@@ -45,7 +45,7 @@
                 </param>
             </when>
         </conditional>
-        <param name="diameters" type="select" display="checkboxes" multiple="True" label="Select the diameters of the reactions rules">
+        <param argument="--diameters" type="select" display="checkboxes" multiple="True" label="Select the diameters of the reactions rules">
             <option selected="true" value="2">2</option>
             <option selected="true" value="4">4</option>
             <option selected="true" value="6">6</option>
