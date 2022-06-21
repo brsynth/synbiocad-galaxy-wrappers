@@ -77,7 +77,7 @@
         <test>
         <!-- test 3: check if identical outputs are produced with csv input rules file-->
             <conditional name="rules">
-                <param name="type" value="other"/>
+                <param name="type" value="rules-file"/>
                 <param name="file" value="rules_in.csv" />
             </conditional>
             <output name="out_rules" file="rules_out.csv" ftype="csv" compare="diff"/>
