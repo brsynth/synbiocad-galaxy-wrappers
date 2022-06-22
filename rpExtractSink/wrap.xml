@@ -16,6 +16,7 @@
             '$sink'
             --compartment_id '$compartment_id'
             $adv.remove_dead_end
+            --cache-dir "\${TMPDIR:-.}"
     ]]></command>
     <inputs>
         <param name="input" type="data" format="sbml" optional="false" label="Strain" help="The structure of metabolites present in the chosen chassis strain in SBML format" />
