@@ -1,7 +1,8 @@
-<tool id="selenzy-wrapper" name="Selenzyme" version="@TOOL_VERSION@" profile="19.09">
+<tool id="selenzy-wrapper" name="Selenzyme" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="19.09">
     <description>Performs enzyme selection from a reaction query</description>
     <macros>
-        <token name="@TOOL_VERSION@">0.2.0</token>
+        <token name="@VERSION_SUFFIX@">0</token>
+        <token name="@TOOL_VERSION@">0.3.0</token>
     </macros>
     <requirements>
         <requirement type="package" version="@TOOL_VERSION@">selenzy_wrapper</requirement>
@@ -73,7 +74,7 @@ Project Links
 Version
 ----------
 
-0.2.0
+0.3.0
 
 Authors
 -------
