@@ -25,7 +25,7 @@
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="host_taxID" type="integer" value="83333" label="Host taxon ID" help="Taxon ID of the chassis (default: 83333 [E. coli K12])" />
             <param name="enzyme_taxIDs" type="text" value="" label="Comma separated taxon IDs of output enzyme sequences" />
-            <param name="nb_ids" type="integer" value="-1" min="1" label="Number of uniprot IDs with top score to keep" help=" Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]" />
+            <param name="nb_ids" type="integer" value="-1" label="Number of uniprot IDs with top score to keep" help=" Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]" />
             <param name="nb_targets" type="integer" value="500" min="1" label="Number of targets to display in results" help="Number of targets to display in results (before taxon IDs filtering) [default = 500]" />
             <param name="direction" type="float" value="0" label="Use similarity values for preferred reaction direction only" help="You can choose to rank similarities in both reaction directions or to use only the direction of the reaction based on a consensus list that has been generated according to reaction information based on curated information from MetaCyc (Metabolic Pathway Database) [default=0 (OFF)]" />
             <param argument="--NoMSA" type="boolean" falsevalue="--NoMSA" truevalue="" checked="true" display="checkboxes" label="Do not compute MSA/conservation scores ?" help="Do not compute Multiple Sequence Alignment and conservation scores ? (MSA scores are computed by default)" />
@@ -39,7 +39,7 @@
         <test>
         <!-- test 1: check if identical outputs are produced with default parameters  -->
             <param name="pathway" value="pathway.xml" />
-            <output name="uniprot_ids" file="uniprod_ids_out.xml" ftype="xml" compare="diff" sort="true"/>
+            <output name="uniprot_ids" file="uniprod_ids_out.xml" compare="diff" sort="true"/>
             <output name="uniprot_ids_csv" file="uniprod_ids_out.csv" ftype="csv" compare="diff"/>
         </test>
     </tests>
