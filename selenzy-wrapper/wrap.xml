@@ -46,12 +46,12 @@
 Selenzyme
 ================
 
-Performs enzyme selection from a reaction query.
+Selenzyme searches for enzymes corresponding to each reaction of the pathway. It performs a reaction similarity search in the reference reaction database `MetaNetX <https://www.metanetx.org/>`_ and outputs an updated SBML file annotated with the enzyme UniProt IDs.
 
 Input
 -----
 
-* **pathway_file**\ : (string) path to pathway file
+* **Pathway (SBML)**\ : (string) path to the SBML pathway file
 * **Number of targets to display in results**\ : (integer) Number of targets to display in results (before taxon IDs filtering) [default = 500]
 * **Number of uniprot IDs with top score to keep**\ : (integer) Number of enzyme IDs to display in results (after taxon IDs filtering) [default = -1 (no limit)]
 * **Use similarity values for preferred reaction direction only**\ : (float) Use similarity values for preferred reaction direction only [default=0 (OFF)]
