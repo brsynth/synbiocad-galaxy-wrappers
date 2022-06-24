@@ -18,6 +18,7 @@
         #end if
         --nb_ids '$adv.nb_ids'
         --to_csv '$uniprot_ids_csv'
+        --data-path "\${TMPDIR:-.}"
     ]]></command>
     <inputs>
         <param name="pathway" type="data" format="sbml" label="Pathway (SBML)" />
