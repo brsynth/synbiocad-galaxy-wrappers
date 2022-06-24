@@ -20,7 +20,7 @@
         --to_csv '$uniprot_ids_csv'
     ]]></command>
     <inputs>
-        <param name="pathway" type="data" format="xml" label="Pathway (SBML)" />
+        <param name="pathway" type="data" format="sbml" label="Pathway (SBML)" />
         <section name="adv" title="Advanced Options" expanded="false">
             <param name="host_taxID" type="integer" value="83333" label="Host taxon ID" help="Taxon ID of the chassis (default: 83333 [E. coli K12])" />
             <param name="enzyme_taxIDs" type="text" value="" label="Comma separated taxon IDs of output enzyme sequences" />
@@ -31,7 +31,7 @@
         </section>
     </inputs>
     <outputs>
-        <data name="uniprot_ids" format="xml" label="Uniprot IDs" />
+        <data name="uniprot_ids" format="sbml" label="Uniprot IDs" />
         <data name="uniprot_ids_csv" format="csv" label="Uniprot IDs" />
     </outputs>
     <tests>
