@@ -19,7 +19,7 @@
             '$sinkfile'
             '$rulesfile'
             out
-            --source_inchi '$source_inchi_type.source_inchi'
+            --source_inchi '$source_inchi'
             --source_name '$source_name'
             --rp2_version '$adv.version'
             --max_steps '$max_steps'
@@ -37,17 +37,9 @@
     <inputs>
         <param name="rulesfile" type="data" format="csv,tar" label="Rules File"/>
         <param name="sinkfile" type="data" format="csv" label="Sink File"/>
-        <conditional name="source_inchi_type">
-            <param name="inchi_type" type="select" label="InChI type">
-                <!-- <option value="name" selected="true">By name</option> -->
-                <option value="string">By string</option>
-            </param>
-            <when value="string">
-                <param name="source_inchi" type="text" label="Source InChI" optional="false">
-                    <validator type="empty_field" message="You must provide the InChI string"/>
-                </param>
-            </when>
-        </conditional>
+        <param name="source_inchi" type="text" label="Source InChI" optional="false">
+            <validator type="empty_field" message="You must provide the InChI string"/>
+        </param>
         <param name="max_steps" type="integer" value="3" min="1" max="10" label="Maximal Pathway length" />
         <param name="source_name" type="text" value="target" optional="true" label="Source name">
             <validator type="empty_field" message="Source name is required"/>
