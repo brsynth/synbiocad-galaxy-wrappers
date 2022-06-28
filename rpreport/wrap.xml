@@ -9,7 +9,6 @@ predicted with RetroPath suite</description>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         #if str($input_type_conditional.input_type) == "sbml":
-            cd /tmp &&
             #set input_folder="tmp_folder"
             mkdir -p '$input_folder' &&
             #for $input in $input_type_conditional.input_sbml.keys():
