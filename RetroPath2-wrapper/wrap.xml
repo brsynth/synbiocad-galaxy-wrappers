@@ -35,13 +35,13 @@
         fi
     ]]></command>
     <inputs>
-        <param name="rulesfile" type="data" format="csv,tar" label="Rules File"/>
-        <param name="sinkfile" type="data" format="csv" label="Sink File"/>
-        <param name="source_inchi" type="text" label="Source InChI" optional="false">
+        <param name="rulesfile" type="data" format="csv,tar" label="Rules File" help="File containing reaction rules which reflect the enzymatic potential of the chassis organism"/>
+        <param name="sinkfile" type="data" format="csv" label="Sink File" help=" Sink file which comprises all compounds that are considered as granted in your system."/>
+        <param name="source_inchi" type="text" label="Source InChI" optional="false" help="InChI of compound to produce">>
             <validator type="empty_field" message="You must provide the InChI string"/>
         </param>
-        <param name="max_steps" type="integer" value="3" min="1" max="10" label="Maximal Pathway length" />
-        <param name="source_name" type="text" value="target" optional="true" label="Source name">
+        <param name="max_steps" type="integer" value="3" min="1" max="10" label="Maximal Pathway length" help="Maximal number of steps"/>
+        <param name="source_name" type="text" value="target" optional="true" label="Source name" help="Name of compound to produce"
             <validator type="empty_field" message="Source name is required"/>
         </param>
         <section name="adv" title="Advanced Options" expanded="false">
@@ -51,10 +51,10 @@
                 <option value="r20220104" selected="true">r20220104</option>
             </param>
             <param name="topx" type="integer" value="100" min="1" max="1000" label="TopX" />
-            <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" />
-            <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" />
+            <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" help="Minimum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules." />
+            <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" help="Maximum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules."/>
             <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" />
-            <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" />
+            <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" help="Timeout in minutes" />
         </section>
     </inputs>
     <outputs>
@@ -74,37 +74,32 @@ Retropath2.0 wrapper
 ====================
 
 
-Perform retrosynthesis search of possible metabolic routes between a source molecule and a collection of sink molecules. Docker implementation of the KNIME retropath2.0 workflow. Takes for input the minimal (dmin) and maximal (dmax) diameter for the reaction rules and the maximal path length (maxSteps). The docker mounts a local folder and expects the following files: rules.csv, sink.csv and source.csv. We only support a single source molecule at this time.
+Perform retrosynthesis search of possible metabolic routes between a source molecule and a collection of sink molecules. This tool is an implementation of the `KNIME retropath2.0 workflow <https://www.myexperiment.org/workflows/4987.html>`_. It takes for input the minimal (dmin) and maximal (dmax) diameter for the reaction rules and the maximal path length (maxSteps). The tool expects the following files: rules.csv, sink.csv and source.csv and produce a retrosynthesis network as a CSV file providing reactions in the reaction SMILES format and chemicals in both SMILES and InChI formats along with other information like the score for each reaction. Only a single source molecule is processed at this time.
 
 Input
 -----
 
 Required:
 
-* **-sinkfile**\ : (string) Path to the sink file
-* **-sourcefile**\ : (string) Path to the source file
-* **-max_steps**\ : (integer) Maximal number of steps
-* **-rulesfile**\ : (string) Path to the rules file
-* **-rulesfile_format**\ : (string) Valid Options: tar, csv. Format of the rules file
+* **Sink File**\ : (string) Sink file which comprises all compounds that are considered as granted in your system.
+* **Source InChI**\ : (string) InChI of compound to produce
+* **Source name**\ : (string) Name of compound to produce
+* **Maximal Pathway length**\ : (integer) Maximal number of steps
+* **Rules File**\ : (string) File containing reaction rules which reflect the enzymatic potential of the chassis organism
 
-The InChI source DB entries are obtained by the following command:
-
-`cat chem_prop.tsv | awk -F'\\t' '{print "\\t\\t\\t\\t\\t<option value=\\""$6"\\"\\>" "["$1"]\\t " $2 "</option>"}' | sed 's/\\&/\\&amp;/g'`
-
-where `chem_prop.tsv` has been downloaded on MetaNetX.
 
 Advanced options:
 
-* **-topx**\ : (integer, default: 100) For each iteration, number of rules
-* **-dmin**\ : (integer, default: 0)
-* **-dmax**\ : (integer, default: 1000)
-* **-mwmax_source**\ : (integer, default: 1000)
-* **-timeout**\ : (integer, default: 30) Timeout in minutes
+* **TopX**\ : (integer, default: 100) For each iteration, number of rules
+* **Minimum rule diameter**\ : (integer, default: 0) Minimum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules.
+* **Maximum rule diameter**\ : (integer, default: 1000) Maximum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules.
+* **Molecular weight of source (Da)**\ : (integer, default: 1000) Molecular weight of source (Da)
+* **Timeout (min)**\ : (integer, default: 30) Timeout in minutes
 
 Output
 ------
 
-* **-scope_csv**\ : (string) Path to the output scope csv file
+* **Reaction Network**\ : (string) CSV file containing retrosynthesis network which provides reactions in the reaction SMILES format and chemicals in both SMILES and InChI formats along with other information like the score for each reaction.
 
 Authors
 -------
