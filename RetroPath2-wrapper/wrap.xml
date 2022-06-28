@@ -53,7 +53,7 @@
             <param name="topx" type="integer" value="100" min="1" max="1000" label="TopX" help="The maximal number of intermediate compounds to use as new starting points for a next iteration of the retrosynthesis algorithm." />
             <param name="dmin" type="integer" value="0" min="0" max="1000" label="Minimum rule diameter" help="Minimum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules." />
             <param name="dmax" type="integer" value="1000" min="0" max="1000" label="Maximum rule diameter" help="Maximum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules."/>
-            <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" help="The molecular weight cutoff (in Da), above which source (ie target) compounds will be filtered out." />
+            <param name="mwmax_source" type="integer" value="1000" min="0" max="2000" label="Molecular weight of source (Da)" help="The molecular weight cutoff (in Da), above which source (ie target) on intermediate compounds will be filtered out." />
             <param name="timeout" type="integer" value="60" min="30" max="600" label="Timeout (min)" help="Maximal time of RetroPath2.0 execution (60 minutes by default)." />
         </section>
     </inputs>
@@ -93,7 +93,7 @@ Advanced options:
 * **TopX**\ : (integer, default: 100) The maximal number of intermediate compounds to use as new starting points for a next iteration of the retrosynthesis algorithm.
 * **Minimum rule diameter**\ : (integer, default: 0) Minimum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules.
 * **Maximum rule diameter**\ : (integer, default: 1000) Maximum rule diameter of the sphere including the atoms around the reacting center. The higher is the diameter, the more specific are the rules.
-* **Molecular weight of source (Da)**\ : (integer, default: 1000) The molecular weight cutoff (in Da), above which source (ie target) compounds will be filtered out.
+* **Molecular weight of source (Da)**\ : (integer, default: 1000) The molecular weight cutoff (in Da), above which source (ie target) on intermediate compounds will be filtered out.
 * **Timeout (min)**\ : (integer, default: 60) Maximal time of RetroPath2.0 execution (60 minutes by default)
 * **Workflow version**\ : Retropath2.0 Workflow versions, formatted as r{year}{month}{day} (the latest version r20220104 is used by default)
 
