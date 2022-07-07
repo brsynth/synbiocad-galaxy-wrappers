@@ -11,12 +11,15 @@
         <regex match="Could not retreive any species in the compartment" level="fatal" />
     </stdio>
     <command detect_errors="exit_code"><![CDATA[
+        #import os.path
+        #set $path = $__app__.tool_data_tables['cache'].get_fields()[2][-1]
+        #set $cache_dir=os.path.dirname(str($path))
         python -m rptools.rpextractsink
             '$input'
             '$sink'
             --compartment_id '$compartment_id'
             $adv.remove_dead_end
-            --cache-dir "\${TMPDIR:-.}"
+            --cache-dir $cache_dir
     ]]></command>
     <inputs>
         <param name="input" type="data" format="sbml" optional="false" label="Strain" help="The structure of metabolites present in the chosen chassis strain in SBML format" />
