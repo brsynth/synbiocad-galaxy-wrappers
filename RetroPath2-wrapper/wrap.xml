@@ -1,4 +1,4 @@
-<tool id="retropath2" name="RetroPath2.0" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.09">
+<tool id="retropath2_wrapper" name="RetroPath2.0" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.09">
     <description>Build a reaction network from a set of source compounds to a set of sink compounds</description>
     <macros>
         <token name="@VERSION_SUFFIX@">0</token>
@@ -58,7 +58,11 @@
         </section>
     </inputs>
     <outputs>
-        <data name="Reaction_Network" format="csv" label="${tool.name}" />
+        <data name="Reaction_Network" format="csv" label="${tool.name}" >
+            <actions>
+                <action name="column_names" type="metadata" default="Initial source,Transformation ID,Reaction SMILES,Substrate SMILES,Substrate InChI,Product SMILES,Product InChI,In Sink,Sink name,Diameter,Rule ID,EC number,Score,Starting Source SMILES,Iteration" />
+            </actions>
+        </data>
     </outputs>
     <tests>
         <test>
